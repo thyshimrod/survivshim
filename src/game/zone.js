@@ -9,6 +9,7 @@ survivshim.Zone = function (){
     this.aPathTiles = null;
     this.maxX = 100;
     this.maxY = 100;
+    this.decors = [];
 }
 
 survivshim.Zone.prototype ={
@@ -24,6 +25,43 @@ survivshim.Zone.prototype ={
                 this.tiles.push(tempTile);
             }
         }
+
+        let tempDecor = new survivshim.Decor();
+        tempDecor.load("0");
+        tempDecor.x = 10;
+        tempDecor.y = 10;
+        this.decors.push(tempDecor);
+        tempDecor = new survivshim.Decor();
+        tempDecor.load("1");
+        tempDecor.x = 4;
+        tempDecor.y = 4;
+        this.decors.push(tempDecor);
+        tempDecor = new survivshim.Decor();
+        tempDecor.load("2");
+        tempDecor.x = 4;
+        tempDecor.y = 7;
+        this.decors.push(tempDecor);
+        
+        tempDecor = new survivshim.Decor();
+        tempDecor.load("4");
+        tempDecor.x = 2;
+        tempDecor.y = 2;
+        this.decors.push(tempDecor);
+        tempDecor = new survivshim.Decor();
+        tempDecor.load("5");
+        tempDecor.x = 3;
+        tempDecor.y = 3;
+        this.decors.push(tempDecor);
+        tempDecor = new survivshim.Decor();
+        tempDecor.load("6");
+        tempDecor.x = 12;
+        tempDecor.y = 12;
+        this.decors.push(tempDecor);
+        tempDecor = new survivshim.Decor();
+        tempDecor.load("3");
+        tempDecor.x = 1;
+        tempDecor.y = 10;
+        this.decors.push(tempDecor);
     },
 
     render : function(){
@@ -32,6 +70,9 @@ survivshim.Zone.prototype ={
         this.tiles.forEach(function(tile){
             tile.render(_this.tileSet);
         });
+        this.decors.forEach(function(decor){
+            decor.render();
+        })
         survivshim.character.move();
         survivshim.character.render();
 
@@ -69,6 +110,12 @@ survivshim.Zone.prototype ={
             grid[i][j] = brick;
           }
         }
+
+        this.decors.forEach(function(elt){
+            if (elt.blocking){
+                grid[elt.y][elt.x].status = "Obstacle";
+            }
+        });
     
         return grid;
       },
