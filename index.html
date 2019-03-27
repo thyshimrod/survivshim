@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SurviShim</title>
+      <script type="text/javascript" src="./src/commons/constantes.js"></script>
+      <link rel="stylesheet" type="text/css" href="main.css"/>
+      <script type="text/javascript" src="./src/commons/constantes.js"></script>
+      <script type="text/javascript" src="./assets/tiles/tiles.js"></script>
+</head>
+<body>
+  <canvas id="layerTile" height="0" width="0" style="z-index: 15"></canvas>
+  <canvas id="layerCreature" height="0" width="0" style="z-index: 35"></canvas>
+  <canvas id="layerAnimation" height="0" width="0" style="z-index: 45"></canvas>
+  <canvas id="layerMouse" height="0" width="0" style="z-index: 50"></canvas>
+  <div id="mainbutton" style="position:absolute; top: 0; left : 100; z-index: 99">
+    <button id="btnSave">Save</button>
+    <button id="btnMenu">Menu</button>
+    <button id="btnGenerate">GenerateItem</button>
+  </div>
+  <script src="./src/commons/commons.js"></script>
+  <script src="./src/game/apath.js"></script>
+  <script src="./src/game/character.js"></script>
+  <script src="./src/game/tileset.js"></script>
+  <script src="./src/game/tile.js"></script>
+  <script src="./src/game/zone.js"></script>
+  <script src="./src/game/canvas.js"></script>
+  <script src="./src/game/gameengine.js"></script>
+  
+</body>
+</html>
