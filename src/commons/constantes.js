@@ -14,4 +14,6 @@ survivshim.C = Object.freeze({
   DIRECTION_LEFT :1,
   DIRECTION_RIGHT :2,
 
+  COLOR_CONTEXTUAL : "#2F4f4f",
+
 });

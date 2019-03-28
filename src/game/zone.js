@@ -75,6 +75,7 @@ survivshim.Zone.prototype ={
         })
         survivshim.character.move();
         survivshim.character.render();
+        survivshim.contextualMenu.render();
 
     },
 
@@ -120,7 +121,30 @@ survivshim.Zone.prototype ={
         return grid;
       },
 
+    getTheDecorUnderMouse : function(x,y){
+        var _x = x - survivshim.gameEngine.centerX + survivshim.character.x;
+        var _y = y - survivshim.gameEngine.centerY + survivshim.character.y;
+        var result = null;
+        this.decors.forEach(function(elt){
+            if (((_x-survivshim.gameEngine.tileSize)< elt.x*survivshim.gameEngine.tileSize) && ((_x+survivshim.gameEngine.tileSize)>elt.x*survivshim.gameEngine.tileSize ) && ((_y-survivshim.gameEngine.tileSize)< elt.y*survivshim.gameEngine.tileSize) && ((_y+survivshim.gameEngine.tileSize)>elt.y*survivshim.gameEngine.tileSize )){
+            result = elt;
+            }
+        });
+        return result;
+    },
+
+    showContextualMenu : function(decor){
+        survivshim.contextualMenu.showMenu(decor);
+    },
+
     clickEvent : function(evt){
-        survivshim.character.goToTarget(evt.pageX,evt.pageY);
+        var decor = survivshim.zone.getTheDecorUnderMouse(evt.pageX,evt.pageY);
+        if (decor !== null ){
+            survivshim.zone.showContextualMenu(decor);
+        }else{
+            survivshim.contextualMenu.hideMenu();
+            survivshim.zone.showContextualMenu(decor);
+            survivshim.character.goToTarget(evt.pageX,evt.pageY);
+        }
     },
 }
