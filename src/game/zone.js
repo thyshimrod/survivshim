@@ -138,13 +138,16 @@ survivshim.Zone.prototype ={
     },
 
     clickEvent : function(evt){
-        var decor = survivshim.zone.getTheDecorUnderMouse(evt.pageX,evt.pageY);
-        if (decor !== null ){
-            survivshim.zone.showContextualMenu(decor);
-        }else{
-            survivshim.contextualMenu.hideMenu();
-            survivshim.zone.showContextualMenu(decor);
-            survivshim.character.goToTarget(evt.pageX,evt.pageY);
+        let clickOnMenu = survivshim.contextualMenu.onClick(evt.pageX,evt.pageY);
+        if (clickOnMenu === false){
+            let decor = survivshim.zone.getTheDecorUnderMouse(evt.pageX,evt.pageY);
+            if (decor !== null ){
+                survivshim.zone.showContextualMenu(decor);
+            }else{
+                survivshim.contextualMenu.hideMenu();
+                survivshim.zone.showContextualMenu(decor);
+                survivshim.character.goToTarget(evt.pageX,evt.pageY);
+            }
         }
     },
 }

@@ -18,6 +18,7 @@ survivshim.Decor.prototype = {
       var src = survivshim.decors[templateId];
       this.spriteset = survivshim.tileset.get(src.tileset);
       this.typeDecor = src.typedecor;
+      this.name = src.name;
       this.blocking = src.blocking;
       var _this = this;
   
