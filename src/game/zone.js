@@ -73,10 +73,29 @@ survivshim.Zone.prototype ={
         this.decors.forEach(function(decor){
             decor.render();
         })
-        survivshim.character.move();
+        
         survivshim.character.render();
         survivshim.contextualMenu.render();
 
+    },
+
+    removeDecors : function(){
+        var _this = this;
+        this.decors.forEach(function(decor){
+            if (decor.toRemove === true){
+                const index = _this.decors.indexOf(decor);
+                if (index !== -1) {
+                    _this.decors.splice(index, 1);
+                }        
+                return;
+            }
+        })
+    },
+
+    loop: function(){
+        survivshim.character.move();
+        this.removeDecors();
+        this.render();
     },
 
     getAPathArray : function (){

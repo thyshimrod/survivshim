@@ -10,7 +10,7 @@ survivshim.GameEngine = function (){
 survivshim.GameEngine.prototype ={
     gameLoop: function (){
         if (survivshim.zone !== "undefined"){
-            survivshim.zone.render();
+            survivshim.zone.loop();
         }
 
     },

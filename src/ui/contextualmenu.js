@@ -48,7 +48,7 @@ survivshim.ContextualMenu.prototype ={
             && (y>this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
                 if ((y > this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +20)
                 && (y < this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +40)){
-                    console.log("action");
+                    this.item.pickup();
                     this.hideMenu();
                 }   
 

@@ -10,9 +10,14 @@ survivshim.Decor = function(){
     this.sizeY = 32;
     this.state = 0;
     this.typeDecor = 0;
+    this.toRemove = false;
 };
 
 survivshim.Decor.prototype = {
+    pickup : function(){
+      this.toRemove = true;
+    },
+
     load : function(templateId){
       this.templateId = templateId;
       var src = survivshim.decors[templateId];
