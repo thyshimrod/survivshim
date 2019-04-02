@@ -11,11 +11,20 @@ survivshim.Decor = function(){
     this.state = 0;
     this.typeDecor = 0;
     this.toRemove = false;
+    this.materiau = null;
+    this.qtyMateriau = 0;
+    this.quality = 0;
+    this.collect = {};
 };
 
 survivshim.Decor.prototype = {
     pickup : function(){
-      this.toRemove = true;
+
+      this.collect.quantity -= this.collect.speed;
+      if (this.collect.quantity <= 0){
+        this.toRemove = true;
+      }
+      
     },
 
     load : function(templateId){
@@ -32,6 +41,13 @@ survivshim.Decor.prototype = {
       })
       this.sizeX = src.size.x;
       this.sizeY = src.size.y;
+      this.collect = {
+        "materiau" : survivshim.C.MATERIAU_SILEX,
+        "quantity" : 10,
+        "chance"   : 50,
+        "tools"    : 0,
+        "speed"    : 1
+       };
     },
 
     render : function(){

@@ -13,8 +13,7 @@ survivshim.Character = function(){
   this.step = survivshim.C.CHARACTER_STEP;
   this.path = [];
   this.movingTick = 0;
-
-
+  this.inventory = {};
 };
 
 survivshim.Character.prototype = {
