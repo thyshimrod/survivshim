@@ -76,6 +76,7 @@ survivshim.Zone.prototype ={
         
         survivshim.character.render();
         survivshim.contextualMenu.render();
+        survivshim.collectMenu.render();
 
     },
 
@@ -93,7 +94,7 @@ survivshim.Zone.prototype ={
     },
 
     loop: function(){
-        survivshim.character.move();
+        survivshim.character.loop();
         this.removeDecors();
         this.render();
     },
@@ -157,7 +158,7 @@ survivshim.Zone.prototype ={
     },
 
     clickEvent : function(evt){
-        let clickOnMenu = survivshim.contextualMenu.onClick(evt.pageX,evt.pageY);
+        let clickOnMenu = survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) || survivshim.collectMenu.onClick(evt.pageX,evt.pageY);
         if (clickOnMenu === false){
             let decor = survivshim.zone.getTheDecorUnderMouse(evt.pageX,evt.pageY);
             if (decor !== null ){

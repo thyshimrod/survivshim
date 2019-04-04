@@ -26,6 +26,7 @@ survivshim.GameEngine.prototype ={
         survivshim.character = new survivshim.Character();
         survivshim.character.init();
         survivshim.contextualMenu = new survivshim.ContextualMenu();
+        survivshim.collectMenu = new survivshim.CollectMenu();
     },
 }
 

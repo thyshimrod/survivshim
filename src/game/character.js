@@ -14,6 +14,7 @@ survivshim.Character = function(){
   this.path = [];
   this.movingTick = 0;
   this.inventory = {};
+  this.action = 0;
 };
 
 survivshim.Character.prototype = {
@@ -34,7 +35,10 @@ survivshim.Character.prototype = {
            survivshim.gameEngine.centerY,
            survivshim.gameEngine.tileSize,
            survivshim.gameEngine.tileSize);
-    
+    },
+
+    changeAction : function(action){
+      this.action = action;
     },
 
     getTile : function(){
@@ -63,6 +67,18 @@ survivshim.Character.prototype = {
           if (this.animation > 2) this.animation = 0;
         }
       },
+
+    loop : function(){
+      if (this.action === survivshim.C.ACTION_NONE){
+        this.move();
+      }else if (this.action === survivshim.C.ACTION_COLLECT){
+        this.collect();
+      }
+    },
+
+    collect : function(){
+
+    },
 
     move : function(){
         if (this.path.length > 0){
