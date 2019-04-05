@@ -77,6 +77,28 @@ survivshim.Character.prototype = {
       }
     },
 
+    addMateriau : function(materiau, qty){
+      if (typeof this.inventory["materiau"] === "undefined"){
+        this.inventory["materiau"] = [];
+      }
+      var foundMateriau = null;
+      var _materiau = materiau
+      this.inventory["materiau"].forEach(function(mat){
+        if(mat.materiau == _materiau){
+          foundMateriau = mat;
+        }
+      })
+      if (foundMateriau === null){
+        foundMateriau = {
+          "materiau" : materiau,
+          "qty" : qty
+        }
+        this.inventory["materiau"].push(foundMateriau);
+      }else{
+        foundMateriau.qty += qty;
+      }
+    },
+
     collect : function(){
       let item = survivshim.collectMenu.item;
       if (item !== null && typeof item !== "undefined"){
@@ -91,6 +113,7 @@ survivshim.Character.prototype = {
             item.toRemove = true;
             survivshim.collectMenu.hideMenu();
           }
+          this.addMateriau(item.collect.materiau,item.collect.speed);
         }
       }
     },
