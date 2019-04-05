@@ -18,15 +18,6 @@ survivshim.Decor = function(){
 };
 
 survivshim.Decor.prototype = {
-    pickup : function(){
-
-      this.collect.quantity -= this.collect.speed;
-      if (this.collect.quantity <= 0){
-        this.toRemove = true;
-      }
-      
-    },
-
     load : function(templateId){
       this.templateId = templateId;
       var src = survivshim.decors[templateId];

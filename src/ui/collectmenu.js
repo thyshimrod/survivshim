@@ -38,7 +38,6 @@ survivshim.CollectMenu.prototype ={
             ctx.beginPath();
             ctx.fillStyle = survivshim.C.COLOR_TURQUOISE;
             let prct = Math.floor(this.collected / (this.collected + this.item.collect.quantity) * 100);
-            console.log(this.collected + "//" + this.item.collect.quantity);
             ctx.fillRect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30,
                 this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 30,
                 prct,

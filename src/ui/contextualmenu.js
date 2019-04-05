@@ -58,9 +58,7 @@ survivshim.ContextualMenu.prototype ={
             && (y>this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
                 if ((y > this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +70)
                 && (y < this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +90)){
-                    //this.item.pickup();
-                    survivshim.collectMenu.item = this.item;
-                    survivshim.collectMenu.active = true;
+                    survivshim.collectMenu.showMenu(this.item);
                     survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
                     this.hideMenu();
                 }   
