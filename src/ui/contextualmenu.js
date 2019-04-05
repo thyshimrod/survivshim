@@ -61,6 +61,7 @@ survivshim.ContextualMenu.prototype ={
                     //this.item.pickup();
                     survivshim.collectMenu.item = this.item;
                     survivshim.collectMenu.active = true;
+                    survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
                     this.hideMenu();
                 }   
 
