@@ -15,6 +15,7 @@ survivshim.Character = function(){
   this.movingTick = 0;
   this.inventory = {};
   this.action = 0;
+  this.lastTickCollect = 0;
 };
 
 survivshim.Character.prototype = {
@@ -77,7 +78,21 @@ survivshim.Character.prototype = {
     },
 
     collect : function(){
-
+      let item = survivshim.collectMenu.item;
+      if (item !== null && typeof item !== "undefined"){
+        
+        let d = new Date();
+        let newTick = d.getTime();  
+        if (newTick - this.lastTickCollect > 500){  
+          this.lastTickCollect = newTick;
+          item.collect.quantity -= item.collect.speed;
+          survivshim.collectMenu.collected += item.collect.speed
+          if (item.collect.quantity <= 0){
+            item.toRemove = true;
+            survivshim.collectMenu.hideMenu();
+          }
+        }
+      }
     },
 
     move : function(){

@@ -8,11 +8,11 @@ survivshim.CollectMenu = function (){
 };
 
 survivshim.CollectMenu.prototype ={
-
     showMenu : function(item){
         if (item !== null){
             this.item = item;
             this.active = true;
+            this.collected = 0;
         }
     },
 
@@ -37,9 +37,11 @@ survivshim.CollectMenu.prototype ={
 
             ctx.beginPath();
             ctx.fillStyle = survivshim.C.COLOR_TURQUOISE;
+            let prct = Math.floor(this.collected / (this.collected + this.item.collect.quantity) * 100);
+            console.log(this.collected + "//" + this.item.collect.quantity);
             ctx.fillRect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30,
                 this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 30,
-                100,
+                prct,
                 10
                 );
             text = "Stop";
@@ -48,11 +50,13 @@ survivshim.CollectMenu.prototype ={
                     this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 60);
     
             
+        }else if (this.item === null){
+            this.hideMenu();
         }
     },
 
     onClick : function(x,y){
-        if (this.active === true){
+        if (this.active === true && this.item !== null){
             if ((x< this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +200) 
             && (x >this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX ) 
             && (y< this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 80) 
