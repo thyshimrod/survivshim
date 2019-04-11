@@ -77,6 +77,7 @@ survivshim.Zone.prototype ={
         survivshim.character.render();
         survivshim.contextualMenu.render();
         survivshim.collectMenu.render();
+        survivshim.materiauMenu.render();
 
     },
 
