@@ -16,6 +16,20 @@ survivshim.Materiau.prototype ={
         this.spriteset = survivshim.tileset.get(src.tileset);
         this.sprite = src.sprite;
         this.size = src.size;
-    }
+    },
+
+    render : function(x,y){
+        var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
+        ctx.drawImage(
+           this.spriteset,
+           this.sprite.x,
+           this.sprite.y,
+           this.size.x,
+           this.size.y,
+           x,
+           y,
+           survivshim.gameEngine.tileSize,
+           survivshim.gameEngine.tileSize);
+      }
 };
 

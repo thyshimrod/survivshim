@@ -19,6 +19,28 @@ survivshim.MateriauMenu.prototype ={
         survivshim.character.changeAction(survivshim.C.ACTION_NONE);
     },
 
+    renderMateriaux : function(){
+        var i = 0;
+        var j = 0;
+        var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
+        var _this = this;
+        survivshim.character.inventory["materiau"].forEach(function(mat){
+            mat.render(_this.x + i * 40 + 10,_this.y + j * 60 + 40);
+            ctx.font = "1Opx Arial";
+            ctx.fillStyle = "white";
+            let text = mat.quantity;
+            ctx.fillText(text ,
+                _this.x + i * 40 + 20, 
+                _this.y + j * 60 + 80);
+            i += 1;
+            if (i > 10){
+                i = 0;
+                j += 1;
+            }
+
+        });
+    },
+
     render : function(){
         if (this.active === true){
             var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
@@ -34,6 +56,7 @@ survivshim.MateriauMenu.prototype ={
                 this.x + 10, 
                 this.y + 10);
 
+            this.renderMateriaux();
         }else if (this.item === null){
             this.hideMenu();
         }
