@@ -84,19 +84,20 @@ survivshim.Character.prototype = {
       var foundMateriau = null;
       var _materiau = materiau
       this.inventory["materiau"].forEach(function(mat){
-        if(mat.materiau == _materiau){
+        if(mat.id == _materiau){
           foundMateriau = mat;
         }
       })
       if (foundMateriau === null){
-        foundMateriau = {
-          "materiau" : materiau,
-          "qty" : qty
-        }
+        let foundMateriau = new survivshim.Materiau();
+        foundMateriau.init(materiau);
+        foundMateriau.quantity = qty;
         this.inventory["materiau"].push(foundMateriau);
+        
       }else{
-        foundMateriau.qty += qty;
+        foundMateriau.quantity += qty;
       }
+
     },
 
     collect : function(){

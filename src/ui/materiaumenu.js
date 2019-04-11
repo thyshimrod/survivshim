@@ -34,7 +34,6 @@ survivshim.MateriauMenu.prototype ={
                 this.x + 10, 
                 this.y + 10);
 
-            
         }else if (this.item === null){
             this.hideMenu();
         }
