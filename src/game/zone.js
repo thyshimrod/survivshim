@@ -67,11 +67,26 @@ survivshim.Zone.prototype ={
     render : function(){
         survivshim.canvas.clearCanvas();
         var _this = this;
+        var posChar = survivshim.character.getTile();
+        
         this.tiles.forEach(function(tile){
-            tile.render(_this.tileSet);
+            if( ((posChar.x - 40) < tile.x) && 
+                ((posChar.x + 40) > tile.x) &&
+                ((posChar.y - 40) < tile.y) &&
+                ((posChar.y + 40) > tile.y)
+              ){
+                tile.render(_this.tileSet);
+              }
+            
         });
         this.decors.forEach(function(decor){
-            decor.render();
+            if( ((posChar.x - 40) < decor.x) && 
+                ((posChar.x + 40) > decor.x) &&
+                ((posChar.y - 40) < decor.y) &&
+                ((posChar.y + 40) > decor.y)
+                ){
+                    decor.render();
+                }
         })
         
         survivshim.character.render();
