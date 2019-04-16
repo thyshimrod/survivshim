@@ -24,20 +24,22 @@ survivshim.MateriauMenu.prototype ={
         var j = 0;
         var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
         var _this = this;
-        survivshim.character.inventory["materiau"].forEach(function(mat){
-            mat.render(_this.x + i * 40 + 10,_this.y + j * 60 + 40);
-            ctx.font = "1Opx Arial";
-            ctx.fillStyle = "white";
-            let text = mat.quantity;
-            ctx.fillText(text ,
-                _this.x + i * 40 + 20, 
-                _this.y + j * 60 + 80);
-            i += 1;
-            if (i > 10){
-                i = 0;
-                j += 1;
-            }
-        });
+        if(typeof survivshim.character.inventory["materiau"] !== "undefined" &&  survivshim.character.inventory["materiau"] !== null){
+            survivshim.character.inventory["materiau"].forEach(function(mat){
+                mat.render(_this.x + i * 40 + 10,_this.y + j * 60 + 40);
+                ctx.font = "1Opx Arial";
+                ctx.fillStyle = "white";
+                let text = mat.quantity;
+                ctx.fillText(text ,
+                    _this.x + i * 40 + 20, 
+                    _this.y + j * 60 + 80);
+                i += 1;
+                if (i > 10){
+                    i = 0;
+                    j += 1;
+                }
+            });
+        }
     },
 
     render : function(){
@@ -56,8 +58,6 @@ survivshim.MateriauMenu.prototype ={
                 this.y + 10);
 
             this.renderMateriaux();
-        }else if (this.item === null){
-            this.hideMenu();
         }
     },
 

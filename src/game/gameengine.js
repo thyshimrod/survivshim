@@ -19,6 +19,10 @@ survivshim.GameEngine.prototype ={
         survivshim.materiauMenu.showMenu();
     },
 
+    showBlueprintMenu : function(){
+        survivshim.blueprintMenu.showMenu();
+    },
+
     init : function(){
         this.centerX = window.innerWidth / 2 -  this.tileSize / 2 ;
         this.centerY = window.innerHeight / 2 - this.tileSize / 2 - 70;
@@ -32,8 +36,11 @@ survivshim.GameEngine.prototype ={
         survivshim.contextualMenu = new survivshim.ContextualMenu();
         survivshim.collectMenu = new survivshim.CollectMenu();
         survivshim.materiauMenu = new survivshim.MateriauMenu();
-        let btnSave = document.getElementById("btnSave");
-        btnSave.addEventListener("click",survivshim.gameEngine.showMateriauMenu);
+        survivshim.blueprintMenu = new survivshim.BlueprintMenu();
+        let btnMAteriau = document.getElementById("btnMateriau");
+        btnMAteriau.addEventListener("click",survivshim.gameEngine.showMateriauMenu);
+        let btnBlueprint = document.getElementById("btnBlueprint");
+        btnBlueprint.addEventListener("click",survivshim.gameEngine.showBlueprintMenu);
     },
 }
 

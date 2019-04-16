@@ -93,6 +93,7 @@ survivshim.Zone.prototype ={
         survivshim.contextualMenu.render();
         survivshim.collectMenu.render();
         survivshim.materiauMenu.render();
+        survivshim.blueprintMenu.render();
 
     },
 
@@ -176,6 +177,7 @@ survivshim.Zone.prototype ={
     clickEvent : function(evt){
         let clickOnMenu = survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) 
                        || survivshim.collectMenu.onClick(evt.pageX,evt.pageY) 
+                       || survivshim.blueprintMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.materiauMenu.onClick(evt.pageX,evt.pageY);
         if (clickOnMenu === false){
             let decor = survivshim.zone.getTheDecorUnderMouse(evt.pageX,evt.pageY);
