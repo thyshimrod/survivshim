@@ -37,7 +37,6 @@ survivshim.MateriauMenu.prototype ={
                 i = 0;
                 j += 1;
             }
-
         });
     },
 
