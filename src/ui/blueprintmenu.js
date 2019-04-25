@@ -14,7 +14,10 @@ survivshim.BlueprintMenu = function (){
 survivshim.BlueprintMenu.prototype ={
     showMenu : function(blueprint){
         this.active = true;
-        this.blueprint = blueprint;
+
+        //this.blueprint = blueprint;
+        this.blueprint = new survivshim.Blueprint();
+        this.blueprint.init();
         this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
     },
 
@@ -29,6 +32,14 @@ survivshim.BlueprintMenu.prototype ={
         this.ctx.fillText(text ,
             this.x + 300, 
             this.y + 10);
+        var _this = this;
+        var i = 0;
+        this.blueprint.listOfMateriaux.forEach(function(mat){
+            let materiau = new survivshim.Materiau();
+            materiau.init(mat.id);
+            materiau.render(_this.x +220 + 40 *i  ,_this.y +40);
+            i += 1;
+        });
         
     },
 

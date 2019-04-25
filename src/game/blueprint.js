@@ -9,7 +9,7 @@ survivshim.Blueprint = function(){
   
 survivshim.Blueprint.prototype = {
     init : function(){
-        this.listOfMateriaux = [{ "1" : "5"}];
+        this.listOfMateriaux = [{ "id" : "1", "qty" : "5"}];
         this.resultItem = 1;
     },
 };
