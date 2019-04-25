@@ -16,6 +16,7 @@ survivshim.C = Object.freeze({
 
   COLOR_CONTEXTUAL : "#2F4f4f",
   COLOR_TURQUOISE : "#bdffff",
+  COLOR_CONTEXTUAL_BUTTON : "#587878",
 
   //MATERIAU
   MATERIAU_SILEX : 1,
