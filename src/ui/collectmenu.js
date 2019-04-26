@@ -50,7 +50,7 @@ survivshim.CollectMenu.prototype ={
                     this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 60);
     
             
-        }else if (this.item === null){
+        }else if (this.item === null && this.active === true){
             this.hideMenu();
         }
     },

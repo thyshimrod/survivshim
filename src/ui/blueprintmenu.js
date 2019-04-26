@@ -93,11 +93,19 @@ survivshim.BlueprintMenu.prototype ={
                 this.y + 270);
     },
 
+    renderCraft : function(){
+
+    },
+
     render : function(){
         if (this.active === true && this.blueprint !== null){
             this.renderFrame();
-            this.renderAction();
-            this.showMateriaux();    
+            this.showMateriaux();
+            if ( survivshim.character.action === survivshim.C.ACTION_CRAFT){
+                this.renderCraft();
+            }else{
+                this.renderAction();
+            }
         }
     },
 
@@ -106,7 +114,7 @@ survivshim.BlueprintMenu.prototype ={
             if(x < (this.x + 250) && x > (this.x + 150) 
             && y < (this.y + 280) && y > (this.y + 250)){
                 if (this.canBuild){
-
+                    survivshim.character.changeAction(survivshim.C.ACTION_CRAFT);
                 }
             }else{
                 this.hideMenu();
