@@ -179,7 +179,7 @@ survivshim.Zone.prototype ={
                        || survivshim.collectMenu.onClick(evt.pageX,evt.pageY) 
                        || survivshim.blueprintMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.materiauMenu.onClick(evt.pageX,evt.pageY);
-        if (clickOnMenu === false){
+        if (clickOnMenu === survivshim.C.CLICK_OUTSIDE_WINDOW){
             let decor = survivshim.zone.getTheDecorUnderMouse(evt.pageX,evt.pageY);
             if (decor !== null ){
                 survivshim.zone.showContextualMenu(decor);

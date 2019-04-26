@@ -24,4 +24,8 @@ survivshim.C = Object.freeze({
   //ACTIONS
   ACTION_NONE : 0,
   ACTION_COLLECT : 1,
+  ACTION_CRAFT : 2,
+
+  CLICK_ON_WINDOW : true,
+  CLICK_OUTSIDE_WINDOW : false,
 });

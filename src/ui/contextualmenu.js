@@ -63,9 +63,9 @@ survivshim.ContextualMenu.prototype ={
                     this.hideMenu();
                 }   
 
-                return true;
+                return survivshim.C.CLICK_ON_WINDOW;
             }
         }
-        return false;
+        return survivshim.C.CLICK_OUTSIDE_WINDOW;
     }
 };

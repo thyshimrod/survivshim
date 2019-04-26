@@ -65,9 +65,9 @@ survivshim.CollectMenu.prototype ={
                 && (y < this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +80)){
                     this.hideMenu();
                 }   
-                return true;
+                return survivshim.C.CLICK_ON_WINDOW;
             }
         }
-        return false;
+        return survivshim.C.CLICK_OUTSIDE_WINDOW;
     }
 };

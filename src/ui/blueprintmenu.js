@@ -93,7 +93,6 @@ survivshim.BlueprintMenu.prototype ={
                 this.y + 270);
     },
 
-
     render : function(){
         if (this.active === true && this.blueprint !== null){
             this.renderFrame();
@@ -104,20 +103,17 @@ survivshim.BlueprintMenu.prototype ={
 
     onClick : function(x,y){
         if (this.active === true && this.blueprint !== null){
-            /*if ((x< this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +200) 
-            && (x >this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX ) 
-            && (y< this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 80) 
-            && (y>this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
-                if ((y > this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +55)
-                && (y < this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +80)){
-                    this.hideMenu();
-                }   
-                return true;
-            }*/
-            this.hideMenu();
-            return true;
+            if(x < (this.x + 250) && x > (this.x + 150) 
+            && y < (this.y + 280) && y > (this.y + 250)){
+                if (this.canBuild){
+
+                }
+            }else{
+                this.hideMenu();
+            }
+            return survivshim.C.CLICK_ON_WINDOW;
         }
 
-        return false;
+        return survivshim.C.CLICK_OUTSIDE_WINDOW;
     }
 };
