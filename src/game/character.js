@@ -77,6 +77,21 @@ survivshim.Character.prototype = {
       }
     },
 
+    getMateriau : function(idMat){
+      if (typeof this.inventory["materiau"] === "undefined"){
+        return null;
+      }else{
+        var foundMateriau = null;
+        var _idMat = idMat;
+        this.inventory["materiau"].forEach(function(mat){
+          if(mat.id == _idMat){
+            foundMateriau = mat;
+          }
+        })  
+        return foundMateriau;
+      }
+    },
+
     addMateriau : function(materiau, qty){
       if (typeof this.inventory["materiau"] === "undefined"){
         this.inventory["materiau"] = [];

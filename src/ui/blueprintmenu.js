@@ -9,6 +9,7 @@ survivshim.BlueprintMenu = function (){
     this.maxY = 400;
     this.blueprint = null;
     this.ctx = null;
+    this.canBuild = false;
 };
 
 survivshim.BlueprintMenu.prototype ={
@@ -34,11 +35,23 @@ survivshim.BlueprintMenu.prototype ={
             this.y + 10);
         var _this = this;
         var i = 0;
+        this.canBuild = true;
         this.blueprint.listOfMateriaux.forEach(function(mat){
             mat.render(_this.x +220 + 40 *i  ,_this.y +40);
+            let materiauInInventory = survivshim.character.getMateriau(mat.id);
+            let qtyInInventory = materiauInInventory === null ? 0 : materiauInInventory.quantity;
+            _this.ctx.fillStyle = "white";
+            if (qtyInInventory < mat.quantity){
+                _this.ctx.fillStyle = "red";
+                _this.canBuild = false;
+            }
+            
+            let text = qtyInInventory+ " / " + mat.quantity;
+            _this.ctx.fillText(text ,
+                _this.x +230 + 40 *i  ,
+                _this.y +80);    
             i += 1;
         });
-        
     },
 
     renderFrame : function(){
@@ -71,6 +84,9 @@ survivshim.BlueprintMenu.prototype ={
                     100,
                     30);
         this.ctx.fillStyle = "white";
+        if ( !this.canBuild ){
+            this.ctx.fillStyle = "red";
+        }
         let text = "Construire";
         this.ctx.fillText(text ,
                 this.x + 180, 
