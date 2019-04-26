@@ -35,9 +35,7 @@ survivshim.BlueprintMenu.prototype ={
         var _this = this;
         var i = 0;
         this.blueprint.listOfMateriaux.forEach(function(mat){
-            let materiau = new survivshim.Materiau();
-            materiau.init(mat.id);
-            materiau.render(_this.x +220 + 40 *i  ,_this.y +40);
+            mat.render(_this.x +220 + 40 *i  ,_this.y +40);
             i += 1;
         });
         

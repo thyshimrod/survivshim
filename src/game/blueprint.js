@@ -9,7 +9,10 @@ survivshim.Blueprint = function(){
   
 survivshim.Blueprint.prototype = {
     init : function(){
-        this.listOfMateriaux = [{ "id" : "1", "qty" : "5"}];
+        let mat = new survivshim.Materiau();
+        mat.init(1);
+        mat.quantity = 5;
+        this.listOfMateriaux.push(mat);
         this.resultItem = 1;
     },
 };
