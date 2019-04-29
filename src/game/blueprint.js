@@ -13,6 +13,9 @@ survivshim.Blueprint.prototype = {
         mat.init(1);
         mat.quantity = 5;
         this.listOfMateriaux.push(mat);
-        this.resultItem = 1;
+        this.resultItem = new survivshim.Item();
+        this.resultItem.init(1);
     },
+
+    
 };

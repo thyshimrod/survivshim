@@ -80,7 +80,7 @@ survivshim.BlueprintMenu.prototype ={
     renderAction : function(){
         this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL_BUTTON;
         this.ctx.fillRect(this.x + 150,
-                    this.y+250,
+                    this.y+290,
                     100,
                     30);
         this.ctx.fillStyle = "white";
@@ -90,17 +90,27 @@ survivshim.BlueprintMenu.prototype ={
         let text = "Construire";
         this.ctx.fillText(text ,
                 this.x + 180, 
-                this.y + 270);
+                this.y + 310);
     },
 
     renderCraft : function(){
 
     },
 
+    renderItem : function(){
+        this.blueprint.resultItem.render(this.x + 180,this.y + 220);
+        this.ctx.fillStyle = "white";
+        let text = this.blueprint.resultItem.name;
+        this.ctx.fillText(text ,
+                this.x + 180 -  ((text.length)), 
+                this.y + 270 );
+    },
+
     render : function(){
         if (this.active === true && this.blueprint !== null){
             this.renderFrame();
             this.showMateriaux();
+            this.renderItem();
             if ( survivshim.character.action === survivshim.C.ACTION_CRAFT){
                 this.renderCraft();
             }else{
