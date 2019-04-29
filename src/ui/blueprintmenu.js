@@ -84,7 +84,7 @@ survivshim.BlueprintMenu.prototype ={
                     100,
                     30);
         this.ctx.fillStyle = "white";
-        if ( !this.canBuild ){
+        if ( !this.canBuild || survivshim.character.action !== survivshim.C.ACTION_NONE){
             this.ctx.fillStyle = "red";
         }
         let text = "Construire";
@@ -113,7 +113,7 @@ survivshim.BlueprintMenu.prototype ={
         if (this.active === true && this.blueprint !== null){
             if(x < (this.x + 250) && x > (this.x + 150) 
             && y < (this.y + 280) && y > (this.y + 250)){
-                if (this.canBuild){
+                if (this.canBuild && survivshim.character.aciont === survivshim.C.ACTION_NONE ){
                     survivshim.character.changeAction(survivshim.C.ACTION_CRAFT);
                 }
             }else{
