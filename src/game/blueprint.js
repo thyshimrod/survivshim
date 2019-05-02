@@ -5,6 +5,7 @@ var survivshim = survivshim || {};
 survivshim.Blueprint = function(){
     this.resultItem = 0;
     this.listOfMateriaux = [];
+    this.timeToBuild = 0;
 };
   
 survivshim.Blueprint.prototype = {
@@ -15,7 +16,8 @@ survivshim.Blueprint.prototype = {
         this.listOfMateriaux.push(mat);
         this.resultItem = new survivshim.Item();
         this.resultItem.init(1);
+        this.timeToBuild = 3000;
     },
 
-    
+
 };

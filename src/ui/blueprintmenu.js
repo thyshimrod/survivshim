@@ -10,6 +10,7 @@ survivshim.BlueprintMenu = function (){
     this.blueprint = null;
     this.ctx = null;
     this.canBuild = false;
+    this.timerBuild = 0;
 };
 
 survivshim.BlueprintMenu.prototype ={
@@ -94,7 +95,21 @@ survivshim.BlueprintMenu.prototype ={
     },
 
     renderCraft : function(){
-
+        let d = new Date();
+        let newTick = d.getTime(); 
+        if((newTick - this.timerBuild) > this.blueprint.timeToBuild){
+            this.ctx.fillStyle = "white";
+            let text = "Construction finie";
+            this.ctx.fillText(text ,
+                this.x + 160, 
+                this.y + 310);
+        }else{
+            this.ctx.beginPath();
+            this.ctx.fillStyle = survivshim.C.COLOR_TURQUOISE;    
+            let prct = Math.floor((newTick - this.timerBuild) /(this.blueprint.timeToBuild) * 100 );
+            this.ctx.fillRect(this.x + 160, this.y+290, prct, 10);
+        }
+        
     },
 
     renderItem : function(){
@@ -121,17 +136,21 @@ survivshim.BlueprintMenu.prototype ={
 
     onClick : function(x,y){
         if (this.active === true && this.blueprint !== null){
-            if(x < (this.x + 250) && x > (this.x + 150) 
-            && y < (this.y + 280) && y > (this.y + 250)){
-                if (this.canBuild && survivshim.character.aciont === survivshim.C.ACTION_NONE ){
-                    survivshim.character.changeAction(survivshim.C.ACTION_CRAFT);
+            if(x < (this.x + this.maxX) && x > (this.x)
+            && y < (this.y + this.maxY) && y > (this.y)){
+                if(x < (this.x + 300) && x > (this.x + 150) 
+                && y < (this.y + 320) && y > (this.y + 290)){
+                    if (this.canBuild && survivshim.character.action === survivshim.C.ACTION_NONE ){
+                        survivshim.character.changeAction(survivshim.C.ACTION_CRAFT);
+                        let d = new Date();
+                        this.timerBuild = d.getTime(); 
+                    }
                 }
+                return survivshim.C.CLICK_ON_WINDOW;
             }else{
                 this.hideMenu();
+                return survivshim.C.CLICK_OUTSIDE_WINDOW;
             }
-            return survivshim.C.CLICK_ON_WINDOW;
         }
-
-        return survivshim.C.CLICK_OUTSIDE_WINDOW;
     }
 };
