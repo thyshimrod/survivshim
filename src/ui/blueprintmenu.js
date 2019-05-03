@@ -97,7 +97,8 @@ survivshim.BlueprintMenu.prototype ={
     renderCraft : function(){
         let d = new Date();
         let newTick = d.getTime(); 
-        if((newTick - this.timerBuild) > this.blueprint.timeToBuild){
+        let prctCompletion = this.blueprint.getPercentCompletion();
+        if(prctCompletion > 100){
             this.ctx.fillStyle = "white";
             let text = "Construction finie";
             this.ctx.fillText(text ,
@@ -106,10 +107,8 @@ survivshim.BlueprintMenu.prototype ={
         }else{
             this.ctx.beginPath();
             this.ctx.fillStyle = survivshim.C.COLOR_TURQUOISE;    
-            let prct = Math.floor((newTick - this.timerBuild) /(this.blueprint.timeToBuild) * 100 );
-            this.ctx.fillRect(this.x + 160, this.y+290, prct, 10);
+            this.ctx.fillRect(this.x + 160, this.y+290, prctCompletion, 10);
         }
-        
     },
 
     renderItem : function(){

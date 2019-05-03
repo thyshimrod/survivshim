@@ -74,6 +74,8 @@ survivshim.Character.prototype = {
         this.move();
       }else if (this.action === survivshim.C.ACTION_COLLECT){
         this.collect();
+      }else if (this.action === survivshim.C.ACTION_CRAFT){
+        survivshim.blueprintMenu.blueprint.craft();
       }
     },
 
