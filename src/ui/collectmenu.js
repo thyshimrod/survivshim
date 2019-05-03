@@ -30,7 +30,7 @@ survivshim.CollectMenu.prototype ={
                         this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
                          200,70);
             ctx.font = "1Opx Arial";
-            ctx.fillStyle = "white";
+            ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Collecte en cours";
             ctx.fillText(text ,
                 this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 

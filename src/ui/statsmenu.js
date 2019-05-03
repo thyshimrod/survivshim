@@ -16,6 +16,26 @@ survivshim.StatsMenu.prototype ={
     hideMenu : function(){
         this.active = false;
     },
+    
+    renderHitPoints : function(){
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        let text = "Points de vie";
+        this.ctx.fillText(text ,this.x + 10, this.y + 110);
+        this.ctx.beginPath();
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
+
+        let prct = (survivshim.character.hitPoints / survivshim.character.maxHitPoints) *100;
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
+        if (prct > 20 && prct <=40){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_ORANGE;
+        }else if (prct > 40 && prct <= 60){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
+        }else if (prct > 60){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
+        }
+        prct = prct > 100 ? 100 : prct;
+        this.ctx.fillRect(this.x + 70, this.y + 100, prct, 10);
+    },
 
     renderSleepStats : function(){
         this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
@@ -35,7 +55,7 @@ survivshim.StatsMenu.prototype ={
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
         }
         prct = prct > 100 ? 100 : prct;
-        this.ctx.fillRect(this.x + 50, this.y + 80, prct, 10);
+        this.ctx.fillRect(this.x + 70, this.y + 80, prct, 10);
     },
 
     renderDrinkStats : function(){
@@ -56,7 +76,7 @@ survivshim.StatsMenu.prototype ={
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
         }
         prct = prct > 100 ? 100 : prct;
-        this.ctx.fillRect(this.x + 50, this.y + 60, prct, 10);
+        this.ctx.fillRect(this.x + 70, this.y + 60, prct, 10);
     },
 
     renderHungryStats : function(){
@@ -77,7 +97,7 @@ survivshim.StatsMenu.prototype ={
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
         }
         prct = prct > 100 ? 100 : prct;
-        this.ctx.fillRect(this.x + 50, this.y + 40, prct, 10);
+        this.ctx.fillRect(this.x + 70, this.y + 40, prct, 10);
     },
 
     render : function(){
@@ -92,6 +112,7 @@ survivshim.StatsMenu.prototype ={
             this.renderHungryStats();
             this.renderDrinkStats();
             this.renderSleepStats();
+            this.renderHitPoints();
 
         }
     },

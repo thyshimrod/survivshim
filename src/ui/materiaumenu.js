@@ -28,7 +28,7 @@ survivshim.MateriauMenu.prototype ={
             survivshim.character.inventory["materiau"].forEach(function(mat){
                 mat.render(_this.x + i * 40 + 10,_this.y + j * 60 + 40);
                 ctx.font = "1Opx Arial";
-                ctx.fillStyle = "white";
+                ctx.fillStyle = survivshim.C.COLOR_TEXT;
                 let text = mat.quantity;
                 ctx.fillText(text ,
                     _this.x + i * 40 + 20, 
@@ -51,7 +51,7 @@ survivshim.MateriauMenu.prototype ={
                         this.maxX,
                         this.maxY);
             ctx.font = "1Opx Arial";
-            ctx.fillStyle = "white";
+            ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Materiaux";
             ctx.fillText(text ,
                 this.x + 10, 

@@ -18,6 +18,8 @@ survivshim.Character = function(){
   this.lastTickCollect = 0;
   this.lastTimeEat = 0;
   this.lastTimeDrink = 0;
+  this.hitPoints = 100;
+  this.maxHitPoints = 100;
 };
 
 survivshim.Character.prototype = {
