@@ -16,12 +16,16 @@ survivshim.Character = function(){
   this.inventory = {};
   this.action = 0;
   this.lastTickCollect = 0;
+  this.lastTimeEat = 0;
 };
 
 survivshim.Character.prototype = {
     init : function() {
         this.sprite = "assets/sprites/fille.png";
         this.spriteset = survivshim.tileset.get(this.sprite);
+        let d = new Date();
+        let newTick = d.getTime();
+        this.lastTimeEat = newTick;
     },
 
     render : function(){
