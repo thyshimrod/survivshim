@@ -5,8 +5,8 @@ survivshim.BlueprintMenu = function (){
     this.active = false;
     this.x = 100;
     this.y = 100;
-    this.maxX = 400;
-    this.maxY = 400;
+    this.width = 400;
+    this.height = 400;
     this.blueprint = null;
     this.ctx = null;
     this.canBuild = false;
@@ -59,10 +59,14 @@ survivshim.BlueprintMenu.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
         this.ctx.fillRect(this.x,
                     this.y,
-                    this.maxX,
-                    this.maxY);
+                    this.width,
+                    this.height);
                     this.ctx.font = "1Opx Arial";
                     this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+        this.ctx.rect(this.x, this.y, this.width, this.height);
+        this.ctx.stroke();
         let text = "Blueprint";
         this.ctx.fillText(text ,
             this.x + 10, 
@@ -74,16 +78,17 @@ survivshim.BlueprintMenu.prototype ={
                 200);
         this.ctx.fillRect(this.x ,
             this.y+200,
-            this.maxX,
+            this.width,
             3);
     },
 
     renderAction : function(){
         this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL_BUTTON;
-        this.ctx.fillRect(this.x + 150,
-                    this.y+290,
-                    100,
-                    30);
+        this.ctx.fillRect(this.x + 150,this.y+290,100,30);
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+        this.ctx.rect(this.x + 150,this.y+290,100,30);
+        this.ctx.stroke();
         this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         if ( !this.canBuild || survivshim.character.action !== survivshim.C.ACTION_NONE){
             this.ctx.fillStyle = "red";
@@ -135,8 +140,8 @@ survivshim.BlueprintMenu.prototype ={
 
     onClick : function(x,y){
         if (this.active === true && this.blueprint !== null){
-            if(x < (this.x + this.maxX) && x > (this.x)
-            && y < (this.y + this.maxY) && y > (this.y)){
+            if(x < (this.x + this.width) && x > (this.x)
+            && y < (this.y + this.height) && y > (this.y)){
                 if(x < (this.x + 300) && x > (this.x + 150) 
                 && y < (this.y + 320) && y > (this.y + 290)){
                     if (this.canBuild && survivshim.character.action === survivshim.C.ACTION_NONE ){

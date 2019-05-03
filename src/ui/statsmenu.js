@@ -125,7 +125,10 @@ survivshim.StatsMenu.prototype ={
         if (this.active === true){
             this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
             this.ctx.fillRect(this.x,this.y,300,200);
-
+            this.ctx.beginPath();
+            this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+            this.ctx.rect(this.x,this.y,300,200);
+            this.ctx.stroke();
             this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Statistiques";
             this.ctx.fillText(text ,this.x + 10, this.y + 10);

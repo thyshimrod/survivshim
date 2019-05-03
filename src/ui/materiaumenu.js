@@ -63,6 +63,10 @@ survivshim.MateriauMenu.prototype ={
             ctx.fillText(text ,
                 this.x + 10, 
                 this.y + 10);
+            ctx.beginPath();
+            ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
 
             this.renderMateriaux();
         }

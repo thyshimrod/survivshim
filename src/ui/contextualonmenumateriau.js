@@ -30,6 +30,7 @@ survivshim.ContextualMenuOnMateriauMenu.prototype ={
             ctx.fillRect(this.x,
                         this.y,
                             100,100);
+            ctx.beginPath();
             ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             ctx.rect(this.x, this.y, 100, 100);
             ctx.stroke();

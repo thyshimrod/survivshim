@@ -28,6 +28,12 @@ survivshim.ContextualMenu.prototype ={
             ctx.fillRect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                         this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
                          100,100);
+            ctx.beginPath();
+            ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+            ctx.rect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
+                this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
+                 100,100);
+            ctx.stroke();
             ctx.font = "1Opx Arial";
             ctx.fillStyle = "white ";
             let text = this.item.name;
@@ -45,7 +51,12 @@ survivshim.ContextualMenu.prototype ={
                 ctx.fillText(text ,
                         this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
                         this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 50);
-
+                ctx.beginPath();
+                ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+                ctx.rect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX + 20, 
+                    this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 67,
+                        60,20);
+                ctx.stroke();
                 text = "Recolter";
                 ctx.fillText(text ,
                     this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30, 

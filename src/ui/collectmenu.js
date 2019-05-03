@@ -29,6 +29,12 @@ survivshim.CollectMenu.prototype ={
             ctx.fillRect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                         this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
                          200,70);
+            ctx.beginPath();
+            ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+            ctx.rect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
+                this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
+                 200,70);
+            ctx.stroke();
             ctx.font = "1Opx Arial";
             ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Collecte en cours";
@@ -44,6 +50,11 @@ survivshim.CollectMenu.prototype ={
                 prct,
                 10
                 );
+            ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+            ctx.rect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX + 60, 
+                this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 45,
+                    50,20);
+            ctx.stroke();
             text = "Stop";
             ctx.fillText(text ,
                     this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +70, 
