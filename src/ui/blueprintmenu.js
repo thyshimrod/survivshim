@@ -19,7 +19,7 @@ survivshim.BlueprintMenu.prototype ={
 
         //this.blueprint = blueprint;
         this.blueprint = new survivshim.Blueprint();
-        this.blueprint.init();
+        this.blueprint.init(1);
         this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
     },
 

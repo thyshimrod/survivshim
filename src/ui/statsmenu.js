@@ -16,6 +16,27 @@ survivshim.StatsMenu.prototype ={
     hideMenu : function(){
         this.active = false;
     },
+
+    renderTiredNess : function(){
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        let text = "Fatigue";
+        this.ctx.fillText(text ,this.x + 10, this.y + 130);
+        this.ctx.beginPath();
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
+
+        let prct = (survivshim.character.fatigue / survivshim.character.maxFatigue) *100;
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
+        if (prct > 30 && prct <60){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
+        }else if (prct > 60 && prct <90){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_ORANGE;
+        }else if (prct > 90){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
+        }
+        prct = prct > 100 ? 100 : prct;
+        this.ctx.fillRect(this.x + 70, this.y + 120, prct, 10);
+    },
     
     renderHitPoints : function(){
         this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
@@ -113,6 +134,7 @@ survivshim.StatsMenu.prototype ={
             this.renderDrinkStats();
             this.renderSleepStats();
             this.renderHitPoints();
+            this.renderTiredNess();
 
         }
     },

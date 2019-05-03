@@ -8,17 +8,25 @@ survivshim.Blueprint = function(){
     this.timeToBuild = 0;
     this.timerBuild = -1;
     this.isCraftDone = false;
+    this.templateId = 0;
+    this.name = "";
 };
   
 survivshim.Blueprint.prototype = {
-    init : function(){
-        let mat = new survivshim.Materiau();
-        mat.init(1);
-        mat.quantity = 5;
-        this.listOfMateriaux.push(mat);
+    init : function(templateId){
+        var src = survivshim.blueprints[templateId];
+        var _this = this;
+        src.materiaux.forEach(function (materiau){
+            let mat = new survivshim.Materiau();
+            mat.init(materiau.templateId);
+            mat.quantity = materiau.quantity;
+            _this.listOfMateriaux.push(mat);
+        });
         this.resultItem = new survivshim.Item();
-        this.resultItem.init(1);
-        this.timeToBuild = 3000;
+        this.resultItem.init(src.item);
+        this.name = src.name;
+        this.timeToBuild = src.timetobuild;
+        this.tiredNess = src.tiredness;
     },
 
     removeMateriauxOnceCrafted : function(){
