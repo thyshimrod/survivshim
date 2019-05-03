@@ -77,9 +77,22 @@ survivshim.decors = {
     "typedecor" : 0,
     "blocking" : true,
     "size":{"x" : 32, "y" : 64},
+    "ratio" : {"x" : 1, "y" : 2},
     "tileset" : "assets/tileset/tileset1.png",
     "sprites" : [
       { "state" : 0, "x" : 0, "y" : 1280},
+    ],
+  },
+  "7" :
+  {
+    "name" : "salade",
+    "typedecor" : 0,
+    "blocking" : true,
+    "size":{"x" : 16, "y" : 16},
+    "ratio" : {"x" : 0.5, "y" : 0.5},
+    "tileset" : "assets/tileset/tileset1.png",
+    "sprites" : [
+      { "state" : 0, "x" : 224, "y" : 1088},
     ],
   },
 };

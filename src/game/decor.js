@@ -15,6 +15,7 @@ survivshim.Decor = function(){
     this.qtyMateriau = 0;
     this.quality = 0;
     this.collect = {};
+    this.ratio = {"x" : 1, "y" : 1};
 };
 
 survivshim.Decor.prototype = {
@@ -39,6 +40,10 @@ survivshim.Decor.prototype = {
         this.collect.chance = src.collect.chance;
         this.collect.speed = src.collect.speed;
       }
+      if (typeof src.ratio !== "undefined"){
+        this.ratio.x = src.ratio.x;
+        this.ratio.y = src.ratio.y;
+      }
     },
 
     render : function(){
@@ -51,8 +56,8 @@ survivshim.Decor.prototype = {
            this.sizeY,
            this.x*survivshim.gameEngine.tileSize+survivshim.gameEngine.centerX - survivshim.character.x,
            this.y*survivshim.gameEngine.tileSize+survivshim.gameEngine.centerY - survivshim.character.y,
-           survivshim.gameEngine.tileSize,
-           this.sizeY);//survivshim.gameEngine.tileSize);
+           survivshim.gameEngine.tileSize * this.ratio.x,
+           survivshim.gameEngine.tileSize * this.ratio.y);//survivshim.gameEngine.tileSize);
       },
 
 };

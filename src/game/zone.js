@@ -62,6 +62,11 @@ survivshim.Zone.prototype ={
         tempDecor.x = 1;
         tempDecor.y = 10;
         this.decors.push(tempDecor);
+        tempDecor = new survivshim.Decor();
+        tempDecor.load("7");
+        tempDecor.x = 10;
+        tempDecor.y = 1;
+        this.decors.push(tempDecor);
     },
 
     render : function(){
