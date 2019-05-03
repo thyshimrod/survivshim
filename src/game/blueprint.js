@@ -7,6 +7,7 @@ survivshim.Blueprint = function(){
     this.listOfMateriaux = [];
     this.timeToBuild = 0;
     this.timerBuild = -1;
+    this.isCraftDone = false;
 };
   
 survivshim.Blueprint.prototype = {
@@ -24,6 +25,16 @@ survivshim.Blueprint.prototype = {
         if (this.timerBuild === -1){
             let d = new Date();
             this.timerBuild = d.getTime(); 
+        }
+        let prct = this.getPercentCompletion();
+        if (prct >= 100 && !this.isCraftDone){
+            this.listOfMateriaux.forEach(function (materiau){
+                let materiauInInventory = survivshim.character.getMateriau(materiau.id);
+                if (materiauInInventory !== null){
+                    materiauInInventory.quantity -= materiau.quantity;
+                }
+            });
+            this.isCraftDone = true;
         }
     },
 
