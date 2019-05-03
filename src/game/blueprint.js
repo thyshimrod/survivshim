@@ -34,7 +34,13 @@ survivshim.Blueprint.prototype = {
                     materiauInInventory.quantity -= materiau.quantity;
                 }
             });
+
+            let item = new survivshim.Item();
+            item.init(this.resultItem.templateId);
+            survivshim.character.addItemToInventory(item);
+            console.log(survivshim.character);
             this.isCraftDone = true;
+
         }
     },
 

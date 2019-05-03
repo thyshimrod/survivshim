@@ -94,6 +94,13 @@ survivshim.Character.prototype = {
       }
     },
 
+    addItemToInventory : function(item){
+      if (typeof this.inventory["item"] === "undefined"){
+        this.inventory["item"] = [];
+      }
+      this.inventory["item"].push(item);
+    },
+
     addMateriau : function(materiau, qty){
       if (typeof this.inventory["materiau"] === "undefined"){
         this.inventory["materiau"] = [];
