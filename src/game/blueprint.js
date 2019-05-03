@@ -21,26 +21,35 @@ survivshim.Blueprint.prototype = {
         this.timeToBuild = 3000;
     },
 
+    removeMateriauxOnceCrafted : function(){
+        this.listOfMateriaux.forEach(function (materiau){
+            let materiauInInventory = survivshim.character.getMateriau(materiau.id);
+            if (materiauInInventory !== null){
+                materiauInInventory.quantity -= materiau.quantity;
+            }
+        })
+    },
+
+    craftCompleted : function(){
+        this.removeMateriauxOnceCrafted();
+        let item = new survivshim.Item();
+        item.init(this.resultItem.templateId);
+        survivshim.character.addItemToInventory(item);
+        this.isCraftDone = true;
+    },
+
+    startCrafting : function(){
+        let d = new Date();
+        this.timerBuild = d.getTime(); 
+    },
+
     craft : function(){
         if (this.timerBuild === -1){
-            let d = new Date();
-            this.timerBuild = d.getTime(); 
+            this.startCrafting();    
         }
         let prct = this.getPercentCompletion();
         if (prct >= 100 && !this.isCraftDone){
-            this.listOfMateriaux.forEach(function (materiau){
-                let materiauInInventory = survivshim.character.getMateriau(materiau.id);
-                if (materiauInInventory !== null){
-                    materiauInInventory.quantity -= materiau.quantity;
-                }
-            });
-
-            let item = new survivshim.Item();
-            item.init(this.resultItem.templateId);
-            survivshim.character.addItemToInventory(item);
-            console.log(survivshim.character);
-            this.isCraftDone = true;
-
+            this.craftCompleted();
         }
     },
 
