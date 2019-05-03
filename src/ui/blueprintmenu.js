@@ -29,7 +29,7 @@ survivshim.BlueprintMenu.prototype ={
     },
 
     showMateriaux : function(){
-        this.ctx.fillStyle = "white";
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         let text = "Materiaux";
         this.ctx.fillText(text ,
             this.x + 300, 
@@ -41,7 +41,7 @@ survivshim.BlueprintMenu.prototype ={
             mat.render(_this.x +220 + 40 *i  ,_this.y +40);
             let materiauInInventory = survivshim.character.getMateriau(mat.id);
             let qtyInInventory = materiauInInventory === null ? 0 : materiauInInventory.quantity;
-            _this.ctx.fillStyle = "white";
+            _this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             if (qtyInInventory < mat.quantity){
                 _this.ctx.fillStyle = "red";
                 _this.canBuild = false;
@@ -62,7 +62,7 @@ survivshim.BlueprintMenu.prototype ={
                     this.maxX,
                     this.maxY);
                     this.ctx.font = "1Opx Arial";
-                    this.ctx.fillStyle = "white";
+                    this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         let text = "Blueprint";
         this.ctx.fillText(text ,
             this.x + 10, 
@@ -84,7 +84,7 @@ survivshim.BlueprintMenu.prototype ={
                     this.y+290,
                     100,
                     30);
-        this.ctx.fillStyle = "white";
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         if ( !this.canBuild || survivshim.character.action !== survivshim.C.ACTION_NONE){
             this.ctx.fillStyle = "red";
         }
@@ -99,7 +99,7 @@ survivshim.BlueprintMenu.prototype ={
         let newTick = d.getTime(); 
         let prctCompletion = this.blueprint.getPercentCompletion();
         if(prctCompletion > 100){
-            this.ctx.fillStyle = "white";
+            this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Construction finie";
             this.ctx.fillText(text ,
                 this.x + 160, 
@@ -113,7 +113,7 @@ survivshim.BlueprintMenu.prototype ={
 
     renderItem : function(){
         this.blueprint.resultItem.render(this.x + 180,this.y + 220);
-        this.ctx.fillStyle = "white";
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         let text = this.blueprint.resultItem.name;
         this.ctx.fillText(text ,
                 this.x + 180 -  ((text.length)), 

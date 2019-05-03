@@ -17,7 +17,50 @@ survivshim.StatsMenu.prototype ={
         this.active = false;
     },
 
+    renderSleepStats : function(){
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        let text = "Sommeil";
+        this.ctx.fillText(text ,this.x + 10, this.y + 90);
+        this.ctx.beginPath();
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
+        let d = new Date();
+        let newTick = d.getTime();
+        let prct = (newTick - survivshim.character.lastTimeDrink) / 600;
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
+        if (prct > 30 && prct <60){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
+        }else if (prct > 60 && prct <90){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_ORANGE;
+        }else if (prct > 90){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
+        }
+        prct = prct > 100 ? 100 : prct;
+        this.ctx.fillRect(this.x + 50, this.y + 80, prct, 10);
+    },
+
+    renderDrinkStats : function(){
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        let text = "soif";
+        this.ctx.fillText(text ,this.x + 10, this.y + 70);
+        this.ctx.beginPath();
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
+        let d = new Date();
+        let newTick = d.getTime();
+        let prct = (newTick - survivshim.character.lastTimeDrink) / 600;
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
+        if (prct > 30 && prct <60){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
+        }else if (prct > 60 && prct <90){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_ORANGE;
+        }else if (prct > 90){
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
+        }
+        prct = prct > 100 ? 100 : prct;
+        this.ctx.fillRect(this.x + 50, this.y + 60, prct, 10);
+    },
+
     renderHungryStats : function(){
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         let text = "faim";
         this.ctx.fillText(text ,this.x + 10, this.y + 50);
         this.ctx.beginPath();
@@ -42,11 +85,13 @@ survivshim.StatsMenu.prototype ={
             this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
             this.ctx.fillRect(this.x,this.y,300,200);
 
-            this.ctx.fillStyle = "white";
+            this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Statistiques";
             this.ctx.fillText(text ,this.x + 10, this.y + 10);
             
             this.renderHungryStats();
+            this.renderDrinkStats();
+            this.renderSleepStats();
 
         }
     },

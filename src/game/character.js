@@ -17,6 +17,7 @@ survivshim.Character = function(){
   this.action = 0;
   this.lastTickCollect = 0;
   this.lastTimeEat = 0;
+  this.lastTimeDrink = 0;
 };
 
 survivshim.Character.prototype = {
@@ -26,6 +27,8 @@ survivshim.Character.prototype = {
         let d = new Date();
         let newTick = d.getTime();
         this.lastTimeEat = newTick;
+        this.lastTimeDrink = newTick;
+        this.lastTimeSleep = newTick;
     },
 
     render : function(){
