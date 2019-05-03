@@ -10,23 +10,29 @@ survivshim.MateriauMenu.prototype ={
         this.active = true;
         this.x = 100;
         this.y = 100;
-        this.maxX = 400;
-        this.maxY = 400;
+        this.width = 400;
+        this.height = 400;
+        this.materiaux = [];
     },
 
     hideMenu : function(){
         this.active = false;
-        survivshim.character.changeAction(survivshim.C.ACTION_NONE);
     },
 
     renderMateriaux : function(){
         var i = 0;
         var j = 0;
         var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
+        this.materiaux = [];
         var _this = this;
         if(typeof survivshim.character.inventory["materiau"] !== "undefined" &&  survivshim.character.inventory["materiau"] !== null){
             survivshim.character.inventory["materiau"].forEach(function(mat){
                 mat.render(_this.x + i * 40 + 10,_this.y + j * 60 + 40);
+                let materiau = {};
+                materiau.materiau = mat;
+                materiau.x = _this.x + i * 40 + 10;
+                materiau.y = _this.y + j * 60 + 40;
+                _this.materiaux.push(materiau);
                 ctx.font = "1Opx Arial";
                 ctx.fillStyle = survivshim.C.COLOR_TEXT;
                 let text = mat.quantity;
@@ -38,6 +44,7 @@ survivshim.MateriauMenu.prototype ={
                     i = 0;
                     j += 1;
                 }
+                
             });
         }
     },
@@ -48,8 +55,8 @@ survivshim.MateriauMenu.prototype ={
             ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
             ctx.fillRect(this.x,
                         this.y,
-                        this.maxX,
-                        this.maxY);
+                        this.width,
+                        this.height);
             ctx.font = "1Opx Arial";
             ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Materiaux";
@@ -63,18 +70,23 @@ survivshim.MateriauMenu.prototype ={
 
     onClick : function(x,y){
         if (this.active === true ){
-            /*if ((x< this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +200) 
-            && (x >this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX ) 
-            && (y< this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 80) 
-            && (y>this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
-                if ((y > this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +55)
-                && (y < this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +80)){
-                    this.hideMenu();
-                }   
-                return true;
-            }*/
-            this.hideMenu();
-            return survivshim.C.CLICK_ON_WINDOW;
+            if(x > this.x && x < (this.x + this.width )
+            && y > this.y && y < (this.y + this.height)){
+                var _x = x;
+                var _y = y;
+                var _this = this;
+                this.materiaux.forEach(function (materiau){
+                    if(_x > materiau.x && _x < (materiau.x + survivshim.C.TILE_SIZE_PC)
+                    && _y > materiau.y && _y < (materiau.y + survivshim.C.TILE_SIZE_PC)){
+                        survivshim.contextualMenuOnMateriauMenu.showMenu(materiau);
+                    }
+                });
+
+                return survivshim.C.CLICK_ON_WINDOW;
+            }else{
+                this.hideMenu();    
+                return survivshim.C.CLICK_OUTSIDE_WINDOW;
+            }
         }
         return survivshim.C.CLICK_OUTSIDE_WINDOW;
     }

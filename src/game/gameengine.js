@@ -42,6 +42,7 @@ survivshim.GameEngine.prototype ={
         survivshim.materiauMenu = new survivshim.MateriauMenu();
         survivshim.blueprintMenu = new survivshim.BlueprintMenu();
         survivshim.statsMenu = new survivshim.StatsMenu();
+        survivshim.contextualMenuOnMateriauMenu = new survivshim.ContextualMenuOnMateriauMenu();
         let btnMAteriau = document.getElementById("btnMateriau");
         btnMAteriau.addEventListener("click",survivshim.gameEngine.showMateriauMenu);
         let btnBlueprint = document.getElementById("btnBlueprint");
