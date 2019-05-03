@@ -24,6 +24,7 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 32, "y" : 1824},
     ],
+    "collect" : { "templateid" : 1, "quantity" : 10, "chance" : 50, "speed" : 1}
   },
   "2" :
   {

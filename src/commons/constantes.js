@@ -23,6 +23,7 @@ survivshim.C = Object.freeze({
   COLOR_GRADIANT_ORANGE : "#f19C20",
   COLOR_GRADIANT_RED : "#f81a2d",
 
+  TYPE_COLLECT_MATERIAU : 1,
   //MATERIAU
   MATERIAU_SILEX : 1,
 
