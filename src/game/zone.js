@@ -100,6 +100,7 @@ survivshim.Zone.prototype ={
         survivshim.materiauMenu.render();
         survivshim.blueprintMenu.render();
         survivshim.statsMenu.render();
+        survivshim.iconMenu.render();
         survivshim.contextualMenuOnMateriauMenu.render();
 
     },
@@ -187,6 +188,7 @@ survivshim.Zone.prototype ={
                        || survivshim.blueprintMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.materiauMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.statsMenu.onClick(evt.pageX,evt.pageY)
+                       || survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.contextualMenuOnMateriauMenu.onClick(evt.pageX,evt.pageY);
         if (clickOnMenu === survivshim.C.CLICK_OUTSIDE_WINDOW){
             let decor = survivshim.zone.getTheDecorUnderMouse(evt.pageX,evt.pageY);
