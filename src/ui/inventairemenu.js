@@ -5,7 +5,7 @@ survivshim.InventaireMenu = function (){
   this.active = false;
   this.x = 100;
   this.y = 100;
-  this.width = 400;
+  this.width = 420;
   this.height = 400;
 };
 
@@ -46,15 +46,15 @@ survivshim.InventaireMenu.prototype ={
                 this.y + 15);
             ctx.beginPath();
             ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            ctx.rect(this.x, this.y, this.width, 20);
+            ctx.rect(this.x, this.y, 140, 20);
             ctx.stroke();
             ctx.beginPath();
             ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            ctx.rect(this.x, this.y, 120, 20);
+            ctx.rect(this.x + 140, this.y, 140, 20);
             ctx.stroke();
             ctx.beginPath();
             ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            ctx.rect(this.x, this.y, 250, 20);
+            ctx.rect(this.x + 280, this.y, 140, 20);
             ctx.stroke();            
         }
     },
