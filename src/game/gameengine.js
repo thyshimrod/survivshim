@@ -30,6 +30,7 @@ survivshim.GameEngine.prototype ={
         survivshim.materiauMenu = new survivshim.MateriauMenu();
         survivshim.blueprintMenu = new survivshim.BlueprintMenu();
         survivshim.statsMenu = new survivshim.StatsMenu();
+        survivshim.inventaireMenu = new survivshim.InventaireMenu();
         survivshim.iconMenu = new survivshim.IconMenu();
         survivshim.iconMenu.init();
         survivshim.contextualMenuOnMateriauMenu = new survivshim.ContextualMenuOnMateriauMenu();
