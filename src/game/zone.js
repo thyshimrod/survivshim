@@ -185,13 +185,14 @@ survivshim.Zone.prototype ={
 
     clickEvent : function(evt){
         let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
+                       || survivshim.contextualMenuOnMateriauMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) 
                        || survivshim.collectMenu.onClick(evt.pageX,evt.pageY) 
                        || survivshim.blueprintMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.materiauMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.statsMenu.onClick(evt.pageX,evt.pageY)
-                       || survivshim.inventaireMenu.onClick(evt.pageX,evt.pageY)
-                       || survivshim.contextualMenuOnMateriauMenu.onClick(evt.pageX,evt.pageY);
+                       || survivshim.inventaireMenu.onClick(evt.pageX,evt.pageY);
+                       
         if (clickOnMenu === survivshim.C.CLICK_OUTSIDE_WINDOW){
             let decor = survivshim.zone.getTheDecorUnderMouse(evt.pageX,evt.pageY);
             if (decor !== null ){

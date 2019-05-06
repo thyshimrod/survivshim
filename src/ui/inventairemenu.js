@@ -129,6 +129,17 @@ survivshim.InventaireMenu.prototype ={
                 }else if ( x > (this.x + this.sizeCellMenu * 2) && x < (this.x + this.sizeCellMenu * 3)
                 && y < (this.y + 20)){
                     this.state = survivshim.C.STATE_INVENTORY_CONSOMMABLE;
+                }else{
+                    var _x = x;
+                    var _y = y;
+                    var _this = this;
+                    this.listOfItems.forEach(function (item){
+                        if(_x > item.x && _x < (item.x + survivshim.C.TILE_SIZE_PC)
+                        && _y > item.y && _y < (item.y + survivshim.C.TILE_SIZE_PC)){
+                            survivshim.contextualMenuOnMateriauMenu.showMenu(item);
+                            console.log("pwet");
+                        }
+                    });
                 }
                 return survivshim.C.CLICK_ON_WINDOW;
             }else{
