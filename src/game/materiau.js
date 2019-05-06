@@ -7,6 +7,7 @@ survivshim.Materiau = function(){
     this.spriteset;
     this.sprite = {};
     this.size = {};
+    this.use = 0;
 };
 
 survivshim.Materiau.prototype ={
@@ -17,6 +18,7 @@ survivshim.Materiau.prototype ={
         this.sprite = src.sprite;
         this.name = src.name;
         this.size = src.size;
+        this.use = src.use;
     },
 
     render : function(x,y){

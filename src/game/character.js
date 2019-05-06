@@ -112,27 +112,26 @@ survivshim.Character.prototype = {
       this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT].push(item);
     },
 
-    addMateriau : function(materiau, qty){
-      if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU] === "undefined"){
-        this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU] = [];
+    addItemCollected : function(materiau, qty){
+      var collectedItem = new survivshim.Materiau();
+      collectedItem.init(materiau);
+      collectedItem.quantity = qty;
+      if (typeof this.inventory[collectedItem.use] === "undefined"){
+        this.inventory[collectedItem.use] = [];
       }
+      
       var foundMateriau = null;
       var _materiau = materiau
-      this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU].forEach(function(mat){
+      this.inventory[collectedItem.use].forEach(function(mat){
         if(mat.id == _materiau){
           foundMateriau = mat;
         }
       })
       if (foundMateriau === null){
-        let foundMateriau = new survivshim.Materiau();
-        foundMateriau.init(materiau);
-        foundMateriau.quantity = qty;
-        this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU].push(foundMateriau);
-        
+        this.inventory[collectedItem.use].push(collectedItem);
       }else{
         foundMateriau.quantity += qty;
       }
-
     },
 
     collect : function(){
@@ -149,7 +148,7 @@ survivshim.Character.prototype = {
             item.toRemove = true;
             survivshim.collectMenu.hideMenu();
           }
-          this.addMateriau(item.collect.materiau,item.collect.speed);
+          this.addItemCollected(item.collect.materiau,item.collect.speed);
         }
       }
     },

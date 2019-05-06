@@ -90,6 +90,10 @@ survivshim.InventaireMenu.prototype ={
         }
     },
 
+    renderConsommable : function(){
+        this.renderItem(survivshim.C.TYPE_INVENTORY_CONSOMMABLE)
+    },
+
     renderMateriau : function(){
         this.renderItem(survivshim.C.TYPE_INVENTORY_MATERIAU)
     },
@@ -103,6 +107,7 @@ survivshim.InventaireMenu.prototype ={
             this.ctx= survivshim.canvas.canvasAnimation.getContext("2d");
             this.renderFrame();
             if (this.state == survivshim.C.STATE_INVENTORY_CONSOMMABLE) {
+                this.renderConsommable();
             }else if (this.state == survivshim.C.STATE_INVENTORY_MATERIAU) {
                 this.renderMateriau();
             }else if (this.state == survivshim.C.STATE_INVENTORY_EQUIPEMENT) {
