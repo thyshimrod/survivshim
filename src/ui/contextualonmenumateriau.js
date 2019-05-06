@@ -67,8 +67,10 @@ survivshim.ContextualMenuOnMateriauMenu.prototype ={
     doActionConsommable : function(action){
         if ( action === 1) {
             survivshim.character.eat(this.materiau);
-            this.hideMenu();
+        }else if (action === 2){
+            survivshim.character.removeMateriau(this.materiau);
         }
+        
     },
 
     doAction : function(action){
@@ -77,7 +79,7 @@ survivshim.ContextualMenuOnMateriauMenu.prototype ={
         }else{
 
         }
-
+        this.hideMenu();
     },
 
     onClick : function(x,y){
