@@ -91,12 +91,12 @@ survivshim.Character.prototype = {
     },
 
     getMateriau : function(idMat){
-      if (typeof this.inventory["materiau"] === "undefined"){
+      if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU] === "undefined"){
         return null;
       }else{
         var foundMateriau = null;
         var _idMat = idMat;
-        this.inventory["materiau"].forEach(function(mat){
+        this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU].forEach(function(mat){
           if(mat.id == _idMat){
             foundMateriau = mat;
           }
@@ -106,19 +106,19 @@ survivshim.Character.prototype = {
     },
 
     addItemToInventory : function(item){
-      if (typeof this.inventory["item"] === "undefined"){
-        this.inventory["item"] = [];
+      if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] === "undefined"){
+        this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] = [];
       }
-      this.inventory["item"].push(item);
+      this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT].push(item);
     },
 
     addMateriau : function(materiau, qty){
-      if (typeof this.inventory["materiau"] === "undefined"){
-        this.inventory["materiau"] = [];
+      if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU] === "undefined"){
+        this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU] = [];
       }
       var foundMateriau = null;
       var _materiau = materiau
-      this.inventory["materiau"].forEach(function(mat){
+      this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU].forEach(function(mat){
         if(mat.id == _materiau){
           foundMateriau = mat;
         }
@@ -127,7 +127,7 @@ survivshim.Character.prototype = {
         let foundMateriau = new survivshim.Materiau();
         foundMateriau.init(materiau);
         foundMateriau.quantity = qty;
-        this.inventory["materiau"].push(foundMateriau);
+        this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU].push(foundMateriau);
         
       }else{
         foundMateriau.quantity += qty;

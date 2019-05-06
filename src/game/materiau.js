@@ -15,6 +15,7 @@ survivshim.Materiau.prototype ={
         var src = survivshim.materiaux[id];
         this.spriteset = survivshim.tileset.get(src.tileset);
         this.sprite = src.sprite;
+        this.name = src.name;
         this.size = src.size;
     },
 

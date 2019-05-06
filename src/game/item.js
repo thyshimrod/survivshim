@@ -7,6 +7,7 @@ survivshim.Item = function(){
     this.name = "";
     this.sprites = {};
     this.size = {};
+    this.quantity = 1;
 };
   
 survivshim.Item.prototype = {
