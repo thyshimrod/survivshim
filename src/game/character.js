@@ -105,6 +105,50 @@ survivshim.Character.prototype = {
       }
     },
 
+    getItem : function(item){
+      if (typeof this.inventory[item.use] === "undefined"){
+        return null;
+      }else{
+        var foundItem = null;
+        var _item = item;
+        this.inventory[item.use].forEach(function(it){
+          if(it.id == _item.id){
+            foundItem = it;
+          }
+        })  
+        return foundItem;
+      }
+    },
+
+    eat : function(item){
+      let d = new Date();
+      let newTick = d.getTime();
+      this.lastTimeEat = newTick;
+      let materiauInInventory = this.getItem(item );
+      if (materiauInInventory !== null){
+          materiauInInventory.quantity -= 1;
+          if (materiauInInventory.quantity <= 0){
+            this.removeMateriau(item);
+          }
+      }
+
+    },
+
+    removeMateriau : function(item){
+      var _item = item;
+      var index = -1;
+      var i = 0;
+      this.inventory[item.use].forEach(function (it){
+        if (it.id === _item.id){
+          index = i;
+        }
+        i += 1;
+      });
+      if (index !== -1){
+        this.inventory[item.use].splice(index,1);
+      }
+    },
+
     addItemToInventory : function(item){
       if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] === "undefined"){
         this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] = [];

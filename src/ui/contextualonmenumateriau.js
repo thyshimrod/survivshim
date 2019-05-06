@@ -64,6 +64,22 @@ survivshim.ContextualMenuOnMateriauMenu.prototype ={
         }
     },
 
+    doActionConsommable : function(action){
+        if ( action === 1) {
+            survivshim.character.eat(this.materiau);
+            this.hideMenu();
+        }
+    },
+
+    doAction : function(action){
+        if (this.materiau.use === survivshim.C.TYPE_INVENTORY_CONSOMMABLE){
+            this.doActionConsommable(action);
+        }else{
+
+        }
+
+    },
+
     onClick : function(x,y){
         if (this.active === true ){
             if (x < (this.x + this.width)
@@ -71,9 +87,9 @@ survivshim.ContextualMenuOnMateriauMenu.prototype ={
             &&  y < this.y + this.height
             &&  y > this.y){
                 if (y < (this.y+20)){
-                    console.log("manger");
+                    this.doAction(1);
                 }else{
-                    console.log("detruire");
+                    this.doAction(2);
                 }
                 return survivshim.C.CLICK_ON_WINDOW;
             }else{
