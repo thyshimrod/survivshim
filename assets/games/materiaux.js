@@ -15,6 +15,7 @@ survivshim.materiaux = {
         "size":{"x" : 16, "y" : 16},
         "tileset" : "assets/tileset/tileset1.png",
         "sprite" : { "x" : 224, "y" : 1088},
-        "use" : survivshim.C.TYPE_INVENTORY_CONSOMMABLE
+        "use" : survivshim.C.TYPE_INVENTORY_CONSOMMABLE,
+        "satiete" : 10000,
       },
 };

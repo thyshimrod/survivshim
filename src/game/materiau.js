@@ -19,6 +19,7 @@ survivshim.Materiau.prototype ={
         this.name = src.name;
         this.size = src.size;
         this.use = src.use;
+        this.satiete = src.satiete;
     },
 
     render : function(x,y){

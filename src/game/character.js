@@ -123,7 +123,7 @@ survivshim.Character.prototype = {
     eat : function(item){
       let d = new Date();
       let newTick = d.getTime();
-      this.lastTimeEat = newTick;
+      this.lastTimeEat += item.satiete;
       let materiauInInventory = this.getItem(item );
       if (materiauInInventory !== null){
           materiauInInventory.quantity -= 1;
@@ -131,7 +131,6 @@ survivshim.Character.prototype = {
             this.removeMateriau(item);
           }
       }
-
     },
 
     removeMateriau : function(item){
