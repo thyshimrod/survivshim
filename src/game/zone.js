@@ -102,6 +102,7 @@ survivshim.Zone.prototype ={
         survivshim.statsMenu.render();
         survivshim.iconMenu.render();
         survivshim.inventaireMenu.render();
+        survivshim.console.render();
         survivshim.contextualMenuOnMateriauMenu.render();
 
     },
@@ -191,6 +192,7 @@ survivshim.Zone.prototype ={
                        || survivshim.blueprintMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.materiauMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.statsMenu.onClick(evt.pageX,evt.pageY)
+                       || survivshim.console.onClick(evt.pageX,evt.pageY)
                        || survivshim.inventaireMenu.onClick(evt.pageX,evt.pageY);
                        
         if (clickOnMenu === survivshim.C.CLICK_OUTSIDE_WINDOW){

@@ -32,6 +32,9 @@ survivshim.GameEngine.prototype ={
         survivshim.statsMenu = new survivshim.StatsMenu();
         survivshim.inventaireMenu = new survivshim.InventaireMenu();
         survivshim.iconMenu = new survivshim.IconMenu();
+        survivshim.console = new survivshim.Console();
+        survivshim.console.addMessage("Welcome To SurvivShim");
+        survivshim.console.addMessage("We hope you will survive !!");
         survivshim.iconMenu.init();
         survivshim.contextualMenuOnMateriauMenu = new survivshim.ContextualMenuOnMateriauMenu();
     },

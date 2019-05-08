@@ -77,10 +77,11 @@ survivshim.ContextualMenu.prototype ={
                     survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
                     this.hideMenu();
                 }   
-
                 return survivshim.C.CLICK_ON_WINDOW;
             }
+            this.hideMenu();
+            return survivshim.C.CLICK_OUTSIDE_WINDOW;
         }
-        return survivshim.C.CLICK_OUTSIDE_WINDOW;
+        
     }
 };
