@@ -34,14 +34,25 @@ survivshim.InventaireMenu.prototype ={
         this.ctx.stroke();
         this.ctx.font = "1Opx Arial";
         this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        if (this.state === survivshim.C.STATE_INVENTORY_EQUIPEMENT){
+            this.ctx.fillStyle = survivshim.C.COLOR_TEXT_CHOOSEN;
+        }
         let text = "Equipement";
         this.ctx.fillText(text ,
             this.x + 10, 
             this.y + 15);            
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        if (this.state === survivshim.C.STATE_INVENTORY_MATERIAU){
+            this.ctx.fillStyle = survivshim.C.COLOR_TEXT_CHOOSEN;
+        }
         text = "Materiaux";
         this.ctx.fillText(text ,
             this.x + 150, 
-            this.y + 15);            
+            this.y + 15);
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        if (this.state === survivshim.C.STATE_INVENTORY_CONSOMMABLE){
+            this.ctx.fillStyle = survivshim.C.COLOR_TEXT_CHOOSEN;
+        }            
         text = "Consommable";
         this.ctx.fillText(text ,
             this.x + 300, 

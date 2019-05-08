@@ -124,7 +124,8 @@ survivshim.Character.prototype = {
       let d = new Date();
       let newTick = d.getTime();
       this.lastTimeEat += item.satiete;
-      let materiauInInventory = this.getItem(item );
+      survivshim.console.addMessage("Vous avez mange " + item.name);
+      let materiauInInventory = this.getItem(item ); 
       if (materiauInInventory !== null){
           materiauInInventory.quantity -= 1;
           if (materiauInInventory.quantity <= 0){
