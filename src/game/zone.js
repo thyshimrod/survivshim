@@ -10,6 +10,7 @@ survivshim.Zone = function (){
     this.maxX = 100;
     this.maxY = 100;
     this.decors = [];
+    this.creatures = [];
 }
 
 survivshim.Zone.prototype ={
@@ -67,6 +68,10 @@ survivshim.Zone.prototype ={
         tempDecor.x = 10;
         tempDecor.y = 1;
         this.decors.push(tempDecor);
+
+        let mob = new survivshim.Creature();
+        mob.init();
+        this.creatures.push(mob);
     },
 
     render : function(){
@@ -91,6 +96,16 @@ survivshim.Zone.prototype ={
                 ((posChar.y + 40) > decor.y)
                 ){
                     decor.render();
+                }
+        })
+
+        this.creatures.forEach(function(mob){
+            if( ((posChar.x - 40) < mob.x) && 
+                ((posChar.x + 40) > mob.x) &&
+                ((posChar.y - 40) < mob.y) &&
+                ((posChar.y + 40) > mob.y)
+                ){
+                    mob.render();
                 }
         })
         
