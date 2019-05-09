@@ -159,6 +159,7 @@ survivshim.Character.prototype = {
     addItemCollected : function(materiau, qty){
       var collectedItem = new survivshim.Materiau();
       collectedItem.init(materiau);
+      survivshim.console.addMessage(collectedItem.name + " ramassé");
       collectedItem.quantity = qty;
       if (typeof this.inventory[collectedItem.use] === "undefined"){
         this.inventory[collectedItem.use] = [];
@@ -193,6 +194,7 @@ survivshim.Character.prototype = {
             survivshim.collectMenu.hideMenu();
           }
           this.addItemCollected(item.collect.materiau,item.collect.speed);
+          
         }
       }
     },
