@@ -13,8 +13,7 @@ survivshim.Creature = function(){
 survivshim.Creature.prototype = {
     init : function(templateId){
         let mob = survivshim.creatures[templateId];
-        this.sprite = "assets/sprites/rats.png";
-        this.spriteset = survivshim.tileset.get(mob.sprite);
+        this.spriteset = survivshim.tileset.get(mob.spriteset);
         this.size = mob.size;
     },
 

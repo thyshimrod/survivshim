@@ -118,6 +118,7 @@ survivshim.Zone.prototype ={
         survivshim.iconMenu.render();
         survivshim.inventaireMenu.render();
         survivshim.console.render();
+        survivshim.hourui.render();
         survivshim.contextualMenuOnMateriauMenu.render();
 
     },
@@ -134,9 +135,16 @@ survivshim.Zone.prototype ={
             }
         })
     },
+    
+    manageHour : function(){
+        if (this.hour > 24){
+            this.hour -= 24;
+        }
+    },
 
     loop: function(){
         survivshim.character.loop();
+        this.manageHour();
         this.removeDecors();
         this.render();
     },
@@ -201,6 +209,7 @@ survivshim.Zone.prototype ={
 
     clickEvent : function(evt){
         let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
+                        || survivshim.hourui.onClick(evt.pageX,evt.pageY) 
                        || survivshim.contextualMenuOnMateriauMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) 
                        || survivshim.collectMenu.onClick(evt.pageX,evt.pageY) 
