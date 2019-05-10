@@ -11,7 +11,7 @@ survivshim.IconMenu = function (){
 
 survivshim.IconMenu.prototype ={
     init : function(){
-        this.spriteset = survivshim.tileset.get("assets/tileset/murmures.png");
+        this.spriteset = survivshim.tileset.get("assets/tileset/iconset.png");
         let icon = { "x" : 0 , "y" : 0, "tx" : 224, "ty" : 3936 , "icon" : "blueprint"};
         this.icons.push(icon);
         icon = { "x" : 33 , "y" : 0, "tx" : 736, "ty" : 3904 , "icon" : "stats"};

@@ -5,7 +5,7 @@ survivshim.HourUi = function (){
     this.x = 0;
     this.y = 50;
     this.width = 40;
-    this.height = 40;
+    this.height = 60;
     this.ctx = null;    
     this.hour = 9;
 };
@@ -30,6 +30,8 @@ survivshim.HourUi.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         let text = this.hour + " : 00";
         this.ctx.fillText(text , this.x + 6 , this.y  + 25);
+        text = "20 °c";
+        this.ctx.fillText(text , this.x + 6 , this.y  + 40);
     },
 
 
