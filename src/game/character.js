@@ -35,6 +35,7 @@ survivshim.Character.prototype = {
         this.lastTimeEat = newTick;
         this.lastTimeDrink = newTick;
         this.lastTimeSleep = newTick;
+        this.hitPoints = 100;
     },
 
     manageStates : function(){

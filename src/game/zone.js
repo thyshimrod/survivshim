@@ -218,6 +218,7 @@ survivshim.Zone.prototype ={
                        || survivshim.materiauMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.statsMenu.onClick(evt.pageX,evt.pageY)
                        || survivshim.console.onClick(evt.pageX,evt.pageY)
+                       || survivshim.death.onClick(evt.pageX,evt.pageY)
                        || survivshim.inventaireMenu.onClick(evt.pageX,evt.pageY);
                        
         if (clickOnMenu === survivshim.C.CLICK_OUTSIDE_WINDOW){
