@@ -26,6 +26,13 @@ survivshim.Death.prototype ={
         this.ctx.fillText(text ,
             this.x + 100 ,
             this.y + 40 );
+
+        this.ctx.font = "16px Arial";
+        this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+        this.ctx.rect(    this.x + 130, this.y + 135,            130,40);
+                this.ctx.stroke();
+        text = "Recommencer";
+        this.ctx.fillText(text ,this.x + 140, this.y + 160);
     },
 
     onClick : function(x,y){

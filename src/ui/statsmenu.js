@@ -46,13 +46,13 @@ survivshim.StatsMenu.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
 
         let prct = (survivshim.character.hitPoints / survivshim.character.maxHitPoints) *100;
-        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
         if (prct > 20 && prct <=40){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_ORANGE;
         }else if (prct > 40 && prct <= 60){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
         }else if (prct > 60){
-            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
         }
         prct = prct > 100 ? 100 : prct;
         this.ctx.fillRect(this.x + 70, this.y + 100, prct, 10);
@@ -108,7 +108,7 @@ survivshim.StatsMenu.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
         let d = new Date();
         let newTick = d.getTime();
-        let prct = (newTick - survivshim.character.lastTimeEat) / 600;
+        let prct = (newTick - survivshim.character.lastTimeEat) / 60;
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
         if (prct > 30 && prct <60){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
