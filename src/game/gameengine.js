@@ -11,7 +11,11 @@ survivshim.GameEngine = function (){
 survivshim.GameEngine.prototype ={
     gameLoop: function (){
         if (survivshim.zone !== "undefined"){
-            survivshim.zone.loop();
+            if (survivshim.character.hitPoints > 0){
+                survivshim.zone.loop();
+            }else{
+                survivshim.death.render();
+            }
         }
 
     },
@@ -23,6 +27,7 @@ survivshim.GameEngine.prototype ={
         this.centerY = window.innerHeight / 2 - this.tileSize / 2 - 70;
         survivshim.tileset = new survivshim.Tileset();
         survivshim.canvas = new survivshim.Canvas();
+        survivshim.death = new survivshim.Death();
         survivshim.canvas.init();
         survivshim.zone = new survivshim.Zone();
         survivshim.zone.init();

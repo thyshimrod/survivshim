@@ -52,7 +52,7 @@ survivshim.StatsMenu.prototype ={
         }else if (prct > 40 && prct <= 60){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
         }else if (prct > 60){
-            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
         }
         prct = prct > 100 ? 100 : prct;
         this.ctx.fillRect(this.x + 70, this.y + 100, prct, 10);
