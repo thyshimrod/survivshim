@@ -70,7 +70,7 @@ survivshim.Zone.prototype ={
         this.decors.push(tempDecor);
 
         let mob = new survivshim.Creature();
-        mob.init();
+        mob.init(1);
         this.creatures.push(mob);
     },
 
