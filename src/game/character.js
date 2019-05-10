@@ -23,6 +23,7 @@ survivshim.Character = function(){
   this.fatigue = 0;
   this.maxFatigue = 100;
   this.hungerState = survivshim.C.HUNGER_STATE_NO;
+  this.lastTicksManageState = 0;
 };
 
 survivshim.Character.prototype = {
@@ -36,8 +37,21 @@ survivshim.Character.prototype = {
         this.lastTimeSleep = newTick;
     },
 
-    manageHungerStats : function(){
-      
+    manageStates : function(){
+      let d = new Date();
+      let newTick = d.getTime();
+      if (newTick - this.lastTicksManageState > 1000){
+        this.lastTicksManageState = newTick;
+        if (this.hungerState === survivshim.C.HUNGER_STATE_HIGH){
+          this.hitPoints -= 3;
+        }else if (this.hungerState === survivshim.C.HUNGER_STATE_MIDDLE){
+          this.hitPoints -= 1;
+        }else if (this.hungerState === survivshim.C.HUNGER_STATE_NO){
+          this.hitPoints += 1;
+        }
+        if (this.hitPoints > this.maxHitPoints) this.hitPoints = this.maxHitPoints;
+        if (this.hitPoints < 0) this.hitPoints = 0;
+      }
     },
 
     render : function(){
@@ -93,6 +107,7 @@ survivshim.Character.prototype = {
       }else if (this.action === survivshim.C.ACTION_CRAFT){
         survivshim.blueprintMenu.blueprint.craft();
       }
+      this.manageStates();
     },
 
     getMateriau : function(idMat){
@@ -199,6 +214,7 @@ survivshim.Character.prototype = {
             survivshim.collectMenu.hideMenu();
           }
           this.addItemCollected(item.collect.materiau,item.collect.speed);
+          this.fatigue += 1;
           
         }
       }
