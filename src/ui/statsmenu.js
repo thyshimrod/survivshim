@@ -112,10 +112,22 @@ survivshim.StatsMenu.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
         if (prct > 30 && prct <60){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
+            if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_LOW){
+                survivshim.character.hungerState = survivshim.C.HUNGER_STATE_LOW;
+                survivshim.console.addMessage("Vous commencez à avoir faim!");
+            }
         }else if (prct > 60 && prct <90){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_ORANGE;
+            if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_MIDDLE){
+                survivshim.character.hungerState = survivshim.C.HUNGER_STATE_MIDDLE;
+                survivshim.console.addMessage("Vous avez faim!");
+            }
         }else if (prct > 90){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
+            if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_HIGH){
+                survivshim.character.hungerState = survivshim.C.HUNGER_STATE_HIGH;
+                survivshim.console.addMessage("Vous mourrez de faim!");
+            }
         }
         prct = prct > 100 ? 100 : prct;
         this.ctx.fillRect(this.x + 70, this.y + 40, prct, 10);

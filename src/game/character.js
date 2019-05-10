@@ -22,6 +22,7 @@ survivshim.Character = function(){
   this.maxHitPoints = 100;
   this.fatigue = 0;
   this.maxFatigue = 100;
+  this.hungerState = survivshim.C.HUNGER_STATE_NO;
 };
 
 survivshim.Character.prototype = {
@@ -33,6 +34,10 @@ survivshim.Character.prototype = {
         this.lastTimeEat = newTick;
         this.lastTimeDrink = newTick;
         this.lastTimeSleep = newTick;
+    },
+
+    manageHungerStats : function(){
+      
     },
 
     render : function(){
