@@ -119,6 +119,7 @@ survivshim.Zone.prototype ={
         survivshim.inventaireMenu.render();
         survivshim.console.render();
         survivshim.hourui.render();
+        survivshim.night.render();
         survivshim.contextualMenuOnMateriauMenu.render();
 
     },

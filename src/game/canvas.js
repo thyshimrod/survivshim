@@ -6,6 +6,7 @@ survivshim.Canvas = function (){
   this.canvasCreature = undefined;
   this.canvasAnimation = undefined;
   this.canvasMouse = undefined;
+  this.canvasNight = undefined;
 };
 
 survivshim.Canvas.prototype ={
@@ -13,6 +14,7 @@ survivshim.Canvas.prototype ={
     this.canvasTile = document.getElementById("layerTile");
     this.canvasCreature = document.getElementById("layerCreature");
     this.canvasAnimation = document.getElementById("layerAnimation");
+    this.canvasNight = document.getElementById("layerNight");
     this.canvasMouse = document.getElementById("layerMouse");
   },
 
@@ -25,6 +27,8 @@ survivshim.Canvas.prototype ={
     this.canvasAnimation.height = height;
     this.canvasMouse.width = width;
     this.canvasMouse.height = height;
+    this.canvasNight.width = width;
+    this.canvasNight.height = height;
   },
 
   clearOneCanvas : function(canvas){
@@ -36,5 +40,6 @@ survivshim.Canvas.prototype ={
     this.clearOneCanvas(this.canvasTile);
     this.clearOneCanvas(this.canvasCreature);
     this.clearOneCanvas(this.canvasAnimation);
+    this.clearOneCanvas(this.canvasNight);
   },
 };

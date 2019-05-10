@@ -14,7 +14,7 @@ survivshim.HourUi.prototype ={
 
     calcDate : function(){
         let d = new Date();
-        this.hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 9) % 24;
+        this.hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 17) % 24;
     },
     
 
