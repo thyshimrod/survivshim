@@ -7,11 +7,19 @@ survivshim.HourUi = function (){
     this.width = 40;
     this.height = 40;
     this.ctx = null;    
+    this.hour = 9;
 };
 
 survivshim.HourUi.prototype ={
-  
+
+    calcDate : function(){
+        let d = new Date();
+        this.hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 9) % 24;
+    },
+    
+
     render : function(){
+        this.calcDate();
         this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
         this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
         this.ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -20,8 +28,8 @@ survivshim.HourUi.prototype ={
         this.ctx.rect(this.x, this.y, this.width, this.height);
         this.ctx.stroke();
         this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
-        let text = "9 : 00";
-        this.ctx.fillText(text , this.x + 8 , this.y  + 25);
+        let text = this.hour + " : 00";
+        this.ctx.fillText(text , this.x + 6 , this.y  + 25);
     },
 
 

@@ -5,6 +5,7 @@ survivshim.GameEngine = function (){
     this.tileSize = survivshim.C.TILE_SIZE_PC;
     this.centerX = 0;
     this.centerY = 0;
+    this.startTimer = 0;
 }
 
 survivshim.GameEngine.prototype ={
@@ -16,6 +17,8 @@ survivshim.GameEngine.prototype ={
     },
 
     init : function(){
+        let d = new Date();
+        this.startTimer = d.getTime();
         this.centerX = window.innerWidth / 2 -  this.tileSize / 2 ;
         this.centerY = window.innerHeight / 2 - this.tileSize / 2 - 70;
         survivshim.tileset = new survivshim.Tileset();
