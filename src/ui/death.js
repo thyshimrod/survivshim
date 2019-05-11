@@ -40,8 +40,7 @@ survivshim.Death.prototype ={
         && y < (this.y + this.height) && y > this.y){
             if(x > (this.x +130) && x < (this.x + 250)
             && y > (this.y + 130) && y < (this.y + 300)){
-                survivshim.zone.init();
-                survivshim.character.init();
+                survivshim.gameEngine.init();
             }
             return survivshim.C.CLICK_ON_WINDOW;
         }

@@ -36,11 +36,36 @@ survivshim.Character.prototype = {
         this.lastTimeDrink = newTick;
         this.lastTimeSleep = newTick;
         this.hitPoints = 100;
+        this.lastTickCollect = newTick;
+        this.lastTimeEat = newTick;
+        this.lastTimeDrink = newTick;
+        this.x = 0 ;
+        this.y = 0;
+        this.animation = 0;
+        this.direction = 0;
+        this.action = 0;
+        this.hungerState = survivshim.C.HUNGER_STATE_NO;
+        this.lastTicksManageState = newTick;
     },
 
-    manageStates : function(){
-      let d = new Date();
-      let newTick = d.getTime();
+    manageHunger : function(newTick){
+      let prct = (newTick - survivshim.character.lastTimeEat) / 600;
+      if (prct > 30 && prct <60){
+          if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_LOW){
+              survivshim.character.hungerState = survivshim.C.HUNGER_STATE_LOW;
+              survivshim.console.addMessage("Vous commencez à avoir faim!");
+          }
+      }else if (prct > 60 && prct <90){
+          if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_MIDDLE){
+              survivshim.character.hungerState = survivshim.C.HUNGER_STATE_MIDDLE;
+              survivshim.console.addMessage("Vous avez faim!");
+          }
+      }else if (prct > 90){
+          if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_HIGH){
+              survivshim.character.hungerState = survivshim.C.HUNGER_STATE_HIGH;
+              survivshim.console.addMessage("Vous mourrez de faim!");
+          }
+      }
       if (newTick - this.lastTicksManageState > 1000){
         this.lastTicksManageState = newTick;
         if (this.hungerState === survivshim.C.HUNGER_STATE_HIGH){
@@ -53,6 +78,12 @@ survivshim.Character.prototype = {
         if (this.hitPoints > this.maxHitPoints) this.hitPoints = this.maxHitPoints;
         if (this.hitPoints < 0) this.hitPoints = 0;
       }
+    },
+
+    manageStates : function(){
+      let d = new Date();
+      let newTick = d.getTime();
+      this.manageHunger(newTick);
     },
 
     render : function(){
