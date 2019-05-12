@@ -59,6 +59,7 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 64, "y" : 1120},
     ],
+    "collect" : { "templateid" : survivshim.C.MATERIAU_MUSHROOM, "quantity" : 2, "chance" : 100, "speed" : 1}
   },
   "5" :
   {

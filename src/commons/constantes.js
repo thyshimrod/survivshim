@@ -28,6 +28,7 @@ survivshim.C = Object.freeze({
   //MATERIAU
   MATERIAU_SILEX : 1,
   MATERIAU_SALADE : 2,
+  MATERIAU_MUSHROOM : 3,
 
   //ACTIONS
   ACTION_NONE : 0,

@@ -197,7 +197,7 @@ survivshim.Zone.prototype ={
         var _y = y - survivshim.gameEngine.centerY + survivshim.character.y;
         var result = null;
         this.decors.forEach(function(elt){
-            if (((_x-survivshim.gameEngine.tileSize)< elt.x*survivshim.gameEngine.tileSize) && ((_x+survivshim.gameEngine.tileSize)>elt.x*survivshim.gameEngine.tileSize ) && ((_y-survivshim.gameEngine.tileSize)< elt.y*survivshim.gameEngine.tileSize) && ((_y+survivshim.gameEngine.tileSize)>elt.y*survivshim.gameEngine.tileSize )){
+            if (((_x-survivshim.gameEngine.tileSize)< elt.x *survivshim.gameEngine.tileSize) && ((_x+survivshim.gameEngine.tileSize)>elt.x*survivshim.gameEngine.tileSize ) && ((_y-survivshim.gameEngine.tileSize)< elt.y*survivshim.gameEngine.tileSize) && ((_y+survivshim.gameEngine.tileSize)>elt.y*survivshim.gameEngine.tileSize )){
             result = elt;
             }
         });
