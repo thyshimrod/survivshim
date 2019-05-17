@@ -16,9 +16,9 @@ survivshim.Console.prototype ={
     renderMessages : function(){
         let nbMessage = 0;
         for (let i = this.messages.length-1; i >= 0 && nbMessage < this.nbMessageMax ; i--){
-            this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = this.messages[i];
-            this.ctx.fillText(text ,
+            this.ctx.fillStyle = text.alert;
+            this.ctx.fillText(text.text,
                 this.x + 10, 
                 this.y + 10 + 10* (this.nbMessageMax - nbMessage));
             nbMessage ++;
@@ -36,8 +36,8 @@ survivshim.Console.prototype ={
         this.renderMessages();
     },
 
-    addMessage : function(text){
-        this.messages.push(text);
+    addMessage : function(text,alert = survivshim.C.MESSAGE_ALERT_INFO){
+        this.messages.push({"text" : text, "alert" : alert});
     },
 
     onClick : function(x,y){

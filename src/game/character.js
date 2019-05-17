@@ -53,17 +53,17 @@ survivshim.Character.prototype = {
       if (prct > 30 && prct <60){
           if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_LOW){
               survivshim.character.hungerState = survivshim.C.HUNGER_STATE_LOW;
-              survivshim.console.addMessage("Vous commencez à avoir faim!");
+              survivshim.console.addMessage("Vous commencez à avoir faim!",survivshim.C.MESSAGE_ALERT_WARNING);
           }
       }else if (prct > 60 && prct <90){
           if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_MIDDLE){
               survivshim.character.hungerState = survivshim.C.HUNGER_STATE_MIDDLE;
-              survivshim.console.addMessage("Vous avez faim!");
+              survivshim.console.addMessage("Vous avez faim!",survivshim.C.MESSAGE_ALERT_WARNING);
           }
       }else if (prct > 90){
           if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_HIGH){
               survivshim.character.hungerState = survivshim.C.HUNGER_STATE_HIGH;
-              survivshim.console.addMessage("Vous mourrez de faim!");
+              survivshim.console.addMessage("Vous mourrez de faim!",survivshim.C.MESSAGE_ALERT_HIGH);
           }
       }
       if (newTick - this.lastTicksManageState > 1000){
