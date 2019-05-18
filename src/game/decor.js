@@ -46,6 +46,12 @@ survivshim.Decor.prototype = {
       }
     },
 
+    loadFromJs : function(src){
+      this.x = src.x;
+      this.y = src.y;
+      this.load(src.id);
+    },
+
     render : function(){
         var ctx = survivshim.canvas.canvasTile.getContext("2d");
         ctx.drawImage(

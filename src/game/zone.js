@@ -26,49 +26,13 @@ survivshim.Zone.prototype ={
                 this.tiles.push(tempTile);
             }
         }
-
-        let tempDecor = new survivshim.Decor();
-        tempDecor.load("0");
-        tempDecor.x = 10;
-        tempDecor.y = 10;
-        this.decors.push(tempDecor);
-        tempDecor = new survivshim.Decor();
-        tempDecor.load("1");
-        tempDecor.x = 4;
-        tempDecor.y = 4;
-        this.decors.push(tempDecor);
-        tempDecor = new survivshim.Decor();
-        tempDecor.load("2");
-        tempDecor.x = 4;
-        tempDecor.y = 7;
-        this.decors.push(tempDecor);
-        
-        tempDecor = new survivshim.Decor();
-        tempDecor.load("4");
-        tempDecor.x = 2;
-        tempDecor.y = 2;
-        this.decors.push(tempDecor);
-        tempDecor = new survivshim.Decor();
-        tempDecor.load("5");
-        tempDecor.x = 3;
-        tempDecor.y = 3;
-        this.decors.push(tempDecor);
-        tempDecor = new survivshim.Decor();
-        tempDecor.load("6");
-        tempDecor.x = 12;
-        tempDecor.y = 12;
-        this.decors.push(tempDecor);
-        tempDecor = new survivshim.Decor();
-        tempDecor.load("3");
-        tempDecor.x = 1;
-        tempDecor.y = 10;
-        this.decors.push(tempDecor);
-        tempDecor = new survivshim.Decor();
-        tempDecor.load("7");
-        tempDecor.x = 10;
-        tempDecor.y = 1;
-        this.decors.push(tempDecor);
-
+        let level = survivshim.levels[0];
+        var _this = this;
+        level.decors.forEach(function(decorjs){
+            let decor = new survivshim.Decor();
+            decor.loadFromJs(decorjs);
+            _this.decors.push(decor);
+        })
         let mob = new survivshim.Creature();
         mob.init(1);
         this.creatures.push(mob);
