@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SurviShim</title>
+      <link rel="stylesheet" type="text/css" href="main.css"/>
+      <script type="text/javascript" src="./src/commons/constantes.js"></script>
+      <script type="text/javascript" src="./assets/tiles/tiles.js"></script>
+      <script type="text/javascript" src="./assets/tiles/decors.js"></script>
+      <script type="text/javascript" src="./assets/games/materiaux.js"></script>
+      <script type="text/javascript" src="./assets/games/creatures.js"></script>
+      <script type="text/javascript" src="./assets/games/items.js"></script>
+      <script type="text/javascript" src="./assets/levels/level1.js"></script>
+      <script type="text/javascript" src="./assets/games/blueprints.js"></script>
+</head>
+<body>
+  <canvas id="layerTile" height="0" width="0" style="z-index: 15"></canvas>
+  <canvas id="layerCreature" height="0" width="0" style="z-index: 35"></canvas>
+  <canvas id="layerNight" height="0" width="0" style="z-index: 44"></canvas>
+  <canvas id="layerAnimation" height="0" width="0" style="z-index: 45"></canvas>
+  <canvas id="layerMouse" height="0" width="0" style="z-index: 50"></canvas>
+  
+  <script src="./src/game/canvas.js"></script>
+  <script src="./src/game/tileset.js"></script>
+  <script src="./src/game/tile.js"></script>
+  <script src="./src/editor/level.js"></script>
+  <script src="./src/editor/decor.js"></script>
+  <script src="./src/editor/gameeditor.js"></script>
+</body>
+</html>
