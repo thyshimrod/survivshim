@@ -14,6 +14,8 @@ survivshim.IconMenu.prototype ={
         this.spriteset = survivshim.tileset.get("assets/tileset/iconset.png");
         let icon = { "x" : 0 , "y" : 0, "tx" : 1600, "ty" : 4000 , "icon" : "decor"};
         this.icons.push(icon);
+        icon = { "x" : 32 , "y" : 0, "tx" : 64, "ty" : 4128 , "icon" : "destroy"};
+        this.icons.push(icon);
     },
 
     render : function(){
@@ -31,6 +33,7 @@ survivshim.IconMenu.prototype ={
                 32,
                 32);
         })
+         
     },
 
     onClick : function(x,y){
@@ -41,12 +44,9 @@ survivshim.IconMenu.prototype ={
             this.icons.forEach(function (icon){
                 if ( _x >= icon.x && _x <= (icon.x + 32)){
                     if(icon.icon === "decor"){
-                        console.log("decor");
-                    //    survivshim.blueprintMenu.showMenu();
-                    }else if (icon.icon === "stats"){
-                    //    survivshim.statsMenu.showMenu();
-                    }else if (icon.icon === "inventaire"){
-                    //    survivshim.inventaireMenu.showMenu();
+                        survivshim.decorMenu.showMenu();
+                    }else if (icon.icon === "destroy"){
+                        console.log("destroy");
                     }
                 }
   0         })

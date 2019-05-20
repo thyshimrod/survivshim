@@ -18,6 +18,7 @@ survivshim.GameEditor.prototype ={
         survivshim.gameEditor.decalageY += survivshim.gameEditor.speedY;
         survivshim.levelEditor.render();
         survivshim.iconMenu.render();
+        survivshim.decorMenu.render();
     },
 
     init : function(){
@@ -29,6 +30,7 @@ survivshim.GameEditor.prototype ={
         survivshim.levelEditor.init();
         survivshim.iconMenu = new survivshim.IconMenu();
         survivshim.iconMenu.init();
+        survivshim.decorMenu = new survivshim.DecorMenu();
         this.centerX = window.innerWidth / 2 -  this.tileSize / 2 ;
         this.centerY = window.innerHeight / 2 - this.tileSize / 2 - 70;
         var _this = this;
