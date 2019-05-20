@@ -57,5 +57,7 @@ survivshim.C = Object.freeze({
   HUNGER_STATE_MIDDLE : 3,
   HUNGER_STATE_HIGH : 4,
 
+  EDITOR_VITESSE_DEFILEMENT : 2,
+
 
 });

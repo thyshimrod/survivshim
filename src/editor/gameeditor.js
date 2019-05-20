@@ -7,12 +7,16 @@ survivshim.GameEditor = function (){
     this.decalageY = 0;
     this.clientX = 0;
     this.clientY = 0;
+    this.speedX = 0;
+    this.speedY = 0;
 }
 
 survivshim.GameEditor.prototype ={
 
     gameLoop: function (){
-       survivshim.levelEditor.render();
+        survivshim.gameEditor.decalageX += survivshim.gameEditor.speedX;
+        survivshim.gameEditor.decalageY += survivshim.gameEditor.speedY;
+        survivshim.levelEditor.render();
     },
 
     init : function(){
@@ -30,14 +34,18 @@ survivshim.GameEditor.prototype ={
 
     clickEvent : function(evt){
         if (evt.pageX < 50){
-            survivshim.gameEditor.decalageX +=8;    
+            survivshim.gameEditor.speedX += survivshim.C.EDITOR_VITESSE_DEFILEMENT;    
         }else if (evt.pageX > (window.innerWidth-50)){
-            survivshim.gameEditor.decalageX -= 8;
+            survivshim.gameEditor.speedX -= survivshim.C.EDITOR_VITESSE_DEFILEMENT;
+        }else{
+            survivshim.gameEditor.speedX = 0;
         }
         if (evt.pageY < 50){
-            survivshim.gameEditor.decalageY +=8;    
+            survivshim.gameEditor.speedY += survivshim.C.EDITOR_VITESSE_DEFILEMENT;    
         }else if (evt.pageY > (window.innerHeight-50)){
-            survivshim.gameEditor.decalageY -= 8;
+            survivshim.gameEditor.speedY -= survivshim.C.EDITOR_VITESSE_DEFILEMENT;
+        }else{
+            survivshim.gameEditor.speedY = 0;
         }
     }
 }
