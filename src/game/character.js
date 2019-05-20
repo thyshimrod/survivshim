@@ -45,6 +45,7 @@ survivshim.Character.prototype = {
         this.direction = 0;
         this.action = 0;
         this.hungerState = survivshim.C.HUNGER_STATE_NO;
+        this.thirstyState = survivshim.C.HUNGER_STATE_NO;
         this.lastTicksManageState = newTick;
     },
 
@@ -79,11 +80,37 @@ survivshim.Character.prototype = {
         if (this.hitPoints < 0) this.hitPoints = 0;
       }
     },
+    
+    manageThirsty : function(newTick){
+      let prct = (newTick - survivshim.character.lastTimeDrink) / 600;
+      if (prct > 30 && prct <60){
+          if (survivshim.character.thirstyState !== survivshim.C.HUNGER_STATE_LOW){
+              survivshim.character.thirstyState = survivshim.C.HUNGER_STATE_LOW;
+              survivshim.console.addMessage("Vous commencez à avoir soif!",survivshim.C.MESSAGE_ALERT_WARNING);
+          }
+      }else if (prct > 60 && prct <90){
+          if (survivshim.character.thirstyState !== survivshim.C.HUNGER_STATE_MIDDLE){
+              survivshim.character.thirstyState = survivshim.C.HUNGER_STATE_MIDDLE;
+              survivshim.console.addMessage("Vous avez soif!",survivshim.C.MESSAGE_ALERT_WARNING);
+          }
+      }else if (prct > 90){
+          if (survivshim.character.thirstyState !== survivshim.C.HUNGER_STATE_HIGH){
+              survivshim.character.thirstyState = survivshim.C.HUNGER_STATE_HIGH;
+              survivshim.console.addMessage("Vous mourrez de soif!",survivshim.C.MESSAGE_ALERT_HIGH);
+          }
+      }
+      if (this.thirstyState === survivshim.C.HUNGER_STATE_HIGH){
+        this.hitPoints -= 3;
+      }else if (this.thirstyState === survivshim.C.HUNGER_STATE_MIDDLE){
+        this.hitPoints -= 1;
+      }
+    },
 
     manageStates : function(){
       let d = new Date();
       let newTick = d.getTime();
       this.manageHunger(newTick);
+      this.manageThirsty(newTick);
     },
 
     render : function(){
