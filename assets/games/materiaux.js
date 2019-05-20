@@ -16,7 +16,10 @@ survivshim.materiaux = {
         "tileset" : "assets/tileset/tileset1.png",
         "sprite" : { "x" : 224, "y" : 1088},
         "use" : survivshim.C.TYPE_INVENTORY_CONSOMMABLE,
-        "satiete" : 10000,
+        "effect" : [
+          {"name" : "faim", "value" : 1000},
+          {"name" : "soif", "value" : 1000}
+        ]
       },
       3 : {
         "name" : "champignons",
@@ -24,6 +27,9 @@ survivshim.materiaux = {
         "tileset" : "assets/tileset/tileset1.png",
         "sprite" : { "x" : 224, "y" : 1088},
         "use" : survivshim.C.TYPE_INVENTORY_CONSOMMABLE,
-        "satiete" : 10000,
+        "effect" : [
+          {"name" : "faim", "value" : 1000},
+          {"name" : "soif", "value" : 1000}
+        ]
       },
 };

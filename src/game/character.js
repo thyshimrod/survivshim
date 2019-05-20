@@ -202,8 +202,18 @@ survivshim.Character.prototype = {
     eat : function(item){
       let d = new Date();
       let newTick = d.getTime();
-      this.lastTimeEat += item.satiete;
-      survivshim.console.addMessage("Vous avez mange " + item.name);
+      var _this = this;
+      if (typeof item.effect !== "undefined"){
+        item.effect.forEach(function(effect){
+          if (effect.name === "faim"){
+            _this.lastTimeEat += item.value;  
+          }else if (effect.name === "soif"){
+            _this.lastTimeDrink += item.value;  
+          }
+        })
+      }
+      //this.lastTimeEat += item.satiete;
+      survivshim.console.addMessage("Vous avez consomme " + item.name);
       let materiauInInventory = this.getItem(item ); 
       if (materiauInInventory !== null){
           materiauInInventory.quantity -= 1;
