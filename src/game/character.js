@@ -212,7 +212,6 @@ survivshim.Character.prototype = {
           }
         })
       }
-      //this.lastTimeEat += item.satiete;
       survivshim.console.addMessage("Vous avez consomme " + item.name);
       let materiauInInventory = this.getItem(item ); 
       if (materiauInInventory !== null){

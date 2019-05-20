@@ -17,7 +17,7 @@ survivshim.Zone.prototype ={
     init : function(){
         survivshim.canvas.setCanvasSize(window.innerWidth,window.innerHeight);
         this.tileSet = survivshim.tileset.get("assets/tileset/tileset1.png");
-        survivshim.canvas.canvasMouse.addEventListener("click",survivshim.zone.clickEvent);
+        
         
         for (let i=0;i<this.maxY;i++){
             for (let j=0;j<this.maxX;j++){
@@ -177,8 +177,7 @@ survivshim.Zone.prototype ={
     },
 
     clickEvent : function(evt){
-        let clickOnMenu =  survivshim.death.onClick(evt.pageX,evt.pageY)  
-                        || survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
+        let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.hourui.onClick(evt.pageX,evt.pageY) 
                         || survivshim.contextualMenuOnMateriauMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) 

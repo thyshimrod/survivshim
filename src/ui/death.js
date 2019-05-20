@@ -33,19 +33,17 @@ survivshim.Death.prototype ={
     },
 
     onClick : function(x,y){
-        if (this.active){
-            if(x < (this.x + this.width ) && x > this.x
-            && y < (this.y + this.height) && y > this.y){
-                if(x > (this.x +130) && x < (this.x + 250)
-                && y > (this.y + 130) && y < (this.y + 300)){
-                    survivshim.gameEngine.init();
-                }
-                return survivshim.C.CLICK_ON_WINDOW;
-            }else{
-                return survivshim.C.CLICK_OUTSIDE_WINDOW;
+        if(x < (this.x + this.width ) && x > this.x
+        && y < (this.y + this.height) && y > this.y){
+            if(x > (this.x +130) && x < (this.x + 250)
+            && y > (this.y + 130) && y < (this.y + 300)){
+                survivshim.gameEngine.init();
             }
+            return survivshim.C.CLICK_ON_WINDOW;
+        }else{
+            return survivshim.C.CLICK_OUTSIDE_WINDOW;
         }
-        return survivshim.C.CLICK_OUTSIDE_WINDOW;
+        
     }
 
 }

@@ -20,6 +20,14 @@ survivshim.GameEngine.prototype ={
 
     },
 
+    clickEvent : function(evt){
+        if (survivshim.character.hitPoints > 0){
+            survivshim.zone.clickEvent(evt);
+        }else{
+            survivshim.death.onClick(evt.pageX,evt.pageY)
+        }
+    },
+
     init : function(){
         let d = new Date();
         this.startTimer = d.getTime();
@@ -47,7 +55,10 @@ survivshim.GameEngine.prototype ={
         survivshim.console.addMessage("We hope you will survive !!");
         survivshim.iconMenu.init();
         survivshim.contextualMenuOnMateriauMenu = new survivshim.ContextualMenuOnMateriauMenu();
+        survivshim.canvas.canvasMouse.addEventListener("click",survivshim.gameEngine.clickEvent);
     },
+    
+    
 }
 
 survivshim.gameEngine = new survivshim.GameEngine();
