@@ -17,6 +17,7 @@ survivshim.GameEditor.prototype ={
         survivshim.gameEditor.decalageX += survivshim.gameEditor.speedX;
         survivshim.gameEditor.decalageY += survivshim.gameEditor.speedY;
         survivshim.levelEditor.render();
+        survivshim.iconMenu.render();
     },
 
     init : function(){
@@ -26,21 +27,28 @@ survivshim.GameEditor.prototype ={
         survivshim.canvas.setCanvasSize(window.innerWidth,window.innerHeight);
         survivshim.levelEditor = new survivshim.LevelEditor();
         survivshim.levelEditor.init();
+        survivshim.iconMenu = new survivshim.IconMenu();
+        survivshim.iconMenu.init();
         this.centerX = window.innerWidth / 2 -  this.tileSize / 2 ;
         this.centerY = window.innerHeight / 2 - this.tileSize / 2 - 70;
         var _this = this;
-        var ctx = survivshim.canvas.canvasMouse.addEventListener('mousemove', survivshim.gameEditor.clickEvent);
+        var ctx = survivshim.canvas.canvasMouse.addEventListener('mousemove', survivshim.gameEditor.mouseMoveEvent);
+        var ctx = survivshim.canvas.canvasMouse.addEventListener('click', survivshim.gameEditor.clickEvent);
     },
 
     clickEvent : function(evt){
-        if (evt.pageX < 50){
+        let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY);
+    },
+
+    mouseMoveEvent : function(evt){
+        if (evt.pageX < 50 && evt.pageY > 50){
             survivshim.gameEditor.speedX += survivshim.C.EDITOR_VITESSE_DEFILEMENT;    
         }else if (evt.pageX > (window.innerWidth-50)){
             survivshim.gameEditor.speedX -= survivshim.C.EDITOR_VITESSE_DEFILEMENT;
         }else{
             survivshim.gameEditor.speedX = 0;
         }
-        if (evt.pageY < 50){
+        if (evt.pageY < 50 && evt.pageX > 50){
             survivshim.gameEditor.speedY += survivshim.C.EDITOR_VITESSE_DEFILEMENT;    
         }else if (evt.pageY > (window.innerHeight-50)){
             survivshim.gameEditor.speedY -= survivshim.C.EDITOR_VITESSE_DEFILEMENT;
