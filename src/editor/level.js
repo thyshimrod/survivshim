@@ -4,6 +4,8 @@ var survivshim = survivshim || {};
 survivshim.LevelEditor = function (){
     this.decors = [];
     this.tiles = [];
+    this.maxX = 100;
+    this.maxY = 100;
 }
 
 survivshim.LevelEditor.prototype ={

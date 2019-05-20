@@ -9,7 +9,8 @@ survivshim.tiles = {
       "size":32,
       "x" : 192,
       "y" : 64,
-      "name" : "green soil"
+      "name" : "green soil",
+      "tileset" : "assets/tileset/tileset1.png",
     },
     "2" :
     {
@@ -17,6 +18,7 @@ survivshim.tiles = {
       "size":32,
       "x" : 256,
       "y" : 64,
+      "tileset" : "assets/tileset/tileset1.png",
       "name" : "green soil 2"
     },
 };
