@@ -16,6 +16,8 @@ survivshim.IconMenu.prototype ={
         this.icons.push(icon);
         icon = { "x" : 32 , "y" : 0, "tx" : 64, "ty" : 4128 , "icon" : "destroy"};
         this.icons.push(icon);
+        icon = { "x" : 64 , "y" : 0, "tx" : 1120, "ty" : 4736 , "icon" : "save"};
+        this.icons.push(icon);
     },
 
     render : function(){
@@ -33,7 +35,10 @@ survivshim.IconMenu.prototype ={
                 32,
                 32);
         })
-         
+    },
+
+    getSize : function(){
+        return (32 * this.icons.length);
     },
 
     onClick : function(x,y){
@@ -47,6 +52,8 @@ survivshim.IconMenu.prototype ={
                         survivshim.decorMenu.showMenu();
                     }else if (icon.icon === "destroy"){
                         console.log("destroy");
+                    }else if (icon.icon === "save"){
+                        survivshim.levelEditor.saveToJs();
                     }
                 }
   0         })

@@ -45,6 +45,14 @@ survivshim.Decor.prototype = {
       }
     },
 
+    getJs : function(){
+      let decorJs = {};
+      decorJs.id = this.templateId;
+      decorJs.x = this.x;
+      decorJs.y = this.y;
+      return decorJs;
+    },
+
     loadFromJs : function(src){
       this.x = src.x;
       this.y = src.y;

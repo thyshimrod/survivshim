@@ -23,6 +23,15 @@ survivshim.Tile.prototype = {
         this.type = survivshim.tiles[id].type;
         this.tileset = survivshim.tileset.get(survivshim.tiles[id].tileset);
     },
+
+    getJs : function(){
+        let tileToJs = {};
+        tileToJs.id = this.id;
+        tileToJs.x = this.x;
+        tileToJs.y = this.y;
+        return tileToJs;
+    },
+
     render : function(ts){
         
         var ctx = survivshim.canvas.canvasTile.getContext("2d");

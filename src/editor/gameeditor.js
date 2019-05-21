@@ -43,14 +43,14 @@ survivshim.GameEditor.prototype ={
     },
 
     mouseMoveEvent : function(evt){
-        if (evt.pageX < 50 && evt.pageY > 50){
+        if (evt.pageX < survivshim.iconMenu.getSize() && evt.pageY > 50){
             survivshim.gameEditor.speedX += survivshim.C.EDITOR_VITESSE_DEFILEMENT;    
         }else if (evt.pageX > (window.innerWidth-50)){
             survivshim.gameEditor.speedX -= survivshim.C.EDITOR_VITESSE_DEFILEMENT;
         }else{
             survivshim.gameEditor.speedX = 0;
         }
-        if (evt.pageY < 50 && evt.pageX > 50){
+        if (evt.pageY < 50 && evt.pageX > survivshim.iconMenu.getSize()){
             survivshim.gameEditor.speedY += survivshim.C.EDITOR_VITESSE_DEFILEMENT;    
         }else if (evt.pageY > (window.innerHeight-50)){
             survivshim.gameEditor.speedY -= survivshim.C.EDITOR_VITESSE_DEFILEMENT;

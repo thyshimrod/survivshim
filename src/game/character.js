@@ -12,6 +12,7 @@ survivshim.Character = function(){
   this.size = 64;
   this.step = survivshim.C.CHARACTER_STEP;
   this.path = [];
+  this.level = 0;
   this.movingTick = 0;
   this.inventory = {};
   this.action = 0;
