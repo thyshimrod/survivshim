@@ -25,7 +25,7 @@ survivshim.materiaux = {
         "name" : "champignons",
         "size":{"x" : 16, "y" : 16},
         "tileset" : "assets/tileset/tileset1.png",
-        "sprite" : { "x" : 224, "y" : 1088},
+        "sprite" : { "x" : 64, "y" : 1120},
         "use" : survivshim.C.TYPE_INVENTORY_CONSOMMABLE,
         "effect" : [
           {"name" : "faim", "value" : 1000},

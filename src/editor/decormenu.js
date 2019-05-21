@@ -19,6 +19,25 @@ survivshim.DecorMenu.prototype ={
         this.active = false
     },
 
+    renderMateriaux : function(){
+        var i = 0;        
+        for (let key in survivshim.decors){
+            let decor = survivshim.decors[key];    
+            let spriteset = survivshim.tileset.get(decor.tileset);
+            this.ctx.drawImage(
+                spriteset,
+                decor.sprites[0].x,
+                decor.sprites[0].y,
+                decor.size.x,
+                decor.size.y,
+                i*32 + this.x,
+                this.y,
+                survivshim.gameEditor.tileSize,
+                survivshim.gameEditor.tileSize);
+            i++;
+        }
+    },
+
     render : function(){
         if (this.active){
             this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
@@ -31,6 +50,7 @@ survivshim.DecorMenu.prototype ={
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             this.ctx.rect(this.x, this.y, this.width, this.height);
             this.ctx.stroke();
+            this.renderMateriaux();
         }
     },
 
