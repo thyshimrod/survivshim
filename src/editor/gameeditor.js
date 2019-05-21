@@ -40,6 +40,9 @@ survivshim.GameEditor.prototype ={
 
     clickEvent : function(evt){
         let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY);
+        if (!clickOnMenu){
+            survivshim.levelEditor.getDecorUnderMouse(evt.pageX,evt.pageY);
+        }
     },
 
     mouseMoveEvent : function(evt){

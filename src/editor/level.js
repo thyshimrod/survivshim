@@ -7,6 +7,7 @@ survivshim.LevelEditor = function (){
     this.maxX = 100;
     this.maxY = 100;
     this.name = "";
+    this.action = 0;
 }
 
 survivshim.LevelEditor.prototype ={
@@ -24,6 +25,20 @@ survivshim.LevelEditor.prototype ={
             let tempTile = new survivshim.Tile();
             tempTile.init(tile.id, tile.x, tile.y);
             this.tiles.push(tempTile);
+        })
+    },
+
+    getDecorUnderMouse : function(x,y){
+        var foundDecor = null;
+        this.decors.forEach(function(decor){
+            console.log((decor.x*survivshim.gameEditor.tileSize + survivshim.gameEditor.decalageX ) + "//" + (x )) ;
+            if ((decor.x*survivshim.gameEditor.tileSize + survivshim.gameEditor.decalageX) < (x ) 
+             && (decor.x*survivshim.gameEditor.tileSize + decor.sizeX +survivshim.gameEditor.decalageX)  > (x+survivshim.gameEditor.decalageX)
+             && (decor.y*survivshim.gameEditor.tileSize + survivshim.gameEditor.decalageY) < (y ) 
+             && (decor.y*survivshim.gameEditor.tileSize + decor.sizeX +survivshim.gameEditor.decalageY)  > (y+survivshim.gameEditor.decalageY))
+             {
+                 console.log(decor);
+             }
         })
     },
 
@@ -83,6 +98,5 @@ survivshim.LevelEditor.prototype ={
         this.decors.forEach(function(decor){
             decor.render();
         })
-
     }
 }
