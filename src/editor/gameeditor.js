@@ -9,6 +9,7 @@ survivshim.GameEditor = function (){
     this.clientY = 0;
     this.speedX = 0;
     this.speedY = 0;
+    this.modeEditor = survivshim.C.EDITOR_ACTION_NONE;
 }
 
 survivshim.GameEditor.prototype ={
@@ -41,7 +42,11 @@ survivshim.GameEditor.prototype ={
     clickEvent : function(evt){
         let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY);
         if (!clickOnMenu){
-            survivshim.levelEditor.getDecorUnderMouse(evt.pageX,evt.pageY);
+            let decor = survivshim.levelEditor.getDecorUnderMouse(evt.pageX,evt.pageY);
+            if (decor != null){
+                survivshim.levelEditor.removeDecor(decor);
+
+            }
         }
     },
 

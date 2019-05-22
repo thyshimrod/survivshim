@@ -28,6 +28,21 @@ survivshim.LevelEditor.prototype ={
         })
     },
 
+    removeDecor: function(decor){
+      var _decor = decor;
+      var index = -1;
+      var i = 0;
+      this.decors.forEach(function (it){
+        if (it === _decor){
+          index = i;
+        }
+        i += 1;
+      });
+      if (index !== -1){
+        this.decors.splice(index,1);
+      }
+    },
+
     getDecorUnderMouse : function(x,y){
         var foundDecor = null;
         this.decors.forEach(function(decor){

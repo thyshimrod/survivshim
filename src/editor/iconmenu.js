@@ -51,7 +51,7 @@ survivshim.IconMenu.prototype ={
                     if(icon.icon === "decor"){
                         survivshim.decorMenu.showMenu();
                     }else if (icon.icon === "destroy"){
-                        console.log("destroy");
+                        survivshim.gameEditor.modeEditor = survivshim.C.EDITOR_ACTION_DELETE;
                     }else if (icon.icon === "save"){
                         survivshim.levelEditor.saveToJs();
                     }
