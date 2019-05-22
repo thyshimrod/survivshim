@@ -31,15 +31,15 @@ survivshim.LevelEditor.prototype ={
     getDecorUnderMouse : function(x,y){
         var foundDecor = null;
         this.decors.forEach(function(decor){
-            console.log((decor.x*survivshim.gameEditor.tileSize + survivshim.gameEditor.decalageX ) + "//" + (x )) ;
             if ((decor.x*survivshim.gameEditor.tileSize + survivshim.gameEditor.decalageX) < (x ) 
-             && (decor.x*survivshim.gameEditor.tileSize + decor.sizeX +survivshim.gameEditor.decalageX)  > (x+survivshim.gameEditor.decalageX)
+             && (decor.x*survivshim.gameEditor.tileSize + decor.sizeX + survivshim.gameEditor.decalageX)  > (x)
              && (decor.y*survivshim.gameEditor.tileSize + survivshim.gameEditor.decalageY) < (y ) 
-             && (decor.y*survivshim.gameEditor.tileSize + decor.sizeX +survivshim.gameEditor.decalageY)  > (y+survivshim.gameEditor.decalageY))
+             && (decor.y*survivshim.gameEditor.tileSize + decor.sizeX +survivshim.gameEditor.decalageY)  > (y))
              {
-                 console.log(decor);
+                 foundDecor = decor;
              }
         })
+        return foundDecor;
     },
 
     initFromJs : function(){
