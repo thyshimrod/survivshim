@@ -40,12 +40,19 @@ survivshim.GameEditor.prototype ={
     },
 
     clickEvent : function(evt){
-        let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY);
+        let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
+                         ||survivshim.decorMenu.onClick(evt.pageX,evt.pageY);
         if (!clickOnMenu){
             let decor = survivshim.levelEditor.getDecorUnderMouse(evt.pageX,evt.pageY);
-            if (decor != null){
+            if (decor != null && survivshim.gameEditor.modeEditor === survivshim.C.EDITOR_ACTION_DELETE){
                 survivshim.levelEditor.removeDecor(decor);
-
+            }else if (decor === null 
+                && survivshim.gameEditor.modeEditor == survivshim.C.EDITOR_ACTION_ADD 
+                && survivshim.decorMenu.selectedDecor !== null){
+                    console.log(survivshim.decorMenu.selectedDecor);
+                survivshim.levelEditor.addDecor(survivshim.decorMenu.selectedDecor.decor.templateId,
+                    evt.pageX + survivshim.gameEditor.decalageX,
+                    evt.pageY + survivshim.gameEditor.decalageY);
             }
         }
     },

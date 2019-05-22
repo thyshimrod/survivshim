@@ -61,7 +61,6 @@ survivshim.Decor.prototype = {
 
     render : function(){
         var ctx = survivshim.canvas.canvasTile.getContext("2d");
-        //console.log(this.x*survivshim.gameEditor.tileSize+survivshim.gameEditor.decalageX + "/" + (this.y*survivshim.gameEditor.tileSize+survivshim.gameEditor.decalageY));
         ctx.drawImage(
            this.spriteset,
            this.sprites[this.state].x,

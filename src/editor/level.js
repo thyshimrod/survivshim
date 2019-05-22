@@ -28,6 +28,15 @@ survivshim.LevelEditor.prototype ={
         })
     },
 
+    addDecor : function(templateId, x, y){
+        let decor = new survivshim.Decor();
+        console.log(templateId);
+        decor.load(templateId);
+        decor.x = Math.floor (x / survivshim.gameEditor.tileSize);
+        decor.y = Math.floor (y / survivshim.gameEditor.tileSize);
+        this.decors.push(decor);
+    },
+
     removeDecor: function(decor){
       var _decor = decor;
       var index = -1;
