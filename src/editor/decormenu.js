@@ -38,6 +38,7 @@ survivshim.DecorMenu.prototype ={
                 survivshim.gameEditor.tileSize);
             let locDecor = {};
             locDecor.decor = decor;
+            locDecor.decor.templateId = key;
             locDecor.x = i*32 + this.x;
             locDecor.y = this.y;
             this.decors.push(locDecor);
@@ -76,7 +77,6 @@ survivshim.DecorMenu.prototype ={
                     &&   _y > decor.y
                     &&   _y < (decor.y + survivshim.gameEditor.tileSize)){
                         _this.selectedDecor = decor;
-                        console.log(decor);
                         survivshim.gameEditor.modeEditor = survivshim.C.EDITOR_ACTION_ADD;
                         _this.hideMenu();
                     }
