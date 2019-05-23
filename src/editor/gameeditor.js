@@ -49,10 +49,9 @@ survivshim.GameEditor.prototype ={
             }else if (decor === null 
                 && survivshim.gameEditor.modeEditor == survivshim.C.EDITOR_ACTION_ADD 
                 && survivshim.decorMenu.selectedDecor !== null){
-                    console.log(survivshim.decorMenu.selectedDecor);
                 survivshim.levelEditor.addDecor(survivshim.decorMenu.selectedDecor.decor.templateId,
-                    evt.pageX + survivshim.gameEditor.decalageX,
-                    evt.pageY + survivshim.gameEditor.decalageY);
+                    evt.pageX - survivshim.gameEditor.decalageX,
+                    evt.pageY - survivshim.gameEditor.decalageY);
             }
         }
     },
