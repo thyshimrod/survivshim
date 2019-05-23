@@ -78,6 +78,7 @@ survivshim.Zone.prototype ={
         survivshim.collectMenu.render();
         survivshim.materiauMenu.render();
         survivshim.blueprintMenu.render();
+        survivshim.listblueprintMenu.render();
         survivshim.statsMenu.render();
         survivshim.iconMenu.render();
         survivshim.inventaireMenu.render();
@@ -183,6 +184,7 @@ survivshim.Zone.prototype ={
                         || survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.collectMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.blueprintMenu.onClick(evt.pageX,evt.pageY)
+                        || survivshim.listblueprintMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.materiauMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.statsMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.console.onClick(evt.pageX,evt.pageY)                       

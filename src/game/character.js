@@ -25,6 +25,7 @@ survivshim.Character = function(){
   this.maxFatigue = 100;
   this.hungerState = survivshim.C.HUNGER_STATE_NO;
   this.lastTicksManageState = 0;
+  this.listOfBP = [];
 };
 
 survivshim.Character.prototype = {
@@ -48,6 +49,8 @@ survivshim.Character.prototype = {
         this.hungerState = survivshim.C.HUNGER_STATE_NO;
         this.thirstyState = survivshim.C.HUNGER_STATE_NO;
         this.lastTicksManageState = newTick;
+        this.listOfBP.push(1);
+        this.listOfBP.push(2);
     },
 
     manageHunger : function(newTick){

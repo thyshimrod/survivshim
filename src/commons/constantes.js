@@ -36,6 +36,7 @@ survivshim.C = Object.freeze({
 
   //ITEM
   ITEM_COUTEAU_SILEX : 1,
+  ITEM_FEU_CAMP : 2,
 
   //ACTIONS
   ACTION_NONE : 0,

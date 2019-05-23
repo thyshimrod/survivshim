@@ -45,6 +45,7 @@ survivshim.GameEngine.prototype ={
         survivshim.collectMenu = new survivshim.CollectMenu();
         survivshim.materiauMenu = new survivshim.MateriauMenu();
         survivshim.blueprintMenu = new survivshim.BlueprintMenu();
+        survivshim.listblueprintMenu = new survivshim.ListBlueprintMenu();
         survivshim.statsMenu = new survivshim.StatsMenu();
         survivshim.inventaireMenu = new survivshim.InventaireMenu();
         survivshim.iconMenu = new survivshim.IconMenu();

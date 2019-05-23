@@ -45,7 +45,7 @@ survivshim.IconMenu.prototype ={
             this.icons.forEach(function (icon){
                 if ( _x >= icon.x && _x <= (icon.x + 32)){
                     if(icon.icon === "blueprint"){
-                        survivshim.blueprintMenu.showMenu();
+                        survivshim.listblueprintMenu.showMenu();
                     }else if (icon.icon === "stats"){
                         survivshim.statsMenu.showMenu();
                     }else if (icon.icon === "inventaire"){
