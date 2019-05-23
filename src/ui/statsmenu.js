@@ -66,7 +66,7 @@ survivshim.StatsMenu.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
         let d = new Date();
         let newTick = d.getTime();
-        let prct = (newTick - survivshim.character.lastTimeDrink) / 600;
+        let prct = (newTick - survivshim.character.lastTimeDrink) / survivshim.C.HUNGER_FACTOR;
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
         if (prct > 30 && prct <60){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
@@ -87,7 +87,7 @@ survivshim.StatsMenu.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
         let d = new Date();
         let newTick = d.getTime();
-        let prct = (newTick - survivshim.character.lastTimeDrink) / 600;
+        let prct = (newTick - survivshim.character.lastTimeDrink) / survivshim.C.HUNGER_FACTOR;
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
         if (prct > 30 && prct <60){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;
@@ -108,7 +108,7 @@ survivshim.StatsMenu.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;    
         let d = new Date();
         let newTick = d.getTime();
-        let prct = (newTick - survivshim.character.lastTimeEat) / 600;
+        let prct = (newTick - survivshim.character.lastTimeEat) / survivshim.C.HUNGER_FACTOR;
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_GREEN;
         if (prct > 30 && prct <60){
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_YELLOW;

@@ -3,8 +3,8 @@ var survivshim = survivshim || {};
 
 survivshim.BlueprintMenu = function (){
     this.active = false;
-    this.x = 100;
-    this.y = 100;
+    this.x = 300;
+    this.y = 300;
     this.width = 400;
     this.height = 400;
     this.blueprint = null;
@@ -14,12 +14,11 @@ survivshim.BlueprintMenu = function (){
 };
 
 survivshim.BlueprintMenu.prototype ={
-    showMenu : function(blueprint){
+    showMenu : function(blueprintId = 1){
         this.active = true;
-
         //this.blueprint = blueprint;
         this.blueprint = new survivshim.Blueprint();
-        this.blueprint.init(1);
+        this.blueprint.init(blueprintId);
         this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
     },
 

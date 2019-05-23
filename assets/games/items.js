@@ -9,4 +9,10 @@ survivshim.items = {
         "tileset" : "assets/tileset/murmures.png",
         "sprite" : { "x" : 32, "y" : 2976},
     },
+    2 : {
+        "name" : "feu de camp",
+        "size":{"x" : 32, "y" : 32},
+        "tileset" : "assets/tileset/murmures.png",
+        "sprite" : { "x" : 800, "y" : 384},
+    }
 };

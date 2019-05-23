@@ -51,7 +51,7 @@ survivshim.Character.prototype = {
     },
 
     manageHunger : function(newTick){
-      let prct = (newTick - survivshim.character.lastTimeEat) / 600;
+      let prct = (newTick - survivshim.character.lastTimeEat) / survivshim.C.HUNGER_FACTOR;
       if (prct > 30 && prct <60){
           if (survivshim.character.hungerState !== survivshim.C.HUNGER_STATE_LOW){
               survivshim.character.hungerState = survivshim.C.HUNGER_STATE_LOW;
@@ -83,7 +83,7 @@ survivshim.Character.prototype = {
     },
     
     manageThirsty : function(newTick){
-      let prct = (newTick - survivshim.character.lastTimeDrink) / 600;
+      let prct = (newTick - survivshim.character.lastTimeDrink) / survivshim.C.HUNGER_FACTOR;
       if (prct > 30 && prct <60){
           if (survivshim.character.thirstyState !== survivshim.C.HUNGER_STATE_LOW){
               survivshim.character.thirstyState = survivshim.C.HUNGER_STATE_LOW;

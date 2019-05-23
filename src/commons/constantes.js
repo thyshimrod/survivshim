@@ -34,6 +34,9 @@ survivshim.C = Object.freeze({
   MATERIAU_SALADE : 2,
   MATERIAU_MUSHROOM : 3,
 
+  //ITEM
+  ITEM_COUTEAU_SILEX : 1,
+
   //ACTIONS
   ACTION_NONE : 0,
   ACTION_COLLECT : 1,
@@ -61,6 +64,8 @@ survivshim.C = Object.freeze({
   EDITOR_ACTION_NONE : 0,
   EDITOR_ACTION_ADD : 1,
   EDITOR_ACTION_DELETE : 2,
+
+  HUNGER_FACTOR : 6000,
 
 
 });
