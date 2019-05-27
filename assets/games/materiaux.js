@@ -32,4 +32,12 @@ survivshim.materiaux = {
           {"name" : "soif", "value" : 1000}
         ]
       },
+      4 : {
+        "name"    : "Branche",
+        "size":{"x" : 32, "y" : 32},
+        "tileset" : "assets/tileset/tileset1.png",
+        "sprite" : { "x" : 256, "y" : 1664},
+        "use" : survivshim.C.TYPE_INVENTORY_MATERIAU
+      },
+
 };

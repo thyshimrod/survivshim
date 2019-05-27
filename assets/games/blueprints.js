@@ -27,4 +27,52 @@ survivshim.blueprints = {
             }
         ]
     },
+    3 : {
+        "name"    : "Hache en silex",
+        "item" : survivshim.C.ITEM_HACHE_SILEX,
+        "timetobuild" : 3000,
+        "tiredness" : 10,
+        "materiaux" : [
+            {
+                "templateId" : survivshim.C.MATERIAU_SILEX,
+                "quantity" : 5
+            },
+            {
+                "templateId" : survivshim.C.MATERIAU_BRANCHE,
+                "quantity" : 1
+            }
+        ]
+    },
+    4 : {
+        "name"    : "Lance en silex",
+        "item" : survivshim.C.ITEM_LANCE_SILEX,
+        "timetobuild" : 3000,
+        "tiredness" : 10,
+        "materiaux" : [
+            {
+                "templateId" : survivshim.C.MATERIAU_SILEX,
+                "quantity" : 5
+            },
+            {
+                "templateId" : survivshim.C.MATERIAU_BRANCHE,
+                "quantity" : 3
+            }
+        ]
+    },
+    5 : {
+        "name"    : "Pioche en silex",
+        "item" : survivshim.C.ITEM_PIOCHE_SILEX,
+        "timetobuild" : 3000,
+        "tiredness" : 10,
+        "materiaux" : [
+            {
+                "templateId" : survivshim.C.MATERIAU_SILEX,
+                "quantity" : 5
+            },
+            {
+                "templateId" : survivshim.C.MATERIAU_BRANCHE,
+                "quantity" : 3
+            }
+        ]
+    }
 };
