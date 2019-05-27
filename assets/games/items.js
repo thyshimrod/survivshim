@@ -31,6 +31,6 @@ survivshim.items = {
         "name"    : "Pioche en silex",
         "size":{"x" : 32, "y" : 32},
         "tileset" : "assets/tileset/murmures.png",
-        "sprite" : { "x" : 448, "y" : 2944},
+        "sprite" : { "x" : 448, "y" : 2976},
     }
 };
