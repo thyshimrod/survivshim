@@ -61,6 +61,8 @@ survivshim.Character.prototype = {
     levelUp : function(){
       this.level += 1;
       this.newBP += 1;
+      survivshim.console.addMessage("Vous êtes passés de niveau : niveau : " + this.level);
+      survivshim.console.addMessage("Vous pouvez apprendre une nouvelle recette");
     },
 
     manageHunger : function(newTick){

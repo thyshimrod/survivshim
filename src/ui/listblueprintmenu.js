@@ -97,13 +97,15 @@ survivshim.ListBlueprintMenu.prototype ={
         if (survivshim.character.newBP > 0){
             var listOfBp = []
             for (var key in survivshim.blueprints){
-                var found = false;
-                survivshim.character.listOfBP.forEach(function(bp){
-                    if (bp == key){
-                        found = true;
-                    } 
-                })
-                if (!found) listOfBp.push(key);
+                if (survivshim.character.level >= survivshim.blueprints[key].level){
+                    var found = false;
+                    survivshim.character.listOfBP.forEach(function(bp){
+                        if (bp == key){
+                            found = true;
+                        } 
+                    })
+                    if (!found) listOfBp.push(key);
+                }
             }
             var i = 0;
             var _this = this;
