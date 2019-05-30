@@ -50,14 +50,17 @@ survivshim.Character.prototype = {
         this.thirstyState = survivshim.C.HUNGER_STATE_NO;
         this.lastTicksManageState = newTick;
         this.level = 0;
+        this.newBP = 0;
     },
 
     addBP : function(templateId){
       this.listOfBP.push(templateId);
+      this.newBP -= 1;
     },
 
     levelUp : function(){
       this.level += 1;
+      this.newBP += 1;
     },
 
     manageHunger : function(newTick){

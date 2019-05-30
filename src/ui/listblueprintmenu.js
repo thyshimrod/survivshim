@@ -94,37 +94,39 @@ survivshim.ListBlueprintMenu.prototype ={
     },
 
     renderNewBP : function(){
-        var listOfBp = []
-        for (var key in survivshim.blueprints){
-            var found = false;
-            survivshim.character.listOfBP.forEach(function(bp){
-                if (bp == key){
-                    found = true;
-                } 
+        if (survivshim.character.newBP > 0){
+            var listOfBp = []
+            for (var key in survivshim.blueprints){
+                var found = false;
+                survivshim.character.listOfBP.forEach(function(bp){
+                    if (bp == key){
+                        found = true;
+                    } 
+                })
+                if (!found) listOfBp.push(key);
+            }
+            var i = 0;
+            var _this = this;
+            _this.listOfBP = [];
+            this.ctx.font = "8px Arial";
+            listOfBp.forEach(function(bp){
+                let blueprint = new survivshim.Blueprint();
+                blueprint.init(bp);
+                blueprint.resultItem.render(_this.x + 20 +i*60,_this.y + 50);
+                _this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+                let text = blueprint.resultItem.name;
+                _this.ctx.fillText(text ,
+                    _this.x + 20 +i*60 -  ((text.length)), 
+                    _this.y + 50 );
+                let BP = {
+                    "x" : _this.x +20 +i*60,
+                    "y" : _this.y + 50,
+                    "id" : bp
+                };
+                _this.listOfBP.push(BP);
+                i++;
             })
-            if (!found) listOfBp.push(key);
         }
-        var i = 0;
-        var _this = this;
-        _this.listOfBP = [];
-        this.ctx.font = "8px Arial";
-        listOfBp.forEach(function(bp){
-            let blueprint = new survivshim.Blueprint();
-            blueprint.init(bp);
-            blueprint.resultItem.render(_this.x + 20 +i*60,_this.y + 50);
-            _this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
-            let text = blueprint.resultItem.name;
-            _this.ctx.fillText(text ,
-                _this.x + 20 +i*60 -  ((text.length)), 
-                _this.y + 50 );
-            let BP = {
-                "x" : _this.x +20 +i*60,
-                "y" : _this.y + 50,
-                "id" : bp
-            };
-            _this.listOfBP.push(BP);
-            i++;
-        })
 
     },
 
