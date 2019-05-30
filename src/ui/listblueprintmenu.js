@@ -13,6 +13,7 @@ survivshim.ListBlueprintMenu = function (){
     this.timerBuild = 0;
     this.cellSize = 200
     this.listOfBP = [];
+    this.lastTick = 0;
     this.state = survivshim.C.STATE_LIST_BLUEPRINT_BLUEPRINTS;
 };
 
@@ -71,6 +72,7 @@ survivshim.ListBlueprintMenu.prototype ={
     renderBP : function(){
         var i = 0;
         var _this = this;
+        _this.listOfBP = [];
         this.ctx.font = "8px Arial";
         survivshim.character.listOfBP.forEach(function(bp){
             let blueprint = new survivshim.Blueprint();
@@ -104,6 +106,7 @@ survivshim.ListBlueprintMenu.prototype ={
         }
         var i = 0;
         var _this = this;
+        _this.listOfBP = [];
         this.ctx.font = "8px Arial";
         listOfBp.forEach(function(bp){
             let blueprint = new survivshim.Blueprint();
@@ -144,7 +147,7 @@ survivshim.ListBlueprintMenu.prototype ={
                     this.state = survivshim.C.STATE_LIST_BLUEPRINT_BLUEPRINTS;
                 }else if (x > (this.x + this.cellSize) && y < (this.y + 30)){
                     this.state = survivshim.C.STATE_LIST_BLUEPRINT_NEW;   
-                }else if (this.state === survivshim.C.STATE_LIST_BLUEPRINT_BLUEPRINTS){
+                }else{ 
                     var _x = x;
                     var _y = y;
                     var _this = this;
@@ -153,8 +156,18 @@ survivshim.ListBlueprintMenu.prototype ={
                             && _x < (bp.x +32)
                             && _y > bp.y
                             && _y < (bp.y+32)){
-                                _this.hideMenu();
-                                survivshim.blueprintMenu.showMenu(bp.id);
+                                let d = new Date();
+                                let newTick = d.getTime();
+                                if (newTick - _this.lastTick > 1000){
+                                    _this.lastTick = newTick;
+                                    if (_this.state === survivshim.C.STATE_LIST_BLUEPRINT_BLUEPRINTS){
+                                        _this.hideMenu();
+                                        survivshim.blueprintMenu.showMenu(bp.id);
+                                    }else{
+                                        survivshim.character.addBP(bp.id);
+                                        _this.state = survivshim.C.STATE_LIST_BLUEPRINT_BLUEPRINTS;
+                                    }
+                                }
                             }
                     })
                 }

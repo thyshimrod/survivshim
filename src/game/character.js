@@ -53,6 +53,10 @@ survivshim.Character.prototype = {
         this.listOfBP.push(2);
     },
 
+    addBP : function(templateId){
+      this.listOfBP.push(templateId);
+    },
+
     manageHunger : function(newTick){
       let prct = (newTick - survivshim.character.lastTimeEat) / survivshim.C.HUNGER_FACTOR;
       if (prct > 30 && prct <60){
