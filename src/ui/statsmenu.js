@@ -132,6 +132,9 @@ survivshim.StatsMenu.prototype ={
             this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Statistiques";
             this.ctx.fillText(text ,this.x + 10, this.y + 10);
+
+            text = "Niveau :  " + survivshim.character.level;
+            this.ctx.fillText(text ,this.x + 10, this.y + 30);
             
             this.renderHungryStats();
             this.renderDrinkStats();

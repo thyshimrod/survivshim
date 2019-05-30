@@ -12,9 +12,18 @@ survivshim.HourUi = function (){
 
 survivshim.HourUi.prototype ={
 
+    newDay : function(){
+        survivshim.console.addMessage("Nouvelle Journée !!");
+        survivshim.character.levelUp();
+    },
+
     calcDate : function(){
         let d = new Date();
-        this.hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 17) % 24;
+        let hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 7) % 24;
+        if (hour === 9 && this.hour !== 9){
+            this.newDay();
+        }
+        this.hour = hour;
     },
     
 
