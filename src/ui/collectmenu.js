@@ -5,6 +5,8 @@ survivshim.CollectMenu = function (){
   this.active = false;
   this.item = null;
   this.collected = 0;
+  this.height = 70;
+  this.width = 200;
 };
 
 survivshim.CollectMenu.prototype ={
@@ -28,12 +30,12 @@ survivshim.CollectMenu.prototype ={
             ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
             ctx.fillRect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                         this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
-                         200,70);
+                         this.width,this.height);
             ctx.beginPath();
             ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             ctx.rect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                 this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
-                 200,70);
+                 this.width,this.height);
             ctx.stroke();
             ctx.font = "1Opx Arial";
             ctx.fillStyle = survivshim.C.COLOR_TEXT;

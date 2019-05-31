@@ -35,10 +35,10 @@ survivshim.Decor.prototype = {
       this.sizeY = src.size.y;
       if (typeof src.collect !== "undefined"){
         this.collect.materiau = src.collect.templateid;
-        //this.collect.materiau = src.collect.templateId;
         this.collect.quantity = src.collect.quantity;
         this.collect.chance = src.collect.chance;
         this.collect.speed = src.collect.speed;
+        this.collect.tools = src.collect.tools;
       }
       if (typeof src.ratio !== "undefined"){
         this.ratio.x = src.ratio.x;
