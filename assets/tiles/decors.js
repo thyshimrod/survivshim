@@ -47,6 +47,7 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 256, "y" : 1664},
     ],
+    "collect" : { "templateid" : survivshim.C.MATERIAU_BRANCHE, "quantity" : 1, "chance" : 50, "speed" : 1}
   },
 
   "4" :
@@ -83,6 +84,13 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 0, "y" : 1280},
     ],
+    "collect" : { 
+      "templateid" : survivshim.C.MATERIAU_MUSHROOM, 
+      "quantity" : 2, 
+      "chance" : 100, 
+      "speed" : 1,
+      "tools" : survivshim.C.ITEM_HACHE_SILEX
+    }
   },
   "7" :
   {
