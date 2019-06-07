@@ -8,6 +8,7 @@ survivshim.HourUi = function (){
     this.height = 60;
     this.ctx = null;    
     this.hour = 9;
+    this.temperature = 20;
 };
 
 survivshim.HourUi.prototype ={
@@ -25,10 +26,15 @@ survivshim.HourUi.prototype ={
         }
         this.hour = hour;
     },
+
+    calcTemperature : function(){
+        this.temperature = Math.floor((12 -(Math.abs(12 - this.hour))) * 12 /20) + 5;
+    },
     
 
     render : function(){
         this.calcDate();
+        this.calcTemperature();
         this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
         this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
         this.ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -39,7 +45,7 @@ survivshim.HourUi.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         let text = this.hour + " : 00";
         this.ctx.fillText(text , this.x + 6 , this.y  + 25);
-        text = "20 °c";
+        text = this.temperature + " °c";
         this.ctx.fillText(text , this.x + 6 , this.y  + 40);
     },
 
