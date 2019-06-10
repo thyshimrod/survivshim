@@ -28,7 +28,7 @@ survivshim.HourUi.prototype ={
     },
 
     calcTemperature : function(){
-        this.temperature = Math.floor((12 -(Math.abs(12 - this.hour))) * 12 /20) + 5;
+        this.temperature = Math.floor((13 -(Math.abs(13 - this.hour))) * 20/12) + 5;
     },
     
 
