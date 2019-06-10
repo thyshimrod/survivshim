@@ -7,6 +7,7 @@ survivshim.SommeilMenu = function (){
   this.y = 200;
   this.width = 200;
   this.height = 200;
+  this.nbHourSommeil = 3;
   this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
 };
 
@@ -52,7 +53,8 @@ survivshim.SommeilMenu.prototype ={
             && y > this.y && y < (this.y + this.height)){
                 if ( x > (this.x + 60) && x < (this.x + 120)
                 && y > (this.y + 110) && y < (this.y + 130)){
-                    console.log("click");
+                    this.hideMenu();        
+                    survivshim.hourui.sommeil += this.nbHourSommeil;
                 }
                 return survivshim.C.CLICK_ON_WINDOW;
             }

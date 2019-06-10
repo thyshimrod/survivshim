@@ -14,7 +14,7 @@ survivshim.Night = function (){
 
 survivshim.Night.prototype ={
     calcAlpha : function(){
-        let hour = survivshim.hourui.hour;
+        let hour = survivshim.hourui.getHour();
         if (hour > 9 && hour < 18){
             this.alpha = 0;
         }else if (hour == 19 || hour == 8){

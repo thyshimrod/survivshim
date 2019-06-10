@@ -9,6 +9,7 @@ survivshim.HourUi = function (){
     this.ctx = null;    
     this.hour = 9;
     this.temperature = 20;
+    this.sommeil = 0;
 };
 
 survivshim.HourUi.prototype ={
@@ -20,7 +21,7 @@ survivshim.HourUi.prototype ={
 
     calcDate : function(){
         let d = new Date();
-        let hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 7) % 24;
+        let hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 7 + this.sommeil) % 24 ;
         if (hour === 9 && this.hour !== 9){
             this.newDay();
         }
@@ -29,6 +30,10 @@ survivshim.HourUi.prototype ={
 
     calcTemperature : function(){
         this.temperature = Math.floor((13 -(Math.abs(13 - this.hour))) * 20/12) + 5;
+    },
+
+    getHour : function(){
+        return this.hour;    
     },
     
 
