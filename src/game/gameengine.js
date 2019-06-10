@@ -52,6 +52,7 @@ survivshim.GameEngine.prototype ={
         survivshim.hourui = new survivshim.HourUi();
         survivshim.console = new survivshim.Console();
         survivshim.night = new survivshim.Night();
+        survivshim.sommeilMenu = new survivshim.SommeilMenu();
         survivshim.console.addMessage("Welcome To SurvivShim");
         survivshim.console.addMessage("We hope you will survive !!");
         survivshim.iconMenu.init();

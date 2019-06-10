@@ -85,6 +85,7 @@ survivshim.Zone.prototype ={
         survivshim.console.render();
         survivshim.hourui.render();
         survivshim.night.render();
+        survivshim.sommeilMenu.render();
         survivshim.contextualMenuOnMateriauMenu.render();
 
     },
@@ -180,6 +181,7 @@ survivshim.Zone.prototype ={
     clickEvent : function(evt){
         let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.hourui.onClick(evt.pageX,evt.pageY) 
+                        || survivshim.sommeilMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.contextualMenuOnMateriauMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.collectMenu.onClick(evt.pageX,evt.pageY) 
