@@ -69,6 +69,9 @@ survivshim.InventaireMenu.prototype ={
         this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
         this.ctx.rect(this.x + this.sizeCellMenu * 2, this.y, this.sizeCellMenu, 20);
         this.ctx.stroke();  
+
+        text = "X";
+        this.ctx.fillText(text,this.x + this.width -10, this.y +10);
     },
 
     renderItem : function(typeItem){
@@ -137,9 +140,11 @@ survivshim.InventaireMenu.prototype ={
                 }else if ( x > (this.x + this.sizeCellMenu) && x < (this.x + this.sizeCellMenu*2)
                 && y < (this.y + 20)){
                     this.state = survivshim.C.STATE_INVENTORY_MATERIAU;
-                }else if ( x > (this.x + this.sizeCellMenu * 2) && x < (this.x + this.sizeCellMenu * 3)
+                }else if ( x > (this.x + this.sizeCellMenu * 2) && x < (this.x + this.sizeCellMenu * 3 -10)
                 && y < (this.y + 20)){
                     this.state = survivshim.C.STATE_INVENTORY_CONSOMMABLE;
+                }else if (x > (this.x + this.sizeCellMenu * 3 -10)){
+                    this.hideMenu();
                 }else{
                     var _x = x;
                     var _y = y;

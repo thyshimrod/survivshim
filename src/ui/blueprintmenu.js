@@ -79,6 +79,8 @@ survivshim.BlueprintMenu.prototype ={
             this.y+200,
             this.width,
             3);
+        text = "X";
+        this.ctx.fillText(text,this.x + this.width - 10, this.y +10);
     },
 
     renderAction : function(){

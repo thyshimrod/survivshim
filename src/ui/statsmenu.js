@@ -5,6 +5,8 @@ survivshim.StatsMenu = function (){
   this.active = false;
   this.x = 200;
   this.y = 200;
+  this.height = 200;
+  this.width = 300;
   this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
 };
 
@@ -124,10 +126,10 @@ survivshim.StatsMenu.prototype ={
     render : function(){
         if (this.active === true){
             this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
-            this.ctx.fillRect(this.x,this.y,300,200);
+            this.ctx.fillRect(this.x,this.y,this.width,this.height);
             this.ctx.beginPath();
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            this.ctx.rect(this.x,this.y,300,200);
+            this.ctx.rect(this.x,this.y,this.width,this.height);
             this.ctx.stroke();
             this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Statistiques";
@@ -135,6 +137,9 @@ survivshim.StatsMenu.prototype ={
 
             text = "Niveau :  " + survivshim.character.level;
             this.ctx.fillText(text ,this.x + 10, this.y + 30);
+
+            text = "X";
+            this.ctx.fillText(text, this.x + this.width -10,this.y + 10 );
             
             this.renderHungryStats();
             this.renderDrinkStats();

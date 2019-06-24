@@ -44,6 +44,9 @@ survivshim.SommeilMenu.prototype ={
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             this.ctx.rect(this.x + 65, this.y + 105,60,20);
             this.ctx.stroke();
+
+            text = "X";
+            this.ctx.fillText(text, this.x + this.width -10,this.y +10);
         }
     },
 
@@ -55,6 +58,8 @@ survivshim.SommeilMenu.prototype ={
                 && y > (this.y + 110) && y < (this.y + 130)){
                     this.hideMenu();        
                     survivshim.hourui.sommeil += this.nbHourSommeil;
+                }else if( x > this.x + this.width -10){
+                    this.hideMenu();
                 }
                 return survivshim.C.CLICK_ON_WINDOW;
             }

@@ -45,7 +45,11 @@ survivshim.ListBlueprintMenu.prototype ={
         if (this.state === survivshim.C.STATE_LIST_BLUEPRINT_BLUEPRINTS){
             this.ctx.fillStyle = survivshim.C.COLOR_TEXT_CHOOSEN;
         }
-        let text = "Blueprint";
+        let  text = "X"
+        this.ctx.fillText(text ,
+            this.x + this.width -10, 
+            this.y + 10);
+        text = "Blueprint";
         this.ctx.fillText(text ,
             this.x + 70, 
             this.y + 15);
@@ -149,8 +153,10 @@ survivshim.ListBlueprintMenu.prototype ={
             && y < (this.y + this.height) && y > (this.y)){
                 if ( x < (this.x + this.cellSize) && y < (this.y + 30)){
                     this.state = survivshim.C.STATE_LIST_BLUEPRINT_BLUEPRINTS;
-                }else if (x > (this.x + this.cellSize) && y < (this.y + 30)){
-                    this.state = survivshim.C.STATE_LIST_BLUEPRINT_NEW;   
+                }else if (x > (this.x + this.cellSize) && (x < (this.x + this.cellSize*2 -10)) && y < (this.y + 30)){
+                    this.state = survivshim.C.STATE_LIST_BLUEPRINT_NEW;  
+                }else if (x > (this.x + this.cellSize*2 -10)) {
+                    this.hideMenu();
                 }else{ 
                     var _x = x;
                     var _y = y;
