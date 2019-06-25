@@ -41,8 +41,14 @@ survivshim.ContextualMenu.prototype ={
             this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 67,
                 60,20);
         this.ctx.stroke();
+        let objDistance = {};
+        objDistance.x = this.item.x*survivshim.gameEngine.tileSize;
+        objDistance.y = this.item.y*survivshim.gameEngine.tileSize;
+        let distance = calcDistance(survivshim.character,objDistance);
         if (typeof this.item.collect.tools !== "undefined"){
-            
+            this.ctx.fillStyle = "red";
+            this.collectable = false;
+        }else if( distance > 50){
             this.ctx.fillStyle = "red";
             this.collectable = false;
         }
