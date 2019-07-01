@@ -18,7 +18,9 @@ survivshim.IconMenu.prototype ={
         this.icons.push(icon);
         icon = { "x" : 66 , "y" : 0, "tx" : 96, "ty" : 3968 , "icon" : "inventaire"};
         this.icons.push(icon);
-        icon = { "x" : 99 , "y" : 0, "tx" :  1984, "ty" : 4384 , "icon" : "sommeil"};
+        icon = { "x" : 132 , "y" : 0, "tx" :  1984, "ty" : 4384 , "icon" : "sommeil"};
+        this.icons.push(icon);
+        icon = { "x" : 99 , "y" : 0, "tx" :  1664, "ty" : 3904 , "icon" : "equipement"};
         this.icons.push(icon);
     },
 
@@ -54,6 +56,8 @@ survivshim.IconMenu.prototype ={
                         survivshim.inventaireMenu.showMenu();
                     }else if (icon.icon === "sommeil"){
                         survivshim.sommeilMenu.showMenu();
+                    }else if(icon.icon === "equipement"){
+                        survivshim.equipementMenu.showMenu();
                     }
                 }
   0         })

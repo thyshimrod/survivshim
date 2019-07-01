@@ -49,6 +49,7 @@ survivshim.GameEngine.prototype ={
         survivshim.statsMenu = new survivshim.StatsMenu();
         survivshim.inventaireMenu = new survivshim.InventaireMenu();
         survivshim.iconMenu = new survivshim.IconMenu();
+        survivshim.equipementMenu = new survivshim.EquipementMenu();
         survivshim.hourui = new survivshim.HourUi();
         survivshim.console = new survivshim.Console();
         survivshim.night = new survivshim.Night();
