@@ -4,7 +4,7 @@ var survivshim = survivshim || {};
 survivshim.EquipementMenu = function (){
   this.active = false;
   this.x = 400;
-  this.y = 400;
+  this.y = 300;
   this.height = 400;
   this.width = 400;
   this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
@@ -14,12 +14,32 @@ survivshim.EquipementMenu = function (){
 survivshim.EquipementMenu.prototype ={
     showMenu : function(blueprint){
         this.active = true;
-        let icon = { "x" : 190 , "y" : 20, "tx" : 33, "ty" : 33 , "icon" : "head"};
+        let icon = { "x" : 180 , "y" : 80, "tx" : 33, "ty" : 33 , "icon" : "head"};
+        this.icons.push(icon);
+        icon = { "x" : 100 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : "lefthand"};
+        this.icons.push(icon);
+        icon = { "x" : 260 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : "righthand"};
+        this.icons.push(icon);
+        icon = { "x" : 180 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : "body"};
+        this.icons.push(icon);
+        icon = { "x" : 180 , "y" : 220, "tx" : 33, "ty" : 33 , "icon" : "leg"};
+        this.icons.push(icon);
+        icon = { "x" : 180 , "y" : 280, "tx" : 33, "ty" : 33 , "icon" : "foot"};
         this.icons.push(icon);
     },
 
     hideMenu : function(){
         this.active = false;
+    },
+
+    renderEquipement : function(){
+        var _this = this;
+        this.icons.forEach(function(icon){
+            _this.ctx.beginPath();
+            _this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+            _this.ctx.rect(_this.x + icon.x,_this.y + icon.y,icon.tx,icon.tx);
+            _this.ctx.stroke();
+        })
     },
 
     render : function(){
@@ -35,6 +55,8 @@ survivshim.EquipementMenu.prototype ={
             this.ctx.fillText(text ,this.x + 10, this.y + 10);
             text = "X";
             this.ctx.fillText(text,this.x + this.width -10, this.y +10);
+
+            this.renderEquipement();
         }
     },
 
