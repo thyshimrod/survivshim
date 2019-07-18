@@ -41,9 +41,26 @@ survivshim.ContextualMenuOnMateriauMenu.prototype ={
             this.y + 33);
     },
 
+    renderMenuContentEquipement : function(){
+        let text = "Equiper";
+        this.ctx.fillText(text ,
+            this.x + 5, 
+            this.y + 13);
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.x, this.y+20);
+        this.ctx.lineTo(this.x + this.width, this.y + 20);
+        this.ctx.stroke();
+        text = "Detruire";
+        this.ctx.fillText(text ,
+            this.x + 5, 
+            this.y + 33);
+    },
+
     renderMenuContent : function(){
         if (this.materiau.use === survivshim.C.TYPE_INVENTORY_CONSOMMABLE){
             this.renderMenuContentConsommable();
+        }else if (this.materiau.use === survivshim.C.TYPE_INVENTORY_EQUIPEMENT){
+            this.renderMenuContentEquipement();
         }
     },
 

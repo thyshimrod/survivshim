@@ -8,6 +8,8 @@ survivshim.Item = function(){
     this.sprites = {};
     this.size = {};
     this.quantity = 1;
+    this.status = survivshim.C.ITEM_STATUS_UNWEARED;
+    this.use = "undefined";
 };
   
 survivshim.Item.prototype = {
@@ -18,6 +20,7 @@ survivshim.Item.prototype = {
         this.name = src.name;
         this.sprite = {"state" : src.sprite.state, "x" : src.sprite.x, "y" : src.sprite.y};
         this.size = {"x" :src.size.x , "y": src.size.y};
+        this.use = src.use;
       },
 
       render : function(x,y){
