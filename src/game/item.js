@@ -10,6 +10,7 @@ survivshim.Item = function(){
     this.quantity = 1;
     this.status = survivshim.C.ITEM_STATUS_UNWEARED;
     this.use = "undefined";
+    this.location = "undefined";
 };
   
 survivshim.Item.prototype = {
@@ -21,6 +22,7 @@ survivshim.Item.prototype = {
         this.sprite = {"state" : src.sprite.state, "x" : src.sprite.x, "y" : src.sprite.y};
         this.size = {"x" :src.size.x , "y": src.size.y};
         this.use = src.use;
+        this.location = src.location;
       },
 
       render : function(x,y){

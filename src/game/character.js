@@ -185,6 +185,10 @@ survivshim.Character.prototype = {
       this.manageStates();
     },
 
+    equip : function(item){
+      item.status = survivshim.C.ITEM_STATUS_WEARED;
+    },
+
     getMateriau : function(idMat){
       if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU] === "undefined"){
         return null;

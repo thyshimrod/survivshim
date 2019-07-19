@@ -14,17 +14,17 @@ survivshim.EquipementMenu = function (){
 survivshim.EquipementMenu.prototype ={
     showMenu : function(blueprint){
         this.active = true;
-        let icon = { "x" : 180 , "y" : 80, "tx" : 33, "ty" : 33 , "icon" : "head"};
+        let icon = { "x" : 180 , "y" : 80, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_HEAD};
         this.icons.push(icon);
-        icon = { "x" : 100 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : "lefthand"};
+        icon = { "x" : 100 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_LEFTHAND};
         this.icons.push(icon);
-        icon = { "x" : 260 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : "righthand"};
+        icon = { "x" : 260 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_RIGHTHAND};
         this.icons.push(icon);
-        icon = { "x" : 180 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : "body"};
+        icon = { "x" : 180 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_BODY};
         this.icons.push(icon);
-        icon = { "x" : 180 , "y" : 220, "tx" : 33, "ty" : 33 , "icon" : "leg"};
+        icon = { "x" : 180 , "y" : 220, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCAITON_LEGS};
         this.icons.push(icon);
-        icon = { "x" : 180 , "y" : 280, "tx" : 33, "ty" : 33 , "icon" : "foot"};
+        icon = { "x" : 180 , "y" : 280, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_FOOT};
         this.icons.push(icon);
     },
 
@@ -39,6 +39,12 @@ survivshim.EquipementMenu.prototype ={
             _this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             _this.ctx.rect(_this.x + icon.x,_this.y + icon.y,icon.tx,icon.tx);
             _this.ctx.stroke();
+            var _icon = icon;
+            survivshim.character.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT].forEach(function(item){
+                if (_icon.icon === item.location){
+                    item.render(_this.x + icon.x,_this.y + icon.y);
+                }
+            })
         })
     },
 

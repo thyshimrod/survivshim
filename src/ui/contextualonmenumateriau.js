@@ -87,14 +87,21 @@ survivshim.ContextualMenuOnMateriauMenu.prototype ={
         }else if (action === 2){
             survivshim.character.removeMateriau(this.materiau);
         }
-        
+    },
+
+    doActionEquipement : function(action){
+        if ( action === 1) {
+            survivshim.character.equip(this.materiau);
+        }else if (action === 2){
+            // TODO
+        }
     },
 
     doAction : function(action){
         if (this.materiau.use === survivshim.C.TYPE_INVENTORY_CONSOMMABLE){
             this.doActionConsommable(action);
-        }else{
-
+        }else if (this.materiau.use === survivshim.C.TYPE_INVENTORY_EQUIPEMENT){
+            this.doActionEquipement(action);
         }
         this.hideMenu();
     },
