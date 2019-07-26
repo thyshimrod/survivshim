@@ -17,7 +17,8 @@ survivshim.items = {
         "tileset" : "assets/tileset/murmures.png",
         "sprite" : { "x" : 800, "y" : 384},
         "use" : survivshim.C.STATE_INVENTORY_EQUIPEMENT,
-        "location" : survivshim.C.ITEM_LOCATION_FLOOR
+        "location" : survivshim.C.ITEM_LOCATION_FLOOR,
+        "decor" : "8"
     },
     3 :  {
         "name"    : "Hache en silex",

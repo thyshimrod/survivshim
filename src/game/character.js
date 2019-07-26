@@ -187,6 +187,15 @@ survivshim.Character.prototype = {
 
     equip : function(item){
       item.status = survivshim.C.ITEM_STATUS_WEARED;
+      if (item.location === survivshim.C.ITEM_LOCATION_FLOOR){
+        let coord = this.getTile();
+        let decorJs = { "id" : item.decor,
+                        "x"  : coord.x,
+                        "y"  : coord.y}
+        let decor = new survivshim.Decor();
+        decor.loadFromJs(decorJs);
+        survivshim.zone.decors.push(decor);
+      }
     },
 
     getMateriau : function(idMat){

@@ -105,4 +105,17 @@ survivshim.decors = {
     ],
     "collect" : { "templateid" : survivshim.C.MATERIAU_SALADE, "quantity" : 1, "chance" : 100, "speed" : 1}
   },
+
+  "8" :
+  {
+    "name" : "feu de camp",
+    "typedecor" : 0,
+    "blocking" : true,
+    "size":{"x" : 32, "y" : 32},
+    "ratio" : {"x" : 1, "y" : 1},
+    "tileset" : "assets/tileset/murmures.png",
+    "sprites" : [
+      { "state" : 0, "x" : 800, "y" : 384},
+    ],
+  },
 };

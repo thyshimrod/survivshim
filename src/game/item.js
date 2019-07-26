@@ -11,6 +11,7 @@ survivshim.Item = function(){
     this.status = survivshim.C.ITEM_STATUS_UNWEARED;
     this.use = "undefined";
     this.location = "undefined";
+    this.decor = "undefined";
 };
   
 survivshim.Item.prototype = {
@@ -23,6 +24,9 @@ survivshim.Item.prototype = {
         this.size = {"x" :src.size.x , "y": src.size.y};
         this.use = src.use;
         this.location = src.location;
+        if (typeof src.decor !== "undefined"){
+          this.decor = src.decor;
+        }
       },
 
       render : function(x,y){
