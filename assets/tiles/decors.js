@@ -117,5 +117,6 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 800, "y" : 384},
     ],
+    "timer" : 10000
   },
 };

@@ -16,6 +16,8 @@ survivshim.Decor = function(){
     this.quality = 0;
     this.collect = {};
     this.ratio = {"x" : 1, "y" : 1};
+    this.timer = 0;
+    this.startTicks = 0;
 };
 
 survivshim.Decor.prototype = {
@@ -27,6 +29,8 @@ survivshim.Decor.prototype = {
       this.name = src.name;
       this.blocking = src.blocking;
       var _this = this;
+      let d = new Date();
+      let newTick = d.getTime();
   
       src.sprites.forEach(function(sp){
         _this.sprites.push({"state" : sp.state, "x" : sp.x, "y" : sp.y});
@@ -43,6 +47,10 @@ survivshim.Decor.prototype = {
       if (typeof src.ratio !== "undefined"){
         this.ratio.x = src.ratio.x;
         this.ratio.y = src.ratio.y;
+      }
+      if (typeof src.timer !== "undefined"){
+        this.timer = src.timer;
+        this.startTicks = newTick;
       }
     },
 
@@ -66,6 +74,14 @@ survivshim.Decor.prototype = {
     },
 
     render : function(){
+        if (this.timer > 0){
+          let d = new Date();
+          let newTick = d.getTime();
+          if (newTick - this.startTicks > this.timer){
+            this.toRemove = true;
+          }
+        }
+        
         var ctx = survivshim.canvas.canvasTile.getContext("2d");
         ctx.drawImage(
            this.spriteset,
