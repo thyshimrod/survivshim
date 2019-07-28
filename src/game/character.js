@@ -49,8 +49,8 @@ survivshim.Character.prototype = {
         this.hungerState = survivshim.C.HUNGER_STATE_NO;
         this.thirstyState = survivshim.C.HUNGER_STATE_NO;
         this.lastTicksManageState = newTick;
-        this.level = 0;
-        this.newBP = 0;
+        this.level = 1;
+        this.newBP = 1;
     },
 
     addBP : function(templateId){
@@ -195,6 +195,13 @@ survivshim.Character.prototype = {
         let decor = new survivshim.Decor();
         decor.loadFromJs(decorJs);
         survivshim.zone.decors.push(decor);
+        let itemInInventory = this.getItem(item ); 
+        if (itemInInventory !== null){
+          itemInInventory.quantity -= 1;
+          if (itemInInventory.quantity <= 0){
+            this.removeMateriau(item);
+          }
+      }
       }
     },
 

@@ -22,7 +22,7 @@ survivshim.EquipementMenu.prototype ={
         this.icons.push(icon);
         icon = { "x" : 180 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_BODY};
         this.icons.push(icon);
-        icon = { "x" : 180 , "y" : 220, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCAITON_LEGS};
+        icon = { "x" : 180 , "y" : 220, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_LEGS};
         this.icons.push(icon);
         icon = { "x" : 180 , "y" : 280, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_FOOT};
         this.icons.push(icon);

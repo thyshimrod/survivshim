@@ -21,7 +21,7 @@ survivshim.HourUi.prototype ={
 
     calcDate : function(){
         let d = new Date();
-        let hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 7 + this.sommeil) % 24 ;
+        let hour = (Math.floor((d.getTime() - survivshim.gameEngine.startTimer)/10000) + 17 + this.sommeil) % 24 ;
         if (hour === 9 && this.hour !== 9){
             this.newDay();
         }

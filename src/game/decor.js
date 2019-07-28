@@ -46,6 +46,19 @@ survivshim.Decor.prototype = {
       }
     },
 
+    getLights : function(){
+      if (this.templateId === "8"){
+        let light = {
+          "x" : this.x*survivshim.gameEngine.tileSize+survivshim.gameEngine.centerX - survivshim.character.x -100,
+          "y" : this.y*survivshim.gameEngine.tileSize+survivshim.gameEngine.centerY - survivshim.character.y -100,
+          "w" : 232,
+          "h" : 232
+        }
+        return light;
+      }
+      return null;
+    },
+
     loadFromJs : function(src){
       this.x = src.x;
       this.y = src.y;

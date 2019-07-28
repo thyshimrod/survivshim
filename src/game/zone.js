@@ -38,7 +38,18 @@ survivshim.Zone.prototype ={
         this.creatures.push(mob);
     },
 
+    renderLights : function(listOfLights){
+        var ctx = survivshim.canvas.canvasNight.getContext("2d");
+        ctx.fillStyle = "black"; 
+        ctx.globalAlpha = 0.1;
+        listOfLights.forEach(function(light){
+            ctx.clearRect(light.x, light.y, light.w, light.h);
+        })
+        
+    },
+
     render : function(){
+        var lights = [];
         survivshim.canvas.clearCanvas();
         var _this = this;
         var posChar = survivshim.character.getTile();
@@ -60,6 +71,10 @@ survivshim.Zone.prototype ={
                 ((posChar.y + 40) > decor.y)
                 ){
                     decor.render();
+                    let light = decor.getLights();
+                    if (light !== null){
+                        lights.push(light);
+                    }
                 }
         })
 
@@ -85,9 +100,11 @@ survivshim.Zone.prototype ={
         survivshim.console.render();
         survivshim.hourui.render();
         survivshim.night.render();
+        this.renderLights(lights);
         survivshim.sommeilMenu.render();
         survivshim.equipementMenu.render();
         survivshim.contextualMenuOnMateriauMenu.render();
+
 
     },
 
