@@ -43,6 +43,10 @@ survivshim.ContextualMenuOnMateriauMenu.prototype ={
 
     renderMenuContentEquipement : function(){
         let text = "Equiper";
+        if (this.materiau.location === survivshim.C.ITEM_LOCATION_FLOOR){
+            text = "Installer";
+        }
+        
         this.ctx.fillText(text ,
             this.x + 5, 
             this.y + 13);
