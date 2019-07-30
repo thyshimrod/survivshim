@@ -40,11 +40,13 @@ survivshim.EquipementMenu.prototype ={
             _this.ctx.rect(_this.x + icon.x,_this.y + icon.y,icon.tx,icon.tx);
             _this.ctx.stroke();
             var _icon = icon;
-            survivshim.character.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT].forEach(function(item){
-                if (_icon.icon === item.location){
-                    item.render(_this.x + icon.x,_this.y + icon.y);
-                }
-            })
+            if ( typeof survivshim.character.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] !== "undefined"){
+                survivshim.character.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT].forEach(function(item){
+                    if (_icon.icon === item.location){
+                     item.render(_this.x + icon.x,_this.y + icon.y);
+                    }
+                })
+            }      
         })
     },
 
@@ -74,7 +76,18 @@ survivshim.EquipementMenu.prototype ={
             && y < (this.y + 15)){
                 this.hideMenu();  
            }
-            return survivshim.C.CLICK_ON_WINDOW;
+           var _this = this;
+           var _x = x;
+           var _y = y;
+           this.icons.forEach(function(icon){
+               if (_x > (_this.x + icon.x) && _x < (_this.x + icon.x + icon.tx)
+                && _y > (_this.y + icon.y) && _y < (_this.y + icon.y + icon.ty)){
+                    survivshim.contextualMenuOnEquipementMenu.showMenu();
+                }
+           });
+
+
+           return survivshim.C.CLICK_ON_WINDOW;
         }else{
             this.hideMenu();
         }

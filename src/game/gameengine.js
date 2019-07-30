@@ -58,6 +58,7 @@ survivshim.GameEngine.prototype ={
         survivshim.console.addMessage("We hope you will survive !!");
         survivshim.iconMenu.init();
         survivshim.contextualMenuOnInventoryMenu = new survivshim.ContextualMenuOnInventoryMenu();
+        survivshim.contextualMenuOnEquipementMenu = new survivshim.ContextualMenuOnEquipementMenu();
         survivshim.canvas.canvasMouse.addEventListener("click",survivshim.gameEngine.clickEvent);
     },
     
