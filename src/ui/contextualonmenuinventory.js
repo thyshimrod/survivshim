@@ -1,7 +1,7 @@
 'use strict';
 var survivshim = survivshim || {};
 
-survivshim.ContextualMenuOnMateriauMenu = function (){
+survivshim.ContextualMenuOnInventoryMenu = function (){
   this.active = false;
   this.materiau = null;
   this.x = 0;
@@ -11,7 +11,7 @@ survivshim.ContextualMenuOnMateriauMenu = function (){
   this.ctx = null;
 };
 
-survivshim.ContextualMenuOnMateriauMenu.prototype ={
+survivshim.ContextualMenuOnInventoryMenu.prototype ={
     showMenu : function(materiau){
         if (materiau !== null){
             this.materiau = materiau.item;

@@ -103,7 +103,7 @@ survivshim.Zone.prototype ={
         this.renderLights(lights);
         survivshim.sommeilMenu.render();
         survivshim.equipementMenu.render();
-        survivshim.contextualMenuOnMateriauMenu.render();
+        survivshim.contextualMenuOnInventoryMenu.render();
 
 
     },
@@ -200,7 +200,7 @@ survivshim.Zone.prototype ={
         let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.hourui.onClick(evt.pageX,evt.pageY) 
                         || survivshim.sommeilMenu.onClick(evt.pageX,evt.pageY) 
-                        || survivshim.contextualMenuOnMateriauMenu.onClick(evt.pageX,evt.pageY)
+                        || survivshim.contextualMenuOnInventoryMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.collectMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.blueprintMenu.onClick(evt.pageX,evt.pageY)

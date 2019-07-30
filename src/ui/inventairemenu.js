@@ -152,7 +152,7 @@ survivshim.InventaireMenu.prototype ={
                     this.listOfItems.forEach(function (item){
                         if(_x > item.x && _x < (item.x + survivshim.C.TILE_SIZE_PC)
                         && _y > item.y && _y < (item.y + survivshim.C.TILE_SIZE_PC)){
-                            survivshim.contextualMenuOnMateriauMenu.showMenu(item);
+                            survivshim.contextualMenuOnInventoryMenu.showMenu(item);
                         }
                     });
                 }

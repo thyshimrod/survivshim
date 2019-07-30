@@ -82,7 +82,7 @@ survivshim.MateriauMenu.prototype ={
                 this.materiaux.forEach(function (materiau){
                     if(_x > materiau.x && _x < (materiau.x + survivshim.C.TILE_SIZE_PC)
                     && _y > materiau.y && _y < (materiau.y + survivshim.C.TILE_SIZE_PC)){
-                        survivshim.contextualMenuOnMateriauMenu.showMenu(materiau);
+                        survivshim.contextualMenuOnInventoryMenu.showMenu(materiau);
                     }
                 });
 
