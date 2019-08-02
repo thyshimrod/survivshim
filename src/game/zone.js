@@ -45,7 +45,6 @@ survivshim.Zone.prototype ={
         listOfLights.forEach(function(light){
             ctx.clearRect(light.x, light.y, light.w, light.h);
         })
-        
     },
 
     render : function(){
@@ -62,7 +61,6 @@ survivshim.Zone.prototype ={
               ){
                 tile.render(_this.tileSet);
               }
-            
         });
         this.decors.forEach(function(decor){
             if( ((posChar.x - 40) < decor.x) && 
@@ -79,10 +77,11 @@ survivshim.Zone.prototype ={
         })
 
         this.creatures.forEach(function(mob){
-            if( ((posChar.x - 40) < mob.x) && 
-                ((posChar.x + 40) > mob.x) &&
-                ((posChar.y - 40) < mob.y) &&
-                ((posChar.y + 40) > mob.y)
+            let tilePos = mob.getTile();
+            if( ((posChar.x - 40) < tilePos.x) && 
+                ((posChar.x + 40) > tilePos.x) &&
+                ((posChar.y - 40) < tilePos.y) &&
+                ((posChar.y + 40) > tilePos.y)
                 ){
                     mob.render();
                 }
@@ -130,6 +129,9 @@ survivshim.Zone.prototype ={
 
     loop: function(){
         survivshim.character.loop();
+        this.creatures.forEach(function(mob){
+            mob.loop();
+        });
         this.manageHour();
         this.removeDecors();
         this.render();
