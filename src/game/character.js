@@ -185,6 +185,10 @@ survivshim.Character.prototype = {
       this.manageStates();
     },
 
+    unequip : function(item){
+      item.status = survivshim.C.ITEM_STATUS_UNWEARED;
+    },
+
     equip : function(item){
       item.status = survivshim.C.ITEM_STATUS_WEARED;
       if (item.location === survivshim.C.ITEM_LOCATION_FLOOR){
@@ -201,7 +205,7 @@ survivshim.Character.prototype = {
           if (itemInInventory.quantity <= 0){
             this.removeMateriau(item);
           }
-      }
+        }
       }
     },
 

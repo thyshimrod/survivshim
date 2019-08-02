@@ -14,17 +14,17 @@ survivshim.EquipementMenu = function (){
 survivshim.EquipementMenu.prototype ={
     showMenu : function(blueprint){
         this.active = true;
-        let icon = { "x" : 180 , "y" : 80, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_HEAD};
+        let icon = { "x" : 180 , "y" : 80, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_HEAD , "item" : undefined};
         this.icons.push(icon);
-        icon = { "x" : 100 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_LEFTHAND};
+        icon = { "x" : 100 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_LEFTHAND , "item" : undefined};
         this.icons.push(icon);
-        icon = { "x" : 260 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_RIGHTHAND};
+        icon = { "x" : 260 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_RIGHTHAND, "item" : undefined};
         this.icons.push(icon);
-        icon = { "x" : 180 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_BODY};
+        icon = { "x" : 180 , "y" : 150, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_BODY, "item" : undefined};
         this.icons.push(icon);
-        icon = { "x" : 180 , "y" : 220, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_LEGS};
+        icon = { "x" : 180 , "y" : 220, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_LEGS, "item" : undefined};
         this.icons.push(icon);
-        icon = { "x" : 180 , "y" : 280, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_FOOT};
+        icon = { "x" : 180 , "y" : 280, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_FOOT, "item" : undefined};
         this.icons.push(icon);
     },
 
@@ -42,8 +42,9 @@ survivshim.EquipementMenu.prototype ={
             var _icon = icon;
             if ( typeof survivshim.character.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] !== "undefined"){
                 survivshim.character.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT].forEach(function(item){
-                    if (_icon.icon === item.location){
+                    if (_icon.icon === item.location && item.status === survivshim.C.ITEM_STATUS_WEARED ){
                      item.render(_this.x + icon.x,_this.y + icon.y);
+                     icon.item = item;
                     }
                 })
             }      
@@ -82,7 +83,8 @@ survivshim.EquipementMenu.prototype ={
            this.icons.forEach(function(icon){
                if (_x > (_this.x + icon.x) && _x < (_this.x + icon.x + icon.tx)
                 && _y > (_this.y + icon.y) && _y < (_this.y + icon.y + icon.ty)){
-                    survivshim.contextualMenuOnEquipementMenu.showMenu();
+                    let position = {"x" : _this.x, "y" : _this.y};
+                    survivshim.contextualMenuOnEquipementMenu.showMenu(icon,position);
                 }
            });
 

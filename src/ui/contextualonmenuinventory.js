@@ -16,7 +16,7 @@ survivshim.ContextualMenuOnInventoryMenu.prototype ={
         if (materiau !== null){
             this.materiau = materiau.item;
             this.x = materiau.x + 32;
-            this.y = materiau.y
+            this.y = materiau.y;
             this.active = true;
         }
     },
