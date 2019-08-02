@@ -82,22 +82,24 @@ survivshim.InventaireMenu.prototype ={
         var _this = this;
         if(typeof survivshim.character.inventory[typeItem] !== "undefined" &&  survivshim.character.inventory[typeItem] !== null){
             survivshim.character.inventory[typeItem].forEach(function(item){
-                item.render(_this.x + i * 40 + 10,_this.y + j * 60 + 40);
-                let itemDisplayed = {};
-                itemDisplayed.item = item;
-                itemDisplayed.x = _this.x + i * 40 + 10;
-                itemDisplayed.y = _this.y + j * 60 + 40;
-                _this.listOfItems.push(itemDisplayed);
-                ctx.font = "1Opx Arial";
-                ctx.fillStyle = survivshim.C.COLOR_TEXT;
-                let text = item.quantity;
-                ctx.fillText(text ,
-                    _this.x + i * 40 + 20, 
-                    _this.y + j * 60 + 80);
-                i += 1;
-                if (i > 10){
-                    i = 0;
-                    j += 1;
+                if ( item.status !== survivshim.C.ITEM_STATUS_WEARED){
+                    item.render(_this.x + i * 40 + 10,_this.y + j * 60 + 40);
+                    let itemDisplayed = {};
+                    itemDisplayed.item = item;
+                    itemDisplayed.x = _this.x + i * 40 + 10;
+                    itemDisplayed.y = _this.y + j * 60 + 40;
+                    _this.listOfItems.push(itemDisplayed);
+                    ctx.font = "1Opx Arial";
+                    ctx.fillStyle = survivshim.C.COLOR_TEXT;
+                    let text = item.quantity;
+                    ctx.fillText(text ,
+                        _this.x + i * 40 + 20, 
+                        _this.y + j * 60 + 80);
+                    i += 1;
+                    if (i > 10){
+                        i = 0;
+                        j += 1;
+                    }
                 }
                 
             });
