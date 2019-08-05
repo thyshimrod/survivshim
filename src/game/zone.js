@@ -195,6 +195,22 @@ survivshim.Zone.prototype ={
         return result;
     },
 
+    getMobUnderMouse : function(x,y){
+        var _x = Math.floor((x - survivshim.gameEngine.centerX + survivshim.character.x ));/// survivshim.gameEngine.tileSize);
+        var _y = Math.floor((y - survivshim.gameEngine.centerY + survivshim.character.y ));// survivshim.gameEngine.tileSize);
+        var result = null;
+        this.creatures.forEach(function(elt){
+            if ( _x >= elt.x 
+              && _x < (elt.x + elt.size)
+              && _y >= elt.y
+              && _y < (elt.y + elt.size)  
+            ){
+                result = elt;
+            }
+        });
+        return result;
+    },
+
     showContextualMenu : function(decor){
         survivshim.contextualMenu.showMenu(decor);
     },
@@ -220,9 +236,14 @@ survivshim.Zone.prototype ={
             if (decor !== null ){
                 survivshim.zone.showContextualMenu(decor);
             }else{
-                survivshim.contextualMenu.hideMenu();
-                survivshim.zone.showContextualMenu(decor);
-                survivshim.character.goToTarget(evt.pageX,evt.pageY);
+                let mob = survivshim.zone.getMobUnderMouse(evt.pageX,evt.pageY)
+                if (mob != null){
+                    console.log("hit");
+                }else{
+                    survivshim.contextualMenu.hideMenu();
+                    survivshim.zone.showContextualMenu(decor);
+                    survivshim.character.goToTarget(evt.pageX,evt.pageY);
+                }
             }
         }
     },
