@@ -104,8 +104,6 @@ survivshim.Zone.prototype ={
         survivshim.equipementMenu.render();
         survivshim.contextualMenuOnInventoryMenu.render();
         survivshim.contextualMenuOnEquipementMenu.render();
-
-
     },
 
     removeDecors : function(){
@@ -116,6 +114,19 @@ survivshim.Zone.prototype ={
                 if (index !== -1) {
                     _this.decors.splice(index, 1);
                 }        
+                return;
+            }
+        })
+    },
+
+    removeMobs : function(){
+        var _this = this;
+        this.creatures.forEach(function(mob){
+            if (mob.toRemove === true){
+                const index = _this.creatures.indexOf(mob);
+                if (index !== -1) {
+                    _this.creatures.splice(index, 1);
+                }
                 return;
             }
         })
@@ -134,6 +145,7 @@ survivshim.Zone.prototype ={
         });
         this.manageHour();
         this.removeDecors();
+        this.removeMobs();
         this.render();
     },
 
@@ -238,7 +250,7 @@ survivshim.Zone.prototype ={
             }else{
                 let mob = survivshim.zone.getMobUnderMouse(evt.pageX,evt.pageY)
                 if (mob != null){
-                    console.log("hit");
+                    survivshim.character.interactWithMob(mob);
                 }else{
                     survivshim.contextualMenu.hideMenu();
                     survivshim.zone.showContextualMenu(decor);

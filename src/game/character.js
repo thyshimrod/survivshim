@@ -122,6 +122,10 @@ survivshim.Character.prototype = {
       }
     },
 
+    interactWithMob : function(mob){
+      mob.hit(1);
+    },
+
     manageStates : function(){
       let d = new Date();
       let newTick = d.getTime();

@@ -10,6 +10,8 @@ survivshim.Creature = function(){
     this.size = 32;
     this.movingTick = 0;
     this.step = 1;
+    this.hitpoints = 10;
+    this.toRemove = false;
 };
 
 survivshim.Creature.prototype = {
@@ -39,6 +41,13 @@ survivshim.Creature.prototype = {
         this.x += this.step;
         this.direction = survivshim.C.DIRECTION_RIGHT;
         this.animate();
+    },
+
+    hit : function(hp){
+        this.hitpoints -= 1;
+        if (this.hitpoints <= 0){
+            this.toRemove = true;
+        }
     },
 
     loop : function(){
