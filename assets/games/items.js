@@ -18,7 +18,7 @@ survivshim.items = {
         "sprite" : { "x" : 800, "y" : 384},
         "use" : survivshim.C.STATE_INVENTORY_EQUIPEMENT,
         "location" : survivshim.C.ITEM_LOCATION_FLOOR,
-        "decor" : "8"
+        "decor" : "9"
     },
     3 :  {
         "name"    : "Hache en silex",

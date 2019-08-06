@@ -119,4 +119,21 @@ survivshim.decors = {
     ],
     "timer" : 10000
   },
+  "9" :
+  {
+    "name" : "feu de camp",
+    "typedecor" : 0,
+    "blocking" : true,
+    "size":{"x" : 32, "y" : 32},
+    "ratio" : {"x" : 1, "y" : 1},
+    "tileset" : "assets/tileset/murmures.png",
+    "sprites" : [
+      { "state" : 0, "x" : 384, "y" : 896},
+    ],
+    "animation" : {
+      "timer" : 100,
+      "number" : 8,
+    },
+    "timer" : 10000
+  },
 };
