@@ -143,7 +143,10 @@ survivshim.BlueprintMenu.prototype ={
         if (this.active === true && this.blueprint !== null){
             if(x < (this.x + this.width) && x > (this.x)
             && y < (this.y + this.height) && y > (this.y)){
-                if(x < (this.x + 300) && x > (this.x + 150) 
+                if (x > (this.x + this.width -20)
+                &&  y < (this.y + this.height -20)){
+                    this.hideMenu();
+                }else if(x < (this.x + 300) && x > (this.x + 150) 
                 && y < (this.y + 320) && y > (this.y + 290)){
                     if (this.canBuild && survivshim.character.action === survivshim.C.ACTION_NONE ){
                         survivshim.character.changeAction(survivshim.C.ACTION_CRAFT);
