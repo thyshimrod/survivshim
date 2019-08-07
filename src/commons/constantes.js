@@ -86,5 +86,6 @@ survivshim.C = Object.freeze({
   ITEM_STATUS_WEARED : 1,
   ITEM_STATUS_UNWEARED : 2,
 
+  FLOATING_TEXT_TIMER_HIT : 1000,
 
 });

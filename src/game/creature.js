@@ -49,7 +49,7 @@ survivshim.Creature.prototype = {
             this.toRemove = true;
         }
         let ft = new survivshim.FloatingText();
-        ft.init(this.x, this.y,1,1000,survivshim.C.COLOR_GRADIANT_RED);
+        ft.init(this.x, this.y,hp,survivshim.C.FLOATING_TEXT_TIMER_HIT,survivshim.C.COLOR_GRADIANT_RED);
         survivshim.zone.floatingTexts.push(ft);
     },
 
