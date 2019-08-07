@@ -48,6 +48,9 @@ survivshim.Creature.prototype = {
         if (this.hitpoints <= 0){
             this.toRemove = true;
         }
+        let ft = new survivshim.FloatingText();
+        ft.init(this.x, this.y,1,1000,survivshim.C.COLOR_GRADIANT_RED);
+        survivshim.zone.floatingTexts.push(ft);
     },
 
     loop : function(){

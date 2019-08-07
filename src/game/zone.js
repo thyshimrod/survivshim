@@ -11,6 +11,7 @@ survivshim.Zone = function (){
     this.maxY = 100;
     this.decors = [];
     this.creatures = [];
+    this.floatingTexts = [];
 }
 
 survivshim.Zone.prototype ={
@@ -86,6 +87,10 @@ survivshim.Zone.prototype ={
                     mob.render();
                 }
         })
+
+        this.floatingTexts.forEach(function(text){
+            text.render();
+        })
         
         survivshim.character.render();
         survivshim.contextualMenu.render();
@@ -104,28 +109,16 @@ survivshim.Zone.prototype ={
         survivshim.equipementMenu.render();
         survivshim.contextualMenuOnInventoryMenu.render();
         survivshim.contextualMenuOnEquipementMenu.render();
+        
     },
 
-    removeDecors : function(){
-        var _this = this;
-        this.decors.forEach(function(decor){
-            if (decor.toRemove === true){
-                const index = _this.decors.indexOf(decor);
+    removeThings : function(arrayToRemove){
+        var _arrayToRemove = arrayToRemove;
+        arrayToRemove.forEach(function(item){
+            if (item.toRemove === true){
+                const index = _arrayToRemove.indexOf(item);
                 if (index !== -1) {
-                    _this.decors.splice(index, 1);
-                }        
-                return;
-            }
-        })
-    },
-
-    removeMobs : function(){
-        var _this = this;
-        this.creatures.forEach(function(mob){
-            if (mob.toRemove === true){
-                const index = _this.creatures.indexOf(mob);
-                if (index !== -1) {
-                    _this.creatures.splice(index, 1);
+                    _arrayToRemove.splice(index, 1);
                 }
                 return;
             }
@@ -144,8 +137,9 @@ survivshim.Zone.prototype ={
             mob.loop();
         });
         this.manageHour();
-        this.removeDecors();
-        this.removeMobs();
+        this.removeThings(this.creatures);
+        this.removeThings(this.decors);
+        this.removeThings(this.floatingTexts);
         this.render();
     },
 
