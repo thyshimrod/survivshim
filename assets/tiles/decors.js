@@ -10,6 +10,7 @@ survivshim.decors = {
     "blocking" : true,
     "size":{"x" : 32, "y" : 64},
     "tileset" : "assets/tileset/tileset1.png",
+    "ratio" : {"x" : 1, "y" : 2},
     "sprites" : [
       { "state" : 0, "x" : 160, "y" : 1024},
     ],

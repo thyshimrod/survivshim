@@ -186,14 +186,14 @@ survivshim.Zone.prototype ={
       },
 
     getTheDecorUnderMouse : function(x,y){
-        var _x = Math.floor((x - survivshim.gameEngine.centerX + survivshim.character.x )/ survivshim.gameEngine.tileSize);
-        var _y = Math.floor((y - survivshim.gameEngine.centerY + survivshim.character.y )/ survivshim.gameEngine.tileSize);
+        var _x = Math.floor((x - survivshim.gameEngine.centerX + survivshim.character.x ));
+        var _y = Math.floor((y - survivshim.gameEngine.centerY + survivshim.character.y ));
         var result = null;
         this.decors.forEach(function(elt){
-            if ( _x >= elt.x 
-              && _x < (elt.x + elt.sizeX / survivshim.gameEngine.tileSize)
-              && _y >= elt.y
-              && _y < (elt.y + elt.sizeY / survivshim.gameEngine.tileSize)  
+            if ( _x >= (elt.x * survivshim.gameEngine.tileSize )
+              && _x < (elt.x * survivshim.gameEngine.tileSize + elt.sizeX)
+              && _y >= (elt.y * survivshim.gameEngine.tileSize)
+              && _y < (elt.y * survivshim.gameEngine.tileSize + elt.sizeY)  
             ){
                 result = elt;
             }
