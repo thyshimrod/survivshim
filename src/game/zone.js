@@ -109,6 +109,7 @@ survivshim.Zone.prototype ={
         survivshim.equipementMenu.render();
         survivshim.contextualMenuOnInventoryMenu.render();
         survivshim.contextualMenuOnEquipementMenu.render();
+        survivshim.contextualMenuOnMob.render();
         
     },
 
@@ -227,6 +228,7 @@ survivshim.Zone.prototype ={
                         || survivshim.sommeilMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.contextualMenuOnInventoryMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.contextualMenuOnEquipementMenu.onClick(evt.pageX,evt.pageY)
+                        || survivshim.contextualMenuOnMob.onClick(evt.pageX,evt.pageY) 
                         || survivshim.contextualMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.collectMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.blueprintMenu.onClick(evt.pageX,evt.pageY)
@@ -243,8 +245,10 @@ survivshim.Zone.prototype ={
                 survivshim.zone.showContextualMenu(decor);
             }else{
                 let mob = survivshim.zone.getMobUnderMouse(evt.pageX,evt.pageY)
-                if (mob != null){
+                if (mob != null && mob.state === survivshim.C.MOB_STATE_ALIVE){
                     survivshim.character.interactWithMob(mob);
+                }else if (mob !== null && mob.state === survivshim.C.MOB_STATE_DEAD){
+                    survivshim.contextualMenuOnMob.showMenu(mob);
                 }else{
                     survivshim.contextualMenu.hideMenu();
                     survivshim.zone.showContextualMenu(decor);

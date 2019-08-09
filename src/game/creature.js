@@ -49,6 +49,10 @@ survivshim.Creature.prototype = {
         this.animate();
     },
 
+    remove : function(){
+        this.toRemove = true;
+    },
+
     death : function(){
         this.state = survivshim.C.MOB_STATE_DEAD;
         this.spriteset = survivshim.tileset.get(this.corpse.tileset);
@@ -57,7 +61,6 @@ survivshim.Creature.prototype = {
     hit : function(hp){
         this.hitpoints -= 1;
         if (this.hitpoints <= 0){
-            //this.toRemove = true;
             this.death();
         }
         let ft = new survivshim.FloatingText();
