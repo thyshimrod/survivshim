@@ -88,4 +88,7 @@ survivshim.C = Object.freeze({
 
   FLOATING_TEXT_TIMER_HIT : 1000,
 
+  MOB_STATE_ALIVE : 0,
+  MOB_STATE_DEAD : 1,
+
 });

@@ -12,6 +12,12 @@ survivshim.Creature = function(){
     this.step = 1;
     this.hitpoints = 10;
     this.toRemove = false;
+    this.state = survivshim.C.MOB_STATE_ALIVE;
+    this.corpse = {
+        "tileset" : "assets/tileset/murmures.png",
+        "size": {"x" : 32, "y" : 32},
+        "position" : { "x" : 160, "y":352}
+    }
 };
 
 survivshim.Creature.prototype = {
@@ -43,10 +49,16 @@ survivshim.Creature.prototype = {
         this.animate();
     },
 
+    death : function(){
+        this.state = survivshim.C.MOB_STATE_DEAD;
+        this.spriteset = survivshim.tileset.get(this.corpse.tileset);
+    },
+
     hit : function(hp){
         this.hitpoints -= 1;
         if (this.hitpoints <= 0){
-            this.toRemove = true;
+            //this.toRemove = true;
+            this.death();
         }
         let ft = new survivshim.FloatingText();
         ft.init(this.x, this.y,hp,survivshim.C.FLOATING_TEXT_TIMER_HIT,survivshim.C.COLOR_GRADIANT_RED);
@@ -54,21 +66,36 @@ survivshim.Creature.prototype = {
     },
 
     loop : function(){
-        this.move();
+        if (this.state  === survivshim.C.MOB_STATE_ALIVE){
+            this.move();
+        }
     },
 
     render : function(){
         var ctx = survivshim.canvas.canvasTile.getContext("2d");
-        ctx.drawImage(
-           this.spriteset,
-           this.animation*this.size,
-           this.direction*this.size,
-           this.size,
-           this.size,
-           this.x+survivshim.gameEngine.centerX - survivshim.character.x,
-           this.y+survivshim.gameEngine.centerY - survivshim.character.y,
-           survivshim.gameEngine.tileSize,
-           survivshim.gameEngine.tileSize);
+        if (this.state === survivshim.C.MOB_STATE_ALIVE){
+            ctx.drawImage(
+            this.spriteset,
+            this.animation*this.size,
+            this.direction*this.size,
+            this.size,
+            this.size,
+            this.x+survivshim.gameEngine.centerX - survivshim.character.x,
+            this.y+survivshim.gameEngine.centerY - survivshim.character.y,
+            survivshim.gameEngine.tileSize,
+            survivshim.gameEngine.tileSize);
+        }else{
+            ctx.drawImage(
+                this.spriteset,
+                this.corpse.position.x,
+                this.corpse.position.y,
+                this.corpse.size.x,
+                this.corpse.size.x,
+                this.x+survivshim.gameEngine.centerX - survivshim.character.x,
+                this.y+survivshim.gameEngine.centerY - survivshim.character.y,
+                survivshim.gameEngine.tileSize,
+                survivshim.gameEngine.tileSize);
+        }
     },
 
 }   
