@@ -54,14 +54,12 @@ survivshim.ContextualMenuOnMob.prototype ={
 
     onClick : function(x,y){
         if (this.active === true ){
-            if (x < (this.x + this.width)
-            &&  x > this.x
-            &&  y < this.y + this.height
-            &&  y > this.y){
-                if (y < (this.y+20)){
-                    this.doAction(1);
-                    this.hideMenu();
-                }
+            if (x < (this.x +survivshim.gameEngine.centerX - survivshim.character.x + this.width)
+            &&  x > this.x +survivshim.gameEngine.centerX - survivshim.character.x
+            &&  y < this.y +survivshim.gameEngine.centerY- survivshim.character.y + this.height
+            &&  y > this.y +survivshim.gameEngine.centerY- survivshim.character.y){
+                this.doAction(1);
+                this.hideMenu();
                 return survivshim.C.CLICK_ON_WINDOW;
             }else{
                 this.hideMenu();    
