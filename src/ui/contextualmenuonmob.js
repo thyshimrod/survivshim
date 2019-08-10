@@ -15,8 +15,8 @@ survivshim.ContextualMenuOnMob.prototype ={
     showMenu : function(mob){
         this.active = true;
         this.mob = mob;
-        this.x = mob.x + 40 + mob.x;
-        this.y = mob.y + mob.y;
+        this.x = mob.x + 40 ;
+        this.y = mob.y ;
     },
 
     hideMenu : function(){
@@ -28,19 +28,20 @@ survivshim.ContextualMenuOnMob.prototype ={
         if ( this.active === true && this.mob !== null ){
             this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
             this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
-            this.ctx.fillRect(this.x,
-                        this.y,
+            this.ctx.fillRect(this.x +survivshim.gameEngine.centerX - survivshim.character.x,
+                        this.y +survivshim.gameEngine.centerY- survivshim.character.y,
                         this.width,this.height);
             this.ctx.beginPath();
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            this.ctx.rect(this.x, this.y, this.width, this.height);
+            this.ctx.rect(this.x +survivshim.gameEngine.centerX - survivshim.character.x,
+                this.y +survivshim.gameEngine.centerY- survivshim.character.y, this.width, this.height);
             this.ctx.stroke();
             this.ctx.font = "1Opx Arial";
             this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Detruire";
             this.ctx.fillText(text ,
-                this.x + 5, 
-                this.y + 13);
+                this.x +survivshim.gameEngine.centerX - survivshim.character.x +5 ,
+                        this.y +survivshim.gameEngine.centerY- survivshim.character.y +13);
         }
     },
     
