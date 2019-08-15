@@ -17,7 +17,8 @@ survivshim.Creature = function(){
         "tileset" : "assets/tileset/murmures.png",
         "size": {"x" : 32, "y" : 32},
         "position" : { "x" : 160, "y":352}
-    }
+    };
+    this.collect = [];
 };
 
 survivshim.Creature.prototype = {
@@ -25,6 +26,16 @@ survivshim.Creature.prototype = {
         let mob = survivshim.creatures[templateId];
         this.spriteset = survivshim.tileset.get(mob.spriteset);
         this.size = mob.size;
+        var _this = this;
+        mob.collect.forEach(function(col){
+            let collect = {
+                "templateid" : col.templateid,
+                "quantity" : col.quantity,
+                "chance" : col.chance,
+                "speed" : col.speed
+            }
+            _this.collect.push(col);
+        });
     },
 
     animate : function(){
