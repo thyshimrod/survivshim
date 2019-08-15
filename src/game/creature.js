@@ -10,6 +10,7 @@ survivshim.Creature = function(){
     this.size = 32;
     this.movingTick = 0;
     this.step = 1;
+    this.path = []; 
     this.hitpoints = 10;
     this.toRemove = false;
     this.state = survivshim.C.MOB_STATE_ALIVE;
@@ -55,9 +56,52 @@ survivshim.Creature.prototype = {
     },
 
     move : function(){
+        /*
         this.x += this.step;
         this.direction = survivshim.C.DIRECTION_RIGHT;
         this.animate();
+        */
+       if (this.path.length > 0){
+        this.animate();
+        var nextTile = this.path[this.path.length-1];
+        var currentTile = this.getTile();
+        let dist = calcDistance(this, {x: nextTile.x*survivshim.gameEngine.tileSize, y: nextTile.y*survivshim.gameEngine.tileSize});
+        if (dist >10 ){
+          var dx = nextTile.x*survivshim.gameEngine.tileSize - this.x;
+          var dy = nextTile.y*survivshim.gameEngine.tileSize - this.y;
+          if (Math.abs(dx) > this.step){
+            if (dx > 0){
+              this.x += this.step;
+              this.direction = survivshim.C.DIRECTION_RIGHT;
+            }else {
+              this.x -= this.step;
+              this.direction = survivshim.C.DIRECTION_LEFT;
+            }
+          }
+          if (Math.abs(dy) > this.step){
+            if (dy > 0){
+              this.y += this.step;
+              this.direction = survivshim.C.DIRECTION_UP;
+            }else{
+              this.y -= this.step;
+              this.direction = survivshim.C.DIRECTION_DOWN;
+            }
+          }
+        }else{
+          this.path.splice(this.path.length-1);
+        }
+      }
+    },
+
+    goToTarget : function(x,y){
+        let grid = survivshim.zone.getAPathArray();
+        let tileMob = this.getTile();
+        let tx = Math.floor(x/survivshim.gameEngine.tileSize);
+        let ty = Math.floor(y/survivshim.gameEngine.tileSize);
+        var pthFinding = new survivshim.Apath();
+        var result =  pthFinding.findShortestPath([tileMob.x,tileMob.y],[x,y], grid,true);
+        this.path = pthFinding.path;
+        this.grid = [];
     },
 
     remove : function(){
@@ -81,6 +125,9 @@ survivshim.Creature.prototype = {
 
     loop : function(){
         if (this.state  === survivshim.C.MOB_STATE_ALIVE){
+            if (this.path.length === 0 && survivshim.character.x !== 0){
+                this.goToTarget(survivshim.character.x,survivshim.character.y); 
+            }
             this.move();
         }
     },

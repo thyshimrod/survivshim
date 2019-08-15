@@ -170,7 +170,8 @@ survivshim.Zone.prototype ={
           for (let j=0;j<this.maxX;j++){
             let brick = {'x' : j, 'y' : i, 'F' : -1, 'G' : -1, 'status' : 'Obstacle','cameFrom' : {}};
             if (( j + "/" + i) in tiles){
-              if(tiles[j + "/" + i].type == "ground")
+              if(tiles[j + "/" + i].type === "ground")
+              
                 brick.status = 'Empty';
             }
             grid[i][j] = brick;
