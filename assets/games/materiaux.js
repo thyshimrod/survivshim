@@ -42,7 +42,7 @@ survivshim.materiaux = {
       5 : {
         "name"    : "Viande",
         "size":{"x" : 32, "y" : 32},
-        "tileset" : "assets/tileset/tileset1.png",
+        "tileset" : "assets/tileset/murmures.png",
         "sprite" : { "x" : 640, "y" : 1216},
         "use" : survivshim.C.TYPE_INVENTORY_CONSOMMABLE,
         "effect" : [

@@ -24,8 +24,14 @@ survivshim.ContextualMenuOnMob.prototype ={
         this.active = false;
     },
 
+    //TODO REFACTOR TO SPLIT RENDERING MATERIAUX
     render : function(){
         if ( this.active === true && this.mob !== null ){
+            let nbMateriaux = this.mob.collect.length;
+            if (nbMateriaux > 0){
+                this.height = 20 + (nbMateriaux+1) * 20;
+            }
+
             this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
             this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
             this.ctx.fillRect(this.x +survivshim.gameEngine.centerX - survivshim.character.x,
@@ -37,17 +43,49 @@ survivshim.ContextualMenuOnMob.prototype ={
                 this.y +survivshim.gameEngine.centerY- survivshim.character.y, this.width, this.height);
             this.ctx.stroke();
             this.ctx.font = "1Opx Arial";
-            this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
-            let text = "Detruire";
+            this.ctx.fillStyle = survivshim.C.COLOR_TURQUOISE;
+            let text = "Collecter";
             this.ctx.fillText(text ,
                 this.x +survivshim.gameEngine.centerX - survivshim.character.x +5 ,
-                        this.y +survivshim.gameEngine.centerY- survivshim.character.y +13);
+                this.y +survivshim.gameEngine.centerY- survivshim.character.y + 13);
+            var i=0;
+            var _this = this;
+            this.mob.collect.forEach(function(col){
+                let mat = new survivshim.Materiau();
+                mat.init(col.templateid);
+                let text = mat.name;
+                _this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+                _this.ctx.fillText(text ,
+                    _this.x +survivshim.gameEngine.centerX - survivshim.character.x +5 ,
+                    _this.y +survivshim.gameEngine.centerY- survivshim.character.y + 13 + (20 * (i +1)));
+                i++;
+            })
+            this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+            text = "Detruire";
+            this.ctx.fillText(text ,
+                this.x +survivshim.gameEngine.centerX - survivshim.character.x +5 ,
+                this.y +survivshim.gameEngine.centerY- survivshim.character.y + 13 + (20 * (nbMateriaux +1)));
         }
     },
     
-    doAction : function(typeAction){
-        if (typeAction === 1){
+
+    onClickActions : function(x,y){
+        let nbMateriaux = this.mob.collect.length;
+        if ( y > (this.y +survivshim.gameEngine.centerY- survivshim.character.y + 13 + (20 * nbMateriaux+1))){
             this.mob.remove();
+            this.hideMenu();
+        }else{
+            var i = 0;
+            var _this = this;
+            this.mob.collect.forEach(function(col){
+                if ( y > (_this.y +survivshim.gameEngine.centerY- survivshim.character.y +13 +  (20 * i+1))){
+                    //TODO : Display collect Menu / And Collect Action / Remove Materiau from corpse
+                    survivshim.character.addItemCollected(col.templateid,1);
+                    _this.hideMenu();
+                }
+                i++;
+            })
+
         }
     },
 
@@ -58,8 +96,7 @@ survivshim.ContextualMenuOnMob.prototype ={
             &&  x > this.x +survivshim.gameEngine.centerX - survivshim.character.x
             &&  y < this.y +survivshim.gameEngine.centerY- survivshim.character.y + this.height
             &&  y > this.y +survivshim.gameEngine.centerY- survivshim.character.y){
-                this.doAction(1);
-                this.hideMenu();
+                this.onClickActions(x,y);
                 return survivshim.C.CLICK_ON_WINDOW;
             }else{
                 this.hideMenu();    
