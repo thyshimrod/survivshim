@@ -7,7 +7,8 @@ survivshim.Creature = function(){
     this.spriteset = null;
     this.animation = 0;
     this.direction = 0;
-    this.size = 32;
+    this.sizeX = 32;
+    this.sizeY = 32;
     this.movingTick = 0;
     this.step = 1;
     this.path = []; 
@@ -19,7 +20,7 @@ survivshim.Creature = function(){
         "size": {"x" : 32, "y" : 32},
         "position" : { "x" : 160, "y":352}
     };
-    this.collect = [];
+    this.collect = {};
 };
 
 survivshim.Creature.prototype = {
@@ -35,7 +36,7 @@ survivshim.Creature.prototype = {
                 "chance" : col.chance,
                 "speed" : col.speed
             }
-            _this.collect.push(col);
+            _this.collect = collect;
         });
     },
 

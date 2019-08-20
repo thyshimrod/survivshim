@@ -31,7 +31,7 @@ survivshim.ContextualMenu.prototype ={
         this.ctx.fillText(text ,
                 this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30, 
                 this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 30);
-        text = survivshim.materiaux[this.item.collect.materiau].name + " : " + this.item.collect.quantity;
+        text = survivshim.materiaux[this.item.collect.templateid].name + " : " + this.item.collect.quantity;
         this.ctx.fillText(text ,
                 this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
                 this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 50);
@@ -63,7 +63,7 @@ survivshim.ContextualMenu.prototype ={
         if (this.item !== null && this.active === true){
             this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
             this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
-            if (typeof this.item.collect.materiau !== "undefined"){
+            if (typeof this.item.collect.templateid !== "undefined"){
                 this.height = 150;
             }else{
                 this.height = 20;
@@ -84,7 +84,7 @@ survivshim.ContextualMenu.prototype ={
                 this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
                 this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 10);
             
-            if (typeof this.item.collect.materiau !== "undefined"){
+            if (typeof this.item.collect.templateid !== "undefined"){
                 this.renderMateriau();
             }
         }

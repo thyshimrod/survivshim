@@ -325,7 +325,7 @@ survivshim.Character.prototype = {
             item.toRemove = true;
             survivshim.collectMenu.hideMenu();
           }
-          this.addItemCollected(item.collect.materiau,item.collect.speed);
+          this.addItemCollected(item.collect.templateid,item.collect.speed);
           this.fatigue += 1;
           
         }

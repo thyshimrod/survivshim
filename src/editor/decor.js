@@ -34,7 +34,7 @@ survivshim.Decor.prototype = {
       this.sizeX = src.size.x;
       this.sizeY = src.size.y;
       if (typeof src.collect !== "undefined"){
-        this.collect.materiau = src.collect.templateid;
+        this.collect.templateid = src.collect.templateid;
         this.collect.quantity = src.collect.quantity;
         this.collect.chance = src.collect.chance;
         this.collect.speed = src.collect.speed;

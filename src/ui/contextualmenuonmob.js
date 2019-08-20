@@ -27,7 +27,7 @@ survivshim.ContextualMenuOnMob.prototype ={
     //TODO REFACTOR TO SPLIT RENDERING MATERIAUX
     render : function(){
         if ( this.active === true && this.mob !== null ){
-            let nbMateriaux = this.mob.collect.length;
+            let nbMateriaux = 1;
             if (nbMateriaux > 0){
                 this.height = 20 + (nbMateriaux+1) * 20;
             }
@@ -50,16 +50,16 @@ survivshim.ContextualMenuOnMob.prototype ={
                 this.y +survivshim.gameEngine.centerY- survivshim.character.y + 13);
             var i=0;
             var _this = this;
-            this.mob.collect.forEach(function(col){
+            //this.mob.collect.forEach(function(col){
                 let mat = new survivshim.Materiau();
-                mat.init(col.templateid);
-                let text = mat.name;
+                mat.init(this.mob.collect.templateid);
+                text = mat.name;
                 _this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
                 _this.ctx.fillText(text ,
                     _this.x +survivshim.gameEngine.centerX - survivshim.character.x +5 ,
                     _this.y +survivshim.gameEngine.centerY- survivshim.character.y + 13 + (20 * (i +1)));
                 i++;
-            })
+            //})
             this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             text = "Detruire";
             this.ctx.fillText(text ,
@@ -77,14 +77,16 @@ survivshim.ContextualMenuOnMob.prototype ={
         }else{
             var i = 0;
             var _this = this;
-            this.mob.collect.forEach(function(col){
+            //this.mob.collect.forEach(function(col){
                 if ( y > (_this.y +survivshim.gameEngine.centerY- survivshim.character.y +13 +  (20 * i+1))){
                     //TODO : Display collect Menu / And Collect Action / Remove Materiau from corpse
-                    survivshim.character.addItemCollected(col.templateid,1);
+                    //survivshim.character.addItemCollected(col.templateid,1);
+                    survivshim.collectMenu.showMenu(_this.mob);
+                    survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
                     _this.hideMenu();
                 }
                 i++;
-            })
+            //})
 
         }
     },
