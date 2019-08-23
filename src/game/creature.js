@@ -126,8 +126,8 @@ survivshim.Creature.prototype = {
 
     loop : function(){
         if (this.state  === survivshim.C.MOB_STATE_ALIVE){
-            if (this.path.length === 0 && survivshim.character.x !== 0){
-                this.goToTarget(survivshim.character.x,survivshim.character.y); 
+            if (this.path.length === 0){// && survivshim.character.x !== 0){
+                this.goToTarget(Math.floor(survivshim.character.x/survivshim.gameEngine.tileSize),Math.floor(survivshim.character.y/survivshim.gameEngine.tileSize)); 
             }
             this.move();
         }
