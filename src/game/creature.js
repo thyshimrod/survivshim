@@ -13,6 +13,7 @@ survivshim.Creature = function(){
     this.step = 1;
     this.path = []; 
     this.hitpoints = 10;
+    this.lastTimeAttack = 0;
     this.toRemove = false;
     this.state = survivshim.C.MOB_STATE_ALIVE;
     this.corpse = {
@@ -57,17 +58,13 @@ survivshim.Creature.prototype = {
     },
 
     move : function(){
-        /*
-        this.x += this.step;
-        this.direction = survivshim.C.DIRECTION_RIGHT;
-        this.animate();
-        */
+      
        if (this.path.length > 0){
         this.animate();
         var nextTile = this.path[this.path.length-1];
         var currentTile = this.getTile();
         let dist = calcDistance(this, {x: nextTile.x*survivshim.gameEngine.tileSize, y: nextTile.y*survivshim.gameEngine.tileSize});
-        if (dist >10 ){
+        if (dist > this.step*2 ){
           var dx = nextTile.x*survivshim.gameEngine.tileSize - this.x;
           var dy = nextTile.y*survivshim.gameEngine.tileSize - this.y;
           if (Math.abs(dx) > this.step){
@@ -124,9 +121,21 @@ survivshim.Creature.prototype = {
         survivshim.zone.floatingTexts.push(ft);
     },
 
+    attack : function(){
+        let d = new Date();
+        let newTick = d.getTime();
+        if ((newTick - this.lastTimeAttack) > 500){
+           survivshim.character.hit(1);
+           this.lastTimeAttack = newTick;
+        }
+    },
+
     loop : function(){
         if (this.state  === survivshim.C.MOB_STATE_ALIVE){
-            if (this.path.length === 0){// && survivshim.character.x !== 0){
+            let distance = calcDistance(this,survivshim.character);
+            if (distance < 40 ){
+                this.attack();
+            }else if (this.path.length === 0){
                 this.goToTarget(Math.floor(survivshim.character.x/survivshim.gameEngine.tileSize),Math.floor(survivshim.character.y/survivshim.gameEngine.tileSize)); 
             }
             this.move();
