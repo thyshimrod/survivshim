@@ -35,6 +35,7 @@ survivshim.C = Object.freeze({
   MATERIAU_MUSHROOM : 3,
   MATERIAU_BRANCHE : 4,
   MATERIAU_VIANDE : 5,
+  MATERIAU_FOURRURE : 6,
 
   //ITEM
   ITEM_COUTEAU_SILEX : 1,
