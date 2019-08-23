@@ -49,5 +49,12 @@ survivshim.materiaux = {
           {"name" : "faim", "value" : 1000}
         ]
       },
+      6 : {
+        "name"    : "Fourrure",
+        "size":{"x" : 32, "y" : 32},
+        "tileset" : "assets/tileset/materiaux.png",
+        "sprite" : { "x" : 0, "y" : 64},
+        "use" : survivshim.C.TYPE_INVENTORY_MATERIAU,
+      },
 
 };
