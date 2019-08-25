@@ -8,6 +8,8 @@ survivshim.creatures = {
         "size" : 32,
         "collect" : [
             { "templateid" : survivshim.C.MATERIAU_FOURRURE, 
+              "quantity" : 10, "chance" : 50, "speed" : 1},
+              { "templateid" : survivshim.C.MATERIAU_VIANDE, 
               "quantity" : 10, "chance" : 50, "speed" : 1}
         ]
     }

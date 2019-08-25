@@ -21,7 +21,7 @@ survivshim.Creature = function(){
         "size": {"x" : 32, "y" : 32},
         "position" : { "x" : 160, "y":352}
     };
-    this.collect = {};
+    this.collect = [];
 };
 
 survivshim.Creature.prototype = {
@@ -37,7 +37,7 @@ survivshim.Creature.prototype = {
                 "chance" : col.chance,
                 "speed" : col.speed
             }
-            _this.collect = collect;
+            _this.collect.push(collect);
         });
     },
 

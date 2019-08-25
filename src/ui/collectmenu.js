@@ -9,21 +9,31 @@ survivshim.CollectMenu = function (){
   this.width = 200;
   this.x = 0;
   this.y = 0;
+  this.tx = 0;
+  this.ty = 0;
+  this.sizeX = 0;
+  this.sizeY = 0;
 };
 
 survivshim.CollectMenu.prototype ={
-    showMenu : function(item){
+    showMenu : function(item, x, y, sizeX, sizeY){
         if (item !== null){
+            this.tx = x;
+            this.ty = y;
             this.item = item;
             this.active = true;
             this.collected = 0;
+            this.sizeX = sizeX;
+            this.sizeY = sizeY;
             if (item instanceof survivshim.Creature){
-                this.x = this.item.x  + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX;
-                this.y = this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY;
+                this.x = this.tx  + survivshim.gameEngine.centerX-survivshim.character.x + this.sizeX;
+                this.y = this.ty  + survivshim.gameEngine.centerY-survivshim.character.y - this.sizeY;
+                console.log(survivshim.gameEngine.centerY + "//" + survivshim.character.y + "//" + this.sizeY);
             }else{
-                this.x = this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX;
-                this.y = this.item.y * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerY-survivshim.character.y + this.item.sizeY;
+                this.x = this.tx * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.sizeX;
+                this.y = this.ty * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerY-survivshim.character.y + this.sizeY;
             }
+            console.log(this.x + "//" + this.y + "@@" + x + "//" + y);
         }
     },
 
@@ -39,38 +49,38 @@ survivshim.CollectMenu.prototype ={
             ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
             
             ctx.fillRect(this.x,
-                        this.y,
+                         this.y,
                          this.width,this.height);
             ctx.beginPath();
             ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             ctx.rect(this.x,
-                this.y,
-                 this.width,this.height);
+                     this.y,
+                     this.width,this.height);
             ctx.stroke();
             ctx.font = "1Opx Arial";
             ctx.fillStyle = survivshim.C.COLOR_TEXT;
             let text = "Collecte en cours";
             ctx.fillText(text ,
-                this.x +10, 
-                this.y + 10);
+                         this.x +10, 
+                         this.y + 10);
 
             ctx.beginPath();
             ctx.fillStyle = survivshim.C.COLOR_TURQUOISE;
-            let prct = Math.floor(this.collected / (this.collected + this.item.collect.quantity) * 100);
+            let prct = Math.floor(this.collected / (this.collected + this.item.quantity) * 100);
             ctx.fillRect(this.x +30,
-                this.y + 30,
-                prct,
-                10
+                         this.y + 30,
+                         prct,
+                         10
                 );
             ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             ctx.rect(this.x + 60, 
-                this.y + 45,
-                    50,20);
+                     this.y + 45,
+                     50,20);
             ctx.stroke();
             text = "Stop";
             ctx.fillText(text ,
-                    this.x +70, 
-                    this.y + 60);
+                         this.x +70, 
+                         this.y + 60);
     
             
         }else if (this.item === null && this.active === true){

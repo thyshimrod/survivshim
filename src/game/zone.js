@@ -12,6 +12,7 @@ survivshim.Zone = function (){
     this.decors = [];
     this.creatures = [];
     this.floatingTexts = [];
+    this.limitToDraw = 40 * survivshim.gameEngine.tileSize;
 }
 
 survivshim.Zone.prototype ={
@@ -55,19 +56,19 @@ survivshim.Zone.prototype ={
         var posChar = survivshim.character.getTile();
         
         this.tiles.forEach(function(tile){
-            if( ((posChar.x - 40) < tile.x) && 
-                ((posChar.x + 40) > tile.x) &&
-                ((posChar.y - 40) < tile.y) &&
-                ((posChar.y + 40) > tile.y)
+            if( ((posChar.x - _this.limitToDraw) < tile.x) && 
+                ((posChar.x + _this.limitToDraw) > tile.x) &&
+                ((posChar.y - _this.limitToDraw) < tile.y) &&
+                ((posChar.y + _this.limitToDraw) > tile.y)
               ){
                 tile.render(_this.tileSet);
               }
         });
         this.decors.forEach(function(decor){
-            if( ((posChar.x - 40) < decor.x) && 
-                ((posChar.x + 40) > decor.x) &&
-                ((posChar.y - 40) < decor.y) &&
-                ((posChar.y + 40) > decor.y)
+            if( ((posChar.x - _this.limitToDraw) < decor.x) && 
+                ((posChar.x + _this.limitToDraw) > decor.x) &&
+                ((posChar.y - _this.limitToDraw) < decor.y) &&
+                ((posChar.y + _this.limitToDraw) > decor.y)
                 ){
                     decor.render();
                     let light = decor.getLights();
@@ -154,7 +155,8 @@ survivshim.Zone.prototype ={
           var _this = this;
           this.aPathTiles = {};
           this.tiles.forEach(function(tile){
-            _this.aPathTiles[tile.x + "/" + tile.y] = tile;
+              let tilePos = tile.getTile();
+            _this.aPathTiles[tilePos.x + "/" + tilePos.y] = tile;
           });
         }
         return this.aPathTiles;
@@ -179,8 +181,9 @@ survivshim.Zone.prototype ={
         }
 
         this.decors.forEach(function(elt){
+            let tilePos = elt.getTile();
             if (elt.blocking){
-                grid[elt.y][elt.x].status = "Obstacle";
+                grid[tilePos.y][tilePos.x].status = "Obstacle";
             }
         });
     
@@ -192,10 +195,10 @@ survivshim.Zone.prototype ={
         var _y = Math.floor((y - survivshim.gameEngine.centerY + survivshim.character.y ));
         var result = null;
         this.decors.forEach(function(elt){
-            if ( _x >= (elt.x * survivshim.gameEngine.tileSize )
-              && _x < (elt.x * survivshim.gameEngine.tileSize + elt.sizeX)
-              && _y >= (elt.y * survivshim.gameEngine.tileSize)
-              && _y < (elt.y * survivshim.gameEngine.tileSize + elt.sizeY)  
+            if ( _x >= (elt.x )
+              && _x < (elt.x  + elt.sizeX)
+              && _y >= (elt.y )
+              && _y < (elt.y  + elt.sizeY)  
             ){
                 result = elt;
             }

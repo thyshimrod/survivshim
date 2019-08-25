@@ -319,13 +319,13 @@ survivshim.Character.prototype = {
         let newTick = d.getTime();  
         if (newTick - this.lastTickCollect > 500){  
           this.lastTickCollect = newTick;
-          item.collect.quantity -= item.collect.speed;
-          survivshim.collectMenu.collected += item.collect.speed
-          if (item.collect.quantity <= 0){
+          item.quantity -= item.speed;
+          survivshim.collectMenu.collected += item.speed
+          if (item.quantity <= 0){
             item.toRemove = true;
             survivshim.collectMenu.hideMenu();
           }
-          this.addItemCollected(item.collect.templateid,item.collect.speed);
+          this.addItemCollected(item.templateid,item.speed);
           this.fatigue += 1;
           
         }

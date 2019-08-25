@@ -63,6 +63,12 @@ survivshim.Decor.prototype = {
       }
     },
 
+    getTile : function(){
+      let tx = Math.round(this.x/survivshim.gameEngine.tileSize);
+      let ty = Math.round(this.y/survivshim.gameEngine.tileSize);
+      return {"x" : tx, "y" : ty  };
+   },
+
     getLights : function(){
       if (this.templateId === "8"){
         let light = {
@@ -77,8 +83,8 @@ survivshim.Decor.prototype = {
     },
 
     loadFromJs : function(src){
-      this.x = src.x;
-      this.y = src.y;
+      this.x = src.x*survivshim.gameEngine.tileSize;
+      this.y = src.y*survivshim.gameEngine.tileSize;
       this.load(src.id);
     },
 
@@ -109,8 +115,8 @@ survivshim.Decor.prototype = {
            posY,
            this.sizeX,
            this.sizeY,
-           this.x*survivshim.gameEngine.tileSize+survivshim.gameEngine.centerX - survivshim.character.x,
-           this.y*survivshim.gameEngine.tileSize+survivshim.gameEngine.centerY - survivshim.character.y,
+           this.x+survivshim.gameEngine.centerX - survivshim.character.x,
+           this.y+survivshim.gameEngine.centerY - survivshim.character.y,
            survivshim.gameEngine.tileSize * this.ratio.x,
            survivshim.gameEngine.tileSize * this.ratio.y);//survivshim.gameEngine.tileSize);
       },

@@ -29,21 +29,21 @@ survivshim.ContextualMenu.prototype ={
         this.collectable = true;
         let text = "Materiau";
         this.ctx.fillText(text ,
-                this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30, 
-                this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 30);
+                this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30, 
+                this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 30);
         text = survivshim.materiaux[this.item.collect.templateid].name + " : " + this.item.collect.quantity;
         this.ctx.fillText(text ,
-                this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
-                this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 50);
+                this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
+                this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 50);
         this.ctx.beginPath();
         this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-        this.ctx.rect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX + 20, 
-            this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 67,
+        this.ctx.rect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX + 20, 
+            this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 67,
                 60,20);
         this.ctx.stroke();
         let objDistance = {};
-        objDistance.x = this.item.x*survivshim.gameEngine.tileSize;
-        objDistance.y = this.item.y*survivshim.gameEngine.tileSize;
+        objDistance.x = this.item.x;
+        objDistance.y = this.item.y;
         let distance = calcDistance(survivshim.character,objDistance);
         if (typeof this.item.collect.tools !== "undefined"){
             this.ctx.fillStyle = "red";
@@ -55,8 +55,8 @@ survivshim.ContextualMenu.prototype ={
         
         text = "Recolter";
         this.ctx.fillText(text ,
-            this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30, 
-            this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 80);
+            this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30, 
+            this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 80);
     },
 
     render : function(){
@@ -68,21 +68,21 @@ survivshim.ContextualMenu.prototype ={
             }else{
                 this.height = 20;
             }
-            this.ctx.fillRect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
-                        this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
+            this.ctx.fillRect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
+                        this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
                          this.width,this.height);
             this.ctx.beginPath();
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            this.ctx.rect(this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
-                this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
+            this.ctx.rect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
+                this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
                 this.width,this.height);
             this.ctx.stroke();
             this.ctx.font = "1Opx Arial";
             this.ctx.fillStyle = "white ";
             let text = this.item.name;
             this.ctx.fillText(text ,
-                this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
-                this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 10);
+                this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
+                this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 10);
             
             if (typeof this.item.collect.templateid !== "undefined"){
                 this.renderMateriau();
@@ -92,12 +92,12 @@ survivshim.ContextualMenu.prototype ={
 
     onClick : function(x,y){
         if (this.active === true){
-            if ((x< this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +100) 
-            && (x >this.item.x * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX ) 
-            && (y< this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 100) 
-            && (y>this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
-                if ((y > this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +70)
-                && (y < this.item.y * survivshim.gameEngine.tileSize  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +90)
+            if ((x< this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +100) 
+            && (x >this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX ) 
+            && (y< this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 100) 
+            && (y>this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
+                if ((y > this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +70)
+                && (y < this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +90)
                 && this.collectable){
                     survivshim.collectMenu.showMenu(this.item);
                     survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
@@ -108,6 +108,5 @@ survivshim.ContextualMenu.prototype ={
             this.hideMenu();
             return survivshim.C.CLICK_OUTSIDE_WINDOW;
         }
-        
     }
 };
