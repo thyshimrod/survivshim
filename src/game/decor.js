@@ -14,7 +14,7 @@ survivshim.Decor = function(){
     this.materiau = null;
     this.qtyMateriau = 0;
     this.quality = 0;
-    this.collect = {};
+    this.collect = [] ;
     this.ratio = {"x" : 1, "y" : 1};
     this.timer = 0;
     this.startTicks = 0;
@@ -41,11 +41,17 @@ survivshim.Decor.prototype = {
       this.sizeX = src.size.x;
       this.sizeY = src.size.y;
       if (typeof src.collect !== "undefined"){
-        this.collect.templateid = src.collect.templateid;
-        this.collect.quantity = src.collect.quantity;
-        this.collect.chance = src.collect.chance;
-        this.collect.speed = src.collect.speed;
-        this.collect.tools = src.collect.tools;
+        var _this = this;
+        src.collect.forEach(function(col){
+          let collect = {
+            "templateid" : col.templateid,
+            "quantity" : col.quantity,
+            "chance" : col.chance,
+            "speed" : col.speed,
+            "tools" : col.tools
+          }; 
+          _this.collect.push(collect);
+        })
       }
       if (typeof src.ratio !== "undefined"){
         this.ratio.x = src.ratio.x;
