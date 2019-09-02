@@ -8,7 +8,7 @@ survivshim.ContextualMenu = function (){
   this.height = 100;
   this.width = 300;
   this.ctx = null;
-
+  this.listOfCollectButton = [];
 };
 
 survivshim.ContextualMenu.prototype ={
@@ -37,6 +37,7 @@ survivshim.ContextualMenu.prototype ={
         objDistance.x = this.item.x;
         objDistance.y = this.item.y;
         var distance = calcDistance(survivshim.character,objDistance);
+        this.listOfCollectButton = [];
         this.item.collect.forEach(function(col){
             _this.ctx.font = "1Opx Arial";
             _this.ctx.fillStyle = "white ";
@@ -59,9 +60,20 @@ survivshim.ContextualMenu.prototype ={
                 
             _this.ctx.beginPath();
             _this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            _this.ctx.rect(_this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX + 140, 
-                _this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY +  38 + 30*i,
-                    60,20);
+            let btn = {
+                "x" : _this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX + 140,
+                "y" : _this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY +  38 + 30*i,
+                "width" : 60,
+                "height" : 20,
+                "item" : _this.item,
+                "materiau" : col.templateid
+            };
+            _this.listOfCollectButton.push(btn);
+            _this.ctx.rect(btn.x, 
+                btn.y,
+                btn.width,
+                btn.height);
+            
             _this.ctx.stroke();
             i++;
         });
@@ -99,17 +111,27 @@ survivshim.ContextualMenu.prototype ={
 
     onClick : function(x,y){
         if (this.active === true){
-            if ((x< this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +100) 
+            if ((x < this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX + this.width) 
             && (x >this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX ) 
-            && (y< this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 100) 
-            && (y>this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
-                if ((y > this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +70)
+            && (y < this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + this.width) 
+            && (y >this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
+                /*if ((y > this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +70)
                 && (y < this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +90)
                 && this.collectable){
                     survivshim.collectMenu.showMenu(this.item);
                     survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
                     this.hideMenu();
-                }   
+                } */
+                var _this = this;
+                this.listOfCollectButton.forEach(function (btn){
+                    if(x > btn.x && x < (btn.x + btn.width)
+                    && y > btn.y && y < (btn.y + btn.height)){
+                        console.log("coll");
+                        survivshim.collectMenu.showMenu(_this.item,btn.materiau);
+                        survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
+                        _this.hideMenu();
+                    }
+                })  
                 return survivshim.C.CLICK_ON_WINDOW;
             }
             this.hideMenu();

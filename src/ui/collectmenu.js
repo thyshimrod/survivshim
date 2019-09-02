@@ -9,36 +9,29 @@ survivshim.CollectMenu = function (){
   this.width = 200;
   this.x = 0;
   this.y = 0;
-  this.tx = 0;
-  this.ty = 0;
-  this.sizeX = 0;
-  this.sizeY = 0;
+  this.materiauId = 0;
 };
 
 survivshim.CollectMenu.prototype ={
-    showMenu : function(item, x, y, sizeX, sizeY){
+    showMenu : function(item, materiauId){
         if (item !== null){
-            this.tx = x;
-            this.ty = y;
-            this.item = item;
+        this.item = item;
+            this.materiauId = materiauId
             this.active = true;
             this.collected = 0;
-            this.sizeX = sizeX;
-            this.sizeY = sizeY;
-            if (item instanceof survivshim.Creature){
-                this.x = this.tx  + survivshim.gameEngine.centerX-survivshim.character.x + this.sizeX;
-                this.y = this.ty  + survivshim.gameEngine.centerY-survivshim.character.y - this.sizeY;
-                console.log(survivshim.gameEngine.centerY + "//" + survivshim.character.y + "//" + this.sizeY);
+        if (item instanceof survivshim.Creature){
+                this.x = this.item.x  + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX;
+                this.y = this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY;
             }else{
-                this.x = this.tx * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerX-survivshim.character.x + this.sizeX;
-                this.y = this.ty * survivshim.gameEngine.tileSize + survivshim.gameEngine.centerY-survivshim.character.y + this.sizeY;
+                this.x = this.item.x  + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX;
+                this.y = this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y + this.item.sizeY;
             }
-            console.log(this.x + "//" + this.y + "@@" + x + "//" + y);
         }
     },
 
     hideMenu : function(){
         this.item = null;
+        this.materiauId = 0;
         this.active = false;
         survivshim.character.changeAction(survivshim.C.ACTION_NONE);
     },

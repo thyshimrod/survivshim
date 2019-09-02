@@ -312,21 +312,36 @@ survivshim.Character.prototype = {
     },
 
     collect : function(){
-      let item = survivshim.collectMenu.item;
+      var item = survivshim.collectMenu.item;
+      var materiauId = survivshim.collectMenu.materiauId;
       if (item !== null && typeof item !== "undefined"){
         
         let d = new Date();
         let newTick = d.getTime();  
         if (newTick - this.lastTickCollect > 500){  
-          this.lastTickCollect = newTick;
-          item.quantity -= item.speed;
-          survivshim.collectMenu.collected += item.speed
-          if (item.quantity <= 0){
-            item.toRemove = true;
-            survivshim.collectMenu.hideMenu();
+          var _this = this;
+          var i = 0;
+          var indexToRemove = -1;
+          item.collect.forEach(function(col){
+            if (col.templateId === materiauId){
+              col.quantity -= col.speed;
+              survivshim.collectMenu.collected += col.speed;
+              if (col.quantity <= 0){
+                indexToRemove = i;
+                survivshim.collectMenu.hideMenu();
+              }     
+              _this.addItemCollected(col.templateId,col.speed);
+              _this.fatigue += 1;
+            }
+            i++;
+          })
+          if (indexToRemove !== -1){
+            item.collect.splice(indexToRemove,1);
+            if (item.collect.length === 0){
+              item.toRemove = true;
+            }
           }
-          this.addItemCollected(item.templateid,item.speed);
-          this.fatigue += 1;
+          this.lastTickCollect = newTick;
           
         }
       }
