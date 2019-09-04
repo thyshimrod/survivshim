@@ -16,5 +16,16 @@ survivshim.creatures = {
         "hitpoint" : 10,
         "name" : "rat",
         
+    },
+    2 : {
+        "spriteset" : "assets/sprites/bat.png",
+        "size" : 32,
+        "collect" : [
+              { "templateid" : survivshim.C.MATERIAU_VIANDE, 
+              "quantity" : 10, "chance" : 50, "speed" : 1}
+        ],
+        "movementspeed" : 1,
+        "hitpoint" : 20,
+        "name" : "bat",
     }
 };
