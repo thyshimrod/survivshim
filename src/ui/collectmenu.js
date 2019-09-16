@@ -10,6 +10,7 @@ survivshim.CollectMenu = function (){
   this.x = 0;
   this.y = 0;
   this.materiauId = 0;
+  this.materiauCollected = {};
 };
 
 survivshim.CollectMenu.prototype ={
@@ -19,13 +20,14 @@ survivshim.CollectMenu.prototype ={
             this.materiauId = materiauId
             this.active = true;
             this.collected = 0;
-        if (item instanceof survivshim.Creature){
-                this.x = this.item.x  + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX;
-                this.y = this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY;
-            }else{
-                this.x = this.item.x  + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX;
-                this.y = this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y + this.item.sizeY;
-            }
+            this.x = this.item.x  + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX;
+            this.y = this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY;
+            var _this = this;
+            this.item.collect.forEach(function(col){
+                if (col.templateid === materiauId){
+                    _this.materiauCollected = col;
+                }
+            })
         }
     },
 
@@ -59,7 +61,7 @@ survivshim.CollectMenu.prototype ={
 
             ctx.beginPath();
             ctx.fillStyle = survivshim.C.COLOR_TURQUOISE;
-            let prct = Math.floor(this.collected / (this.collected + this.item.quantity) * 100);
+            let prct = Math.floor(this.collected / (this.collected + this.materiauCollected.quantity) * 100);
             ctx.fillRect(this.x +30,
                          this.y + 30,
                          prct,

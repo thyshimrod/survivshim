@@ -3,6 +3,7 @@ var survivshim = survivshim || {};
 survivshim.Creature = function(){
     this.x = 0;
     this.y = 200;
+    this.name = "";
     this.sprite = null;
     this.spriteset = null;
     this.animation = 0;
@@ -30,6 +31,9 @@ survivshim.Creature.prototype = {
         let mob = survivshim.creatures[templateId];
         this.spriteset = survivshim.tileset.get(mob.spriteset);
         this.size = mob.size;
+        this.step = mob.movementspeed;
+        this.hitpoints = mob.hitpoint;
+        this.name = mob.name;
         var _this = this;
         mob.collect.forEach(function(col){
             let collect = {

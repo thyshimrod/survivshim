@@ -323,14 +323,14 @@ survivshim.Character.prototype = {
           var i = 0;
           var indexToRemove = -1;
           item.collect.forEach(function(col){
-            if (col.templateId === materiauId){
+            if (col.templateid === materiauId){
               col.quantity -= col.speed;
               survivshim.collectMenu.collected += col.speed;
               if (col.quantity <= 0){
                 indexToRemove = i;
                 survivshim.collectMenu.hideMenu();
               }     
-              _this.addItemCollected(col.templateId,col.speed);
+              _this.addItemCollected(col.templateid,col.speed);
               _this.fatigue += 1;
             }
             i++;

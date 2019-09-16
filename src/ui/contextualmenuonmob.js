@@ -80,7 +80,7 @@ survivshim.ContextualMenuOnMob.prototype ={
             this.mob.collect.forEach(function(col){
                 if ( y > (_this.y +survivshim.gameEngine.centerY- survivshim.character.y +13 +  (20 * i+1))){
                     survivshim.character.addItemCollected(col.templateid,1);
-                    survivshim.collectMenu.showMenu(col, _this.mob.x, _this.mob.y, _this.mob.sizeX, _this.mob.sizeY   );
+                    survivshim.collectMenu.showMenu(_this.mob, col.templateid   );
                     survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
                     _this.hideMenu();
                 }
