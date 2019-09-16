@@ -15,6 +15,7 @@ survivshim.Creature = function(){
     this.hitpoints = 10;
     this.lastTimeAttack = 0;
     this.toRemove = false;
+    this.actionState = survivshim.C.MOB_ACTION_STATE_NONE;
     this.state = survivshim.C.MOB_STATE_ALIVE;
     this.corpse = {
         "tileset" : "assets/tileset/murmures.png",
@@ -58,7 +59,6 @@ survivshim.Creature.prototype = {
     },
 
     move : function(){
-      
        if (this.path.length > 0){
         this.animate();
         var nextTile = this.path[this.path.length-1];
@@ -130,15 +130,31 @@ survivshim.Creature.prototype = {
         }
     },
 
+    doRandomMove : function(){
+        console.log("Random Move");
+    },
+
+    stayAlert : function(){
+        let distance = calcDistance(this,survivshim.character);
+        if (distance < 100){
+            this.actionState = survivshim.C.MOB_ACTION_STATE_ATTACK;
+        }
+    },
+
     loop : function(){
         if (this.state  === survivshim.C.MOB_STATE_ALIVE){
-            let distance = calcDistance(this,survivshim.character);
-            if (distance < 40 ){
-                this.attack();
-            }else if (this.path.length === 0){
-                this.goToTarget(Math.floor(survivshim.character.x/survivshim.gameEngine.tileSize),Math.floor(survivshim.character.y/survivshim.gameEngine.tileSize)); 
+            if (this.actionState === survivshim.C.MOB_ACTION_STATE_ATTACK){
+                let distance = calcDistance(this,survivshim.character);
+                if (distance < 40 ){
+                    this.attack();
+                }else if (this.path.length === 0){
+                    this.goToTarget(Math.floor(survivshim.character.x/survivshim.gameEngine.tileSize),Math.floor(survivshim.character.y/survivshim.gameEngine.tileSize)); 
+                }
+                this.move();
+            }else if (this.actionState === survivshim.C.MOB_ACTION_STATE_NONE){
+                this.stayAlert();
+                this.doRandomMove();
             }
-            this.move();
         }
     },
 

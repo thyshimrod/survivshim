@@ -93,4 +93,7 @@ survivshim.C = Object.freeze({
   MOB_STATE_ALIVE : 0,
   MOB_STATE_DEAD : 1,
 
+  MOB_ACTION_STATE_NONE : 0,
+  MOB_ACTION_STATE_ATTACK : 1,
+
 });
