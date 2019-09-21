@@ -95,16 +95,7 @@ survivshim.Creature.prototype = {
       }
     },
 
-    goToTarget : function(x,y){
-        let grid = survivshim.zone.getAPathArray();
-        let tileMob = this.getTile();
-        let tx = Math.floor(x/survivshim.gameEngine.tileSize);
-        let ty = Math.floor(y/survivshim.gameEngine.tileSize);
-        var pthFinding = new survivshim.Apath();
-        var result =  pthFinding.findShortestPath([tileMob.x,tileMob.y],[x,y], grid,true);
-        this.path = pthFinding.path;
-        this.grid = [];
-    },
+    
 
     remove : function(){
         this.toRemove = true;
@@ -135,7 +126,29 @@ survivshim.Creature.prototype = {
     },
 
     doRandomMove : function(){
-        console.log("Random Move");
+        if (this.path.length <= 0){
+            let x = Math.floor(Math.random() * 4) - 2;
+            let y = Math.floor(Math.random() * 4) - 2;
+            let tileMob = this.getTile();
+            x += tileMob.x;
+            y += tileMob.y;
+            let grid = survivshim.zone.getAPathArray();
+            var pthFinding = new survivshim.Apath();
+            var result =  pthFinding.findShortestPath([tileMob.x,tileMob.y],[x,y], grid,true);
+            this.path = pthFinding.path;
+            this.grid = [];
+        }
+    },
+
+    goToTarget : function(x,y){
+        let grid = survivshim.zone.getAPathArray();
+        let tileMob = this.getTile();
+        let tx = Math.floor(x/survivshim.gameEngine.tileSize);
+        let ty = Math.floor(y/survivshim.gameEngine.tileSize);
+        var pthFinding = new survivshim.Apath();
+        var result =  pthFinding.findShortestPath([tileMob.x,tileMob.y],[x,y], grid,true);
+        this.path = pthFinding.path;
+        this.grid = [];
     },
 
     stayAlert : function(){
@@ -158,6 +171,7 @@ survivshim.Creature.prototype = {
             }else if (this.actionState === survivshim.C.MOB_ACTION_STATE_NONE){
                 this.stayAlert();
                 this.doRandomMove();
+                this.move();
             }
         }
     },
