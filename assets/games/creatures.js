@@ -15,6 +15,9 @@ survivshim.creatures = {
         "movementspeed" : 1,
         "hitpoint" : 10,
         "name" : "rat",
+        "behaviors" : [
+            {"CHARACTER_SPOTTED" : survivshim.C.MOB_ACTION_STATE_FLEE}
+        ]
         
     },
     2 : {

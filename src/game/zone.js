@@ -24,7 +24,7 @@ survivshim.Zone.prototype ={
         for (let i=0;i<this.maxY;i++){
             for (let j=0;j<this.maxX;j++){
                 let tempTile = new survivshim.Tile();
-                tempTile.init("2", j, i);
+                tempTile.init(survivshim.C.TILE_GROUND_SOIL2, j, i);
                 this.tiles.push(tempTile);
             }
         }
@@ -36,7 +36,7 @@ survivshim.Zone.prototype ={
             _this.decors.push(decor);
         })
         let mob = new survivshim.Creature();
-        mob.init(3);
+        mob.init(survivshim.C.MOB_RAT);
         this.creatures.push(mob);
     },
 

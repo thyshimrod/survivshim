@@ -154,7 +154,8 @@ survivshim.Creature.prototype = {
     stayAlert : function(){
         let distance = calcDistance(this,survivshim.character);
         if (distance < 100){
-            this.actionState = survivshim.C.MOB_ACTION_STATE_ATTACK;
+            this.actionState = survivshim.C.MOB_ACTION_STATE_FLEE;
+            this.path = [];
         }
     },
 
@@ -167,12 +168,22 @@ survivshim.Creature.prototype = {
                 }else if (this.path.length === 0){
                     this.goToTarget(Math.floor(survivshim.character.x/survivshim.gameEngine.tileSize),Math.floor(survivshim.character.y/survivshim.gameEngine.tileSize)); 
                 }
-                this.move();
+                
+            }else if (this.actionState === survivshim.C.MOB_ACTION_STATE_FLEE){
+                if (this.path.length === 0){
+                    let x = survivshim.character.x - this.x;
+                    let y = survivshim.character.y - this.y;
+                    x = this.x -x;
+                    x = x < 0 ? 0 : x;
+                    y = this.y -y;
+                    y = y < 0 ? 0 : y;
+                    this.goToTarget(Math.floor(x/survivshim.gameEngine.tileSize),Math.floor(y/survivshim.gameEngine.tileSize)); 
+                }
             }else if (this.actionState === survivshim.C.MOB_ACTION_STATE_NONE){
                 this.stayAlert();
                 this.doRandomMove();
-                this.move();
             }
+            this.move();
         }
     },
 

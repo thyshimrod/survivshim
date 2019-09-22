@@ -95,5 +95,12 @@ survivshim.C = Object.freeze({
 
   MOB_ACTION_STATE_NONE : 0,
   MOB_ACTION_STATE_ATTACK : 1,
+  MOB_ACTION_STATE_FLEE : 2,
+
+  MOB_RAT : 1,
+  MOB_BAT : 2,
+  MOB_SCORPION : 3,
+
+  TILE_GROUND_SOIL2 : 2,
 
 });
