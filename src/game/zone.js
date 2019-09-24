@@ -36,7 +36,7 @@ survivshim.Zone.prototype ={
             _this.decors.push(decor);
         })
         let mob = new survivshim.Creature();
-        mob.init(survivshim.C.MOB_RAT);
+        mob.init(survivshim.C.MOB_BAT);
         this.creatures.push(mob);
     },
 

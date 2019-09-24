@@ -15,9 +15,9 @@ survivshim.creatures = {
         "movementspeed" : 1,
         "hitpoint" : 10,
         "name" : "rat",
-        "behaviors" : [
-            {"CHARACTER_SPOTTED" : survivshim.C.MOB_ACTION_STATE_FLEE}
-        ]
+        "behaviors" : {
+            "CHARACTER_SPOTTED" : survivshim.C.MOB_ACTION_STATE_FLEE
+        }
         
     },
     2 : {
@@ -30,6 +30,10 @@ survivshim.creatures = {
         "movementspeed" : 1,
         "hitpoint" : 20,
         "name" : "bat",
+        "behaviors" : {
+            "CHARACTER_SPOTTED" : survivshim.C.MOB_ACTION_STATE_ATTACK,
+            "CHARACTER_OUTSPOTTED" : survivshim.C.MOB_ACTION_STATE_NONE
+        }
     },
     3 : {
         "spriteset" : "assets/sprites/scorpion.png",

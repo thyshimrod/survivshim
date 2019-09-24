@@ -24,6 +24,7 @@ survivshim.Creature = function(){
         "position" : { "x" : 160, "y":352}
     };
     this.collect = [];
+    this.behaviors = {};
 };
 
 survivshim.Creature.prototype = {
@@ -44,6 +45,9 @@ survivshim.Creature.prototype = {
             }
             _this.collect.push(collect);
         });
+        if (typeof mob.behaviors !== "undefined"){
+            this.behaviors = mob.behaviors;
+        }
     },
 
     animate : function(){
@@ -151,16 +155,36 @@ survivshim.Creature.prototype = {
         this.grid = [];
     },
 
+    retrieveBehavior : function(trigger){
+        if (trigger in this.behaviors) return (this.behaviors[trigger]);
+        return null;
+    },
+
     stayAlert : function(){
         let distance = calcDistance(this,survivshim.character);
         if (distance < 100){
-            this.actionState = survivshim.C.MOB_ACTION_STATE_FLEE;
-            this.path = [];
+            let behavior = this.retrieveBehavior("CHARACTER_SPOTTED");
+            if (behavior !== null){
+                if(this.actionState !== behavior){
+                    this.actionState = behavior;
+                    this.path = [];
+                }
+            }
+            
+        }else if(distance > 100){
+            let behavior = this.retrieveBehavior("CHARACTER_OUTSPOTTED");
+            if (behavior !== null){
+                if(this.actionState !== behavior){
+                    this.actionState = behavior;
+                    this.path = [];
+                }
+            }
         }
     },
 
     loop : function(){
         if (this.state  === survivshim.C.MOB_STATE_ALIVE){
+            this.stayAlert();
             if (this.actionState === survivshim.C.MOB_ACTION_STATE_ATTACK){
                 let distance = calcDistance(this,survivshim.character);
                 if (distance < 40 ){
@@ -180,7 +204,6 @@ survivshim.Creature.prototype = {
                     this.goToTarget(Math.floor(x/survivshim.gameEngine.tileSize),Math.floor(y/survivshim.gameEngine.tileSize)); 
                 }
             }else if (this.actionState === survivshim.C.MOB_ACTION_STATE_NONE){
-                this.stayAlert();
                 this.doRandomMove();
             }
             this.move();
