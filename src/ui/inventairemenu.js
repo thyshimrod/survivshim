@@ -14,6 +14,11 @@ survivshim.InventaireMenu = function (){
 };
 
 survivshim.InventaireMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+    
     showMenu : function(item){
         this.active = true;
     },

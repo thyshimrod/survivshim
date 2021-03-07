@@ -11,6 +11,11 @@ survivshim.StatsMenu = function (){
 };
 
 survivshim.StatsMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+    
     showMenu : function(blueprint){
         this.active = true;
     },

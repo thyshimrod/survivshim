@@ -12,6 +12,11 @@ survivshim.EquipementMenu = function (){
 };
 
 survivshim.EquipementMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+    
     showMenu : function(blueprint){
         this.active = true;
         let icon = { "x" : 180 , "y" : 80, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_HEAD , "item" : undefined};

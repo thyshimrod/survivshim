@@ -14,6 +14,11 @@ survivshim.BlueprintMenu = function (){
 };
 
 survivshim.BlueprintMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+    
     showMenu : function(blueprintId = 1){
         this.active = true;
         //this.blueprint = blueprint;

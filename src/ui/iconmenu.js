@@ -49,15 +49,15 @@ survivshim.IconMenu.prototype ={
             this.icons.forEach(function (icon){
                 if ( _x >= icon.x && _x <= (icon.x + 32)){
                     if(icon.icon === "blueprint"){
-                        survivshim.listblueprintMenu.showMenu();
+                        survivshim.listblueprintMenu.toggleMenu();
                     }else if (icon.icon === "stats"){
-                        survivshim.statsMenu.showMenu();
+                        survivshim.statsMenu.toggleMenu();
                     }else if (icon.icon === "inventaire"){
-                        survivshim.inventaireMenu.showMenu();
+                        survivshim.inventaireMenu.toggleMenu();
                     }else if (icon.icon === "sommeil"){
-                        survivshim.sommeilMenu.showMenu();
+                        survivshim.sommeilMenu.toggleMenu();
                     }else if(icon.icon === "equipement"){
-                        survivshim.equipementMenu.showMenu();
+                        survivshim.equipementMenu.toggleMenu();
                     }
                 }
   0         })

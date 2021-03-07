@@ -18,6 +18,11 @@ survivshim.ListBlueprintMenu = function (){
 };
 
 survivshim.ListBlueprintMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+    
     showMenu : function(){
         this.active = true;
         this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");

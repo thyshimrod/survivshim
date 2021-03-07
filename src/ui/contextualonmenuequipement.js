@@ -13,6 +13,11 @@ survivshim.ContextualMenuOnEquipementMenu = function (){
 };
 
 survivshim.ContextualMenuOnEquipementMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+    
     showMenu : function(icon,position){
         this.active = true;
         this.icon = icon;

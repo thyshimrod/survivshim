@@ -12,6 +12,11 @@ survivshim.SommeilMenu = function (){
 };
 
 survivshim.SommeilMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+
     showMenu : function(){
         this.active = true;
     },

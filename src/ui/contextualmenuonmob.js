@@ -12,6 +12,11 @@ survivshim.ContextualMenuOnMob = function (){
 };
 
 survivshim.ContextualMenuOnMob.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+    
     showMenu : function(mob){
         this.active = true;
         this.mob = mob;

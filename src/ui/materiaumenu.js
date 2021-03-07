@@ -6,6 +6,11 @@ survivshim.MateriauMenu = function (){
 };
 
 survivshim.MateriauMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+
     showMenu : function(){
         this.active = true;
         this.x = 100;

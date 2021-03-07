@@ -12,6 +12,11 @@ survivshim.ContextualMenuOnInventoryMenu = function (){
 };
 
 survivshim.ContextualMenuOnInventoryMenu.prototype ={
+    toggleMenu : function(){
+        if(this.active) this.hideMenu()
+        else this.showMenu();
+    },
+    
     showMenu : function(materiau){
         if (materiau !== null){
             this.materiau = materiau.item;
