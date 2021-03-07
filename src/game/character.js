@@ -350,7 +350,7 @@ survivshim.Character.prototype = {
     hit : function(hp){
       this.hitPoints -= 1;
       let ft = new survivshim.FloatingText();
-      ft.init(this.x, this.y,hp,survivshim.C.FLOATING_TEXT_TIMER_HIT,survivshim.C.COLOR_GRADIANT_RED);
+      ft.init(this.x, this.y,hp,survivshim.C.FLOATING_TEXT_TIMER_HIT,survivshim.C.COLOR_GRADIANT_YELLOW);
       survivshim.zone.floatingTexts.push(ft);
   },
 
