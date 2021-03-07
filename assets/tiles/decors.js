@@ -138,4 +138,16 @@ survivshim.decors = {
     },
     "timer" : 10000
   },
+  "10" :
+  {
+    "name" : "eau",
+    "typedecor" : 0,
+    "blocking" : true,
+    "size":{"x" : 32, "y" : 32},
+    "tileset" : "assets/tileset/tileset1.png",
+    "ratio" : {"x" : 1, "y" : 1},
+    "sprites" : [
+      { "state" : 0, "x" : 224, "y" : 64},
+    ],
+  },
 };
