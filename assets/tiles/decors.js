@@ -166,7 +166,7 @@ survivshim.decors = {
     ],
     "actions" : [
       {
-        "actiontype" : survivshim.C.TYPE_ACTION_CONSUME,
+        "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
         "collect" : [{ "templateid" : survivshim.C.MATERIAU_EAU, "quantity" : 1, "chance" : 100, "speed" : 1}]
       }
     ]
