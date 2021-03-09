@@ -46,6 +46,7 @@ survivshim.Decor.prototype = {
             let action = {
               "actiontype" : actions.actiontype
             }
+            _this.actions.push(action);
             if (typeof actions.collect !== "undefined"){
               actions.collect.forEach(function(col){
                 let collect = {

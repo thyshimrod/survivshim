@@ -56,5 +56,15 @@ survivshim.materiaux = {
         "sprite" : { "x" : 0, "y" : 64},
         "use" : survivshim.C.TYPE_INVENTORY_MATERIAU,
       },
+      7 : {
+        "name" : "eau",
+        "size":{"x" : 32, "y" : 32},
+        "tileset" : "assets/tileset/murmures.png",
+        "sprite" : { "x" : 160, "y" : 1088},
+        "use" : survivshim.C.TYPE_INVENTORY_CONSOMMABLE,
+        "effect" : [
+          {"name" : "soif", "value" : 1000}
+        ]
+      },
 
 };

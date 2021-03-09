@@ -6,7 +6,7 @@ survivshim.ContextualMenu = function (){
   this.item = null;
   this.collectable = false;
   this.height = 100;
-  this.width = 300;
+  this.width = 350;
   this.ctx = null;
   this.listOfCollectButton = [];
 };
@@ -57,28 +57,35 @@ survivshim.ContextualMenu.prototype ={
                 _this.ctx.fillStyle = "red";
                 _this.collectable = false;
             }
-            text = "Recolter";
-            _this.ctx.fillText(text ,
-                _this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX + 150, 
-                _this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY + 50 + 30*i);
+            _this.item.actions.forEach(function(action){
+                let text = "";
+                if (action.actiontype === survivshim.C.TYPE_ACTION_COLLECT)  text = "Recolter";
+                if (action.actiontype === survivshim.C.TYPE_ACTION_CONSUME)  text = "Consommer";
+                _this.ctx.fillText(text ,
+                    _this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX + 150, 
+                    _this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY + 50 + 30*i);
+                    
+                _this.ctx.beginPath();
+                _this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+                let btn = {
+                    "x" : _this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX + 140,
+                    "y" : _this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY +  38 + 30*i,
+                    "width" : 60,
+                    "height" : 20,
+                    "item" : _this.item,
+                    "materiau" : col.templateid,
+                    "actiontype" : action.actiontype
+                };
+                _this.listOfCollectButton.push(btn);
+                _this.ctx.rect(btn.x, 
+                    btn.y,
+                    btn.width,
+                    btn.height);
                 
-            _this.ctx.beginPath();
-            _this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            let btn = {
-                "x" : _this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX + 140,
-                "y" : _this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY +  38 + 30*i,
-                "width" : 60,
-                "height" : 20,
-                "item" : _this.item,
-                "materiau" : col.templateid
-            };
-            _this.listOfCollectButton.push(btn);
-            _this.ctx.rect(btn.x, 
-                btn.y,
-                btn.width,
-                btn.height);
-            
-            _this.ctx.stroke();
+                _this.ctx.stroke();
+
+            })
+           
             i++;
         });
     },
