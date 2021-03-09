@@ -8,6 +8,7 @@ survivshim.Materiau = function(){
     this.sprite = {};
     this.size = {};
     this.use = 0;
+    this.effect = [];
 };
 
 survivshim.Materiau.prototype ={
@@ -19,7 +20,16 @@ survivshim.Materiau.prototype ={
         this.name = src.name;
         this.size = src.size;
         this.use = src.use;
-        this.satiete = src.satiete;
+        if (typeof src.effect !== "undefined"){
+            var _this = this;
+            src.effect.forEach(function(eff){
+                let effect = {
+                    "name" : eff.name,
+                    "value" : eff.value
+                }
+                _this.effect.push(effect);
+            });
+        }
     },
 
     render : function(x,y){
