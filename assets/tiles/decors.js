@@ -25,7 +25,10 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 32, "y" : 1824},
     ],
-    "collect" : [{ "templateid" : survivshim.C.MATERIAU_SILEX, "quantity" : 10, "chance" : 50, "speed" : 1}]
+    "actions" : [{
+      "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
+      "collect" : [{ "templateid" : survivshim.C.MATERIAU_SILEX, "quantity" : 10, "chance" : 50, "speed" : 1}]
+    }]
   },
   "2" :
   {
@@ -48,7 +51,11 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 256, "y" : 1664},
       ],
-    "collect" :  [{ "templateid" : survivshim.C.MATERIAU_BRANCHE, "quantity" : 1, "chance" : 50, "speed" : 1}]
+      "actions" : [{
+        "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
+        "collect" :  [{ "templateid" : survivshim.C.MATERIAU_BRANCHE, "quantity" : 1, "chance" : 50, "speed" : 1}]
+      }]
+    
   },
 
   "4" :
@@ -61,8 +68,12 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 64, "y" : 1120},
     ],
-    "collect" : [{ "templateid" : survivshim.C.MATERIAU_MUSHROOM, "quantity" : 2, "chance" : 100, "speed" : 1  ,"tools" : survivshim.C.ITEM_HACHE_SILEX},
+    "actions" : [{
+      "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
+      "collect" : [{ "templateid" : survivshim.C.MATERIAU_MUSHROOM, "quantity" : 2, "chance" : 100, "speed" : 1  ,"tools" : survivshim.C.ITEM_HACHE_SILEX},
     { "templateid" : survivshim.C.MATERIAU_BRANCHE, "quantity" : 2, "chance" : 100, "speed" : 1  ,"tools" : survivshim.C.ITEM_HACHE_SILEX}]
+    }]
+    
   },
   "5" :
   {
@@ -105,7 +116,11 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 224, "y" : 1088},
     ],
-    "collect" : [{ "templateid" : survivshim.C.MATERIAU_SALADE, "quantity" : 1, "chance" : 100, "speed" : 1}]
+    "actions" : [{
+      "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
+      "collect" : [{ "templateid" : survivshim.C.MATERIAU_SALADE, "quantity" : 1, "chance" : 100, "speed" : 1}]
+    }]
+    
   },
 
   "8" :
@@ -149,5 +164,8 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 224, "y" : 64},
     ],
+    "actions" : [
+      {"actiontype" : survivshim.C.TYPE_ACTION_CONSUME}
+    ]
   },
 };

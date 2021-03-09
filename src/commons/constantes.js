@@ -49,6 +49,10 @@ survivshim.C = Object.freeze({
   ACTION_COLLECT : 1,
   ACTION_CRAFT : 2,
 
+  // TYPE ACTION ON DECOR, ....
+  TYPE_ACTION_COLLECT : 1,
+  TYPE_ACTION_CONSUME : 2,
+
   CLICK_ON_WINDOW : true,
   CLICK_OUTSIDE_WINDOW : false,
 
