@@ -137,8 +137,13 @@ survivshim.ContextualMenu.prototype ={
                 this.listOfCollectButton.forEach(function (btn){
                     if(x > btn.x && x < (btn.x + btn.width)
                     && y > btn.y && y < (btn.y + btn.height)){
-                        survivshim.collectMenu.showMenu(_this.item,btn.materiau);
-                        survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
+                        if (btn.actiontype === survivshim.C.TYPE_ACTION_COLLECT){
+                            survivshim.collectMenu.showMenu(_this.item,btn.materiau);
+                            survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
+                        }else if (btn.actiontype === survivshim.C.TYPE_ACTION_CONSUME){
+                            survivshim.character.eatFromDecor(_this.item,btn.materiau);
+                        }
+                       
                         _this.hideMenu();
                     }
                 })  

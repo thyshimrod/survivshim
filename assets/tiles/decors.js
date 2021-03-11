@@ -14,6 +14,7 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 160, "y" : 1024},
     ],
+    "removedecoraftercollecting" : true,
   },
   "1" :
   {
@@ -28,7 +29,8 @@ survivshim.decors = {
     "actions" : [{
       "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
       "collect" : [{ "templateid" : survivshim.C.MATERIAU_SILEX, "quantity" : 10, "chance" : 50, "speed" : 1}]
-    }]
+    }],
+    "removedecoraftercollecting" : true,
   },
   "2" :
   {
@@ -40,6 +42,7 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 64, "y" : 1344},
     ],
+    "removedecoraftercollecting" : true,
   },
   "3" :
   {
@@ -54,7 +57,8 @@ survivshim.decors = {
       "actions" : [{
         "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
         "collect" :  [{ "templateid" : survivshim.C.MATERIAU_BRANCHE, "quantity" : 1, "chance" : 50, "speed" : 1}]
-      }]
+      }],
+      "removedecoraftercollecting" : true,
     
   },
 
@@ -72,7 +76,8 @@ survivshim.decors = {
       "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
       "collect" : [{ "templateid" : survivshim.C.MATERIAU_MUSHROOM, "quantity" : 2, "chance" : 100, "speed" : 1  ,"tools" : survivshim.C.ITEM_HACHE_SILEX},
     { "templateid" : survivshim.C.MATERIAU_BRANCHE, "quantity" : 2, "chance" : 100, "speed" : 1  ,"tools" : survivshim.C.ITEM_HACHE_SILEX}]
-    }]
+    }],
+    "removedecoraftercollecting" : true,
     
   },
   "5" :
@@ -85,6 +90,7 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 0, "y" : 1056},
     ],
+    "removedecoraftercollecting" : true,
   },
   "6" :
   {
@@ -97,13 +103,18 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 0, "y" : 1280},
     ],
-    "collect" : { 
-      "templateid" : survivshim.C.MATERIAU_MUSHROOM, 
-      "quantity" : 2, 
-      "chance" : 100, 
-      "speed" : 1,
-      "tools" : survivshim.C.ITEM_HACHE_SILEX
-    }
+    "actions" : [
+      {
+        "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
+        "collect" : { 
+          "templateid" : survivshim.C.MATERIAU_MUSHROOM, 
+          "quantity" : 2, 
+          "chance" : 100, 
+          "speed" : 1,
+          "tools" : survivshim.C.ITEM_HACHE_SILEX
+        }
+      }
+    ],
   },
   "7" :
   {
@@ -119,7 +130,8 @@ survivshim.decors = {
     "actions" : [{
       "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
       "collect" : [{ "templateid" : survivshim.C.MATERIAU_SALADE, "quantity" : 1, "chance" : 100, "speed" : 1}]
-    }]
+    }],
+    "removedecoraftercollecting" : true,
     
   },
 
@@ -134,7 +146,8 @@ survivshim.decors = {
     "sprites" : [
       { "state" : 0, "x" : 800, "y" : 384},
     ],
-    "timer" : 10000
+    "timer" : 10000,
+    "removedecoraftercollecting" : true,
   },
   "9" :
   {
@@ -151,7 +164,8 @@ survivshim.decors = {
       "timer" : 100,
       "number" : 8,
     },
-    "timer" : 10000
+    "timer" : 10000,
+    "removedecoraftercollecting" : true,
   },
   "10" :
   {
@@ -166,9 +180,10 @@ survivshim.decors = {
     ],
     "actions" : [
       {
-        "actiontype" : survivshim.C.TYPE_ACTION_COLLECT,
-        "collect" : [{ "templateid" : survivshim.C.MATERIAU_EAU, "quantity" : 1, "chance" : 100, "speed" : 1}]
+        "actiontype" : survivshim.C.TYPE_ACTION_CONSUME,
+        "collect" : [{ "templateid" : survivshim.C.MATERIAU_EAU, "quantity" : 10000, "chance" : 100, "speed" : 1}]
       }
-    ]
+    ],
+    "removedecoraftercollecting" : false,
   },
 };

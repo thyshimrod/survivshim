@@ -92,7 +92,7 @@ survivshim.ContextualMenuOnInventoryMenu.prototype ={
 
     doActionConsommable : function(action){
         if ( action === 1) {
-            survivshim.character.eat(this.materiau);
+            survivshim.character.eatFromInventory(this.materiau);
         }else if (action === 2){
             survivshim.character.removeMateriau(this.materiau);
         }

@@ -22,6 +22,7 @@ survivshim.Decor = function(){
     this.animation = {};
     this.animationState = 0;
     this.animationTick = 0;
+    this.removeAfterCollecting = true;
 };
 
 survivshim.Decor.prototype = {
@@ -32,6 +33,7 @@ survivshim.Decor.prototype = {
       this.typeDecor = src.typedecor;
       this.name = src.name;
       this.blocking = src.blocking;
+      this.removeAfterCollecting = src.removedecoraftercollecting;
       var _this = this;
       let d = new Date();
       let newTick = d.getTime();

@@ -243,6 +243,24 @@ survivshim.Character.prototype = {
       }
     },
 
+    eatFromInventory : function(item){
+      this.eat(item);
+      let materiauInInventory = this.getItem(item ); 
+      if (materiauInInventory !== null){
+          materiauInInventory.quantity -= 1;
+          if (materiauInInventory.quantity <= 0){
+            this.removeMateriau(item);
+          }
+      }
+    },
+
+    eatFromDecor : function(decor,materiau){
+      var eatedMateriau = new survivshim.Materiau();
+      eatedMateriau.init(materiau);
+      this.eat(eatedMateriau);
+      this.collect(false);
+    },
+
     eat : function(item){
       let d = new Date();
       let newTick = d.getTime();
@@ -257,13 +275,7 @@ survivshim.Character.prototype = {
         })
       }
       survivshim.console.addMessage("Vous avez consomme " + item.name);
-      let materiauInInventory = this.getItem(item ); 
-      if (materiauInInventory !== null){
-          materiauInInventory.quantity -= 1;
-          if (materiauInInventory.quantity <= 0){
-            this.removeMateriau(item);
-          }
-      }
+      
     },
 
     removeMateriau : function(item){
@@ -338,7 +350,7 @@ survivshim.Character.prototype = {
           if (indexToRemove !== -1){
             item.collect.splice(indexToRemove,1);
             if (item.collect.length === 0){
-              item.toRemove = true;
+              if (item.removeAfterCollecting) item.toRemove = true;
             }
           }
           this.lastTickCollect = newTick;
