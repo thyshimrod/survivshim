@@ -3,8 +3,8 @@ var survivshim = survivshim || {};
 
 survivshim.BlueprintMenu = function (){
     this.active = false;
-    this.x = 300;
-    this.y = 300;
+    this.x = 100;
+    this.y = 100;
     this.width = 400;
     this.height = 400;
     this.blueprint = null;

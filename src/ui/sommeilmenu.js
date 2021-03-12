@@ -3,7 +3,7 @@ var survivshim = survivshim || {};
 
 survivshim.SommeilMenu = function (){
   this.active = false;
-  this.x = 200;
+  this.x = 700;
   this.y = 200;
   this.width = 200;
   this.height = 200;

@@ -3,8 +3,8 @@ var survivshim = survivshim || {};
 
 survivshim.EquipementMenu = function (){
   this.active = false;
-  this.x = 400;
-  this.y = 300;
+  this.x = 600;
+  this.y = 100;
   this.height = 400;
   this.width = 400;
   this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
