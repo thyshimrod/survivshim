@@ -213,6 +213,22 @@ survivshim.Character.prototype = {
       }
     },
 
+    getItemsEquipedFromType : function(itemtype){
+        var result = [];
+        var _this = this;
+        var _itemType = itemType;
+        if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] === "undefined")
+          return null;
+
+        this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT].forEach(function(item){
+          if (item.itemType === _itemType && item.status === survivshim.C.ITEM_STATUS_WEARED){
+            result.push(item);
+          }
+        })
+
+        return result;
+    },
+
     getMateriau : function(idMat){
       if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_MATERIAU] === "undefined"){
         return null;
@@ -360,7 +376,7 @@ survivshim.Character.prototype = {
     },
 
     hit : function(hp){
-      this.hitPoints -= 1;
+      this.hitPoints -= hp;
       let ft = new survivshim.FloatingText();
       ft.init(this.x, this.y,hp,survivshim.C.FLOATING_TEXT_TIMER_HIT,survivshim.C.COLOR_GRADIANT_YELLOW);
       survivshim.zone.floatingTexts.push(ft);
