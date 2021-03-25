@@ -123,7 +123,15 @@ survivshim.Character.prototype = {
     },
 
     interactWithMob : function(mob){
-      mob.hit(1);
+      var damage = 1;
+
+      var weaponWeared = this.getItemsEquipedFromType(survivshim.C.ITEM_TYPE_WEAPON);
+      if (weaponWeared !== null){
+        weaponWeared.forEach(function(item){
+          damage = item.damage;
+        })
+      }
+      mob.hit(damage);
     },
 
     manageStates : function(){
@@ -216,7 +224,7 @@ survivshim.Character.prototype = {
     getItemsEquipedFromType : function(itemtype){
         var result = [];
         var _this = this;
-        var _itemType = itemType;
+        var _itemType = itemtype;
         if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] === "undefined")
           return null;
 
