@@ -45,6 +45,11 @@ survivshim.C = Object.freeze({
   ITEM_LANCE_SILEX : 4,
   ITEM_PIOCHE_SILEX : 5,
 
+  //ITEM_TYPE
+  ITEM_TYPE_WEAPON : 1,
+  ITEM_TYPE_ARMOR : 2,
+  ITEM_TYPE_TOOL : 3,
+
   //ACTIONS
   ACTION_NONE : 0,
   ACTION_COLLECT : 1,
