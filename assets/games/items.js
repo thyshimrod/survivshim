@@ -10,7 +10,8 @@ survivshim.items = {
         "sprite" : { "x" : 32, "y" : 2976},
         "use" : survivshim.C.STATE_INVENTORY_EQUIPEMENT,
         "location" : survivshim.C.ITEM_LOCATION_RIGHTHAND,
-        "itemtype" : survivshim.C.ITEM_TYPE_WEAPON
+        "itemtype" : survivshim.C.ITEM_TYPE_WEAPON,
+        "damage" : 2
     },
     2 : {
         "name" : "feu de camp",
@@ -29,7 +30,8 @@ survivshim.items = {
         "sprite" : { "x" : 832, "y" : 3008},
         "use" : survivshim.C.STATE_INVENTORY_EQUIPEMENT,
         "location" : survivshim.C.ITEM_LOCATION_RIGHTHAND,
-        "itemtype" : survivshim.C.ITEM_TYPE_WEAPON
+        "itemtype" : survivshim.C.ITEM_TYPE_WEAPON,
+        "damage" : 3
     },
     4 :  {
         "name"    : "Lance en silex",
@@ -38,7 +40,8 @@ survivshim.items = {
         "sprite" : { "x" : 448, "y" : 3040},
         "use" : survivshim.C.STATE_INVENTORY_EQUIPEMENT,
         "location" : survivshim.C.ITEM_LOCATION_RIGHTHAND,
-        "itemtype" : survivshim.C.ITEM_TYPE_WEAPON
+        "itemtype" : survivshim.C.ITEM_TYPE_WEAPON,
+        "damage" : 3
     },
     5 : {
         "name"    : "Pioche en silex",

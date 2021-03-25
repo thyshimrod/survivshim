@@ -12,6 +12,8 @@ survivshim.Item = function(){
     this.use = "undefined";
     this.location = "undefined";
     this.decor = "undefined";
+    this.itemType = 0;
+    this.damage = 0;
 };
   
 survivshim.Item.prototype = {
@@ -27,6 +29,14 @@ survivshim.Item.prototype = {
         if (typeof src.decor !== "undefined"){
           this.decor = src.decor;
         }
+        this.itemType = src.itemtype;
+        if (this.itemType === survivshim.C.ITEM_TYPE_WEAPON){
+          this.initWeapon(src);
+        }
+      },
+
+      initWeapon : function(src){
+        this.damage = src.damage;
       },
 
       render : function(x,y){
