@@ -8,6 +8,8 @@ survivshim.ContextualMenu = function (){
   this.height = 100;
   this.width = 350;
   this.ctx = null;
+  this.x = 0;
+  this.y = 0;
   this.listOfCollectButton = [];
 };
 
@@ -21,6 +23,8 @@ survivshim.ContextualMenu.prototype ={
         if (item !== null){
             this.item = item;
             this.active = true;
+            this.x = this.item.x + survivshim.gameEngine.centerX-survivshim.character.x;
+            this.y = this.item.y + survivshim.gameEngine.centerY-survivshim.character.y;
         }
     },
 
@@ -122,17 +126,8 @@ survivshim.ContextualMenu.prototype ={
 
     onClick : function(x,y){
         if (this.active === true){
-            if ((x < this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX + this.width) 
-            && (x >this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX ) 
-            && (y < this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + this.width) 
-            && (y >this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY )){
-                /*if ((y > this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +70)
-                && (y < this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +90)
-                && this.collectable){
-                    survivshim.collectMenu.showMenu(this.item);
-                    survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
-                    this.hideMenu();
-                } */
+            if (x > this.x && x < (this.x + this.width)
+            && y > this.y && y < (this.y + this.height)){
                 var _this = this;
                 this.listOfCollectButton.forEach(function (btn){
                     if(x > btn.x && x < (btn.x + btn.width)
