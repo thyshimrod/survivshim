@@ -86,7 +86,8 @@ survivshim.ContextualMenu.prototype ={
                     "height" : 20,
                     "item" : _this.item,
                     "materiau" : col.templateid,
-                    "actiontype" : action.actiontype
+                    "actiontype" : action.actiontype,
+                    "collectable" : _this.collectable
                 };
                 _this.listOfCollectButton.push(btn);
                 _this.ctx.rect(btn.x, 
@@ -140,14 +141,16 @@ survivshim.ContextualMenu.prototype ={
                 this.listOfCollectButton.forEach(function (btn){
                     if(x > btn.x && x < (btn.x + btn.width)
                     && y > btn.y && y < (btn.y + btn.height)){
-                        if (btn.actiontype === survivshim.C.TYPE_ACTION_COLLECT){
-                            survivshim.collectMenu.showMenu(_this.item,btn.materiau);
-                            survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
-                        }else if (btn.actiontype === survivshim.C.TYPE_ACTION_CONSUME){
-                            survivshim.character.eatFromDecor(_this.item,btn.materiau);
+                        if (btn.collectable === true){
+                            if (btn.actiontype === survivshim.C.TYPE_ACTION_COLLECT){
+                                survivshim.collectMenu.showMenu(_this.item,btn.materiau);
+                                survivshim.character.changeAction(survivshim.C.ACTION_COLLECT);
+                            }else if (btn.actiontype === survivshim.C.TYPE_ACTION_CONSUME){
+                                survivshim.character.eatFromDecor(_this.item,btn.materiau);
+                            }
+                            _this.hideMenu();
                         }
-                       
-                        _this.hideMenu();
+                        
                     }
                 })  
                 return survivshim.C.CLICK_ON_WINDOW;
