@@ -25,6 +25,14 @@ survivshim.ContextualMenu.prototype ={
             this.active = true;
             this.x = this.item.x + survivshim.gameEngine.centerX-survivshim.character.x;
             this.y = this.item.y + survivshim.gameEngine.centerY-survivshim.character.y;
+            console.log(this.item.collect.length);
+            if (this.item.collect.length > 0 ){
+                this.height = 100;
+                this.width = 350;
+            }else{
+                this.height = 10;
+                this.width = 100;
+            }
         }
     },
 
@@ -105,12 +113,12 @@ survivshim.ContextualMenu.prototype ={
             }
             this.ctx.fillRect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                         this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
-                         this.width,this.height + this.item.collect.length*30 + 30);
+                         this.width,this.height + this.item.collect.length*50 );
             this.ctx.beginPath();
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             this.ctx.rect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                 this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
-                this.width ,this.height + this.item.collect.length*30 + 30);
+                this.width ,this.height + this.item.collect.length*50 );
             this.ctx.stroke();
             this.ctx.font = "1Opx Arial";
             this.ctx.fillStyle = "white ";
@@ -118,7 +126,7 @@ survivshim.ContextualMenu.prototype ={
             this.ctx.fillText(text ,
                 this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
                 this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 10);
-            if (this.item.collect.length >= 0 ){
+            if (this.item.collect.length > 0 ){
                 this.renderMateriau();
             }
         }
