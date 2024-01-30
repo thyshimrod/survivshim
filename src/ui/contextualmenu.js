@@ -44,8 +44,8 @@ survivshim.ContextualMenu.prototype ={
         this.collectable = true;
         let text = "Materiaux";
         this.ctx.fillText(text ,
-            this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +30, 
-            this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 30);
+            this.x + 30, 
+            this.y + 30);
         var _this = this;
         var i = 0;
         let objDistance = {};
@@ -58,9 +58,9 @@ survivshim.ContextualMenu.prototype ={
             _this.ctx.fillStyle = "white ";
             let text = survivshim.materiaux[col.templateid].name + " : " + col.quantity;
             _this.ctx.fillText(text ,
-                _this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX +30, 
-                _this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY + 50 + 30*i);
-            
+                _this.x +30, 
+                _this.y + 50 + 30*i);
+            // TODO : this condition is for further work, col.tools is for the moment always undefined
             if (typeof col.tools !== "undefined"){
                 _this.ctx.fillStyle = "red";
                 _this.collectable = false;
@@ -73,14 +73,14 @@ survivshim.ContextualMenu.prototype ={
                 if (action.actiontype === survivshim.C.TYPE_ACTION_COLLECT)  text = "Recolter";
                 if (action.actiontype === survivshim.C.TYPE_ACTION_CONSUME)  text = "Consommer";
                 _this.ctx.fillText(text ,
-                    _this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX + 150, 
-                    _this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY + 50 + 30*i);
+                    _this.x + 150, 
+                    _this.y + 50 + 30*i);
                     
                 _this.ctx.beginPath();
                 _this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
                 let btn = {
-                    "x" : _this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + _this.item.sizeX + 140,
-                    "y" : _this.item.y  + survivshim.gameEngine.centerY-survivshim.character.y - _this.item.sizeY +  38 + 30*i,
+                    "x" : _this.x + 140,
+                    "y" : _this.y +  38 + 30*i,
                     "width" : 60,
                     "height" : 20,
                     "item" : _this.item,
@@ -111,29 +111,27 @@ survivshim.ContextualMenu.prototype ={
             }else{
                 this.height = 20;
             }
-            this.ctx.fillRect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
-                        this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
-                        this.width,this.height  );
+            this.ctx.fillRect(this.x ,this.y ,
+                this.width,this.height  );
                         
             this.ctx.beginPath();
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            this.ctx.rect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
-                this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
+            this.ctx.rect(this.x ,this.y ,
                 this.width ,this.height  );
             this.ctx.stroke();
             this.ctx.font = "1Opx Arial";
             this.ctx.fillStyle = "white ";
             let text = this.item.name;
             this.ctx.fillText(text ,
-                this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX +10, 
-                this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY + 10);
+                this.x + 10, 
+                this.y + 10);
             if (this.item.collect.length > 0 ){
                 this.renderMateriau();
             }
             this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
-            this.ctx.fillRect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX + this.width - 16,
-                        this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +2,
-                        12,12  );
+            this.ctx.fillRect(this.x + this.width - 16,
+                this.y + 2,
+                12,12  );
         }
     },
 
@@ -142,6 +140,7 @@ survivshim.ContextualMenu.prototype ={
             if ((x > this.x) && (x < (this.x + this.width))
             && (y > this.y) && (y < (this.y + this.height))){
                 var _this = this;
+
                 this.listOfCollectButton.forEach(function (btn){
                     if(x > btn.x && x < (btn.x + btn.width)
                     && y > btn.y && y < (btn.y + btn.height)){
@@ -161,7 +160,6 @@ survivshim.ContextualMenu.prototype ={
             }
             this.hideMenu();
             return survivshim.C.CLICK_ON_WINDOW;
-            //return survivshim.C.CLICK_OUTSIDE_WINDOW;
         }
     }
 };
