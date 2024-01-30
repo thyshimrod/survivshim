@@ -25,7 +25,6 @@ survivshim.ContextualMenu.prototype ={
             this.active = true;
             this.x = this.item.x + survivshim.gameEngine.centerX-survivshim.character.x;
             this.y = this.item.y + survivshim.gameEngine.centerY-survivshim.character.y;
-            console.log(this.item.collect.length);
             if (this.item.collect.length > 0 ){
                 this.height = 100;
                 this.width = 350;
@@ -107,19 +106,19 @@ survivshim.ContextualMenu.prototype ={
         if (this.item !== null && this.active === true){
             this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
             this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
-            if (typeof this.item.collect.templateid !== "undefined"){
-                this.height = 150;
+            if (typeof this.item.collect !== "undefined"){
+                this.height = 50 + this.item.collect.length*50;
             }else{
                 this.height = 20;
             }
             this.ctx.fillRect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                         this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
-                         this.width,this.height + this.item.collect.length*50 );
+                         this.width,this.height  );
             this.ctx.beginPath();
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             this.ctx.rect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                 this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
-                this.width ,this.height + this.item.collect.length*50 );
+                this.width ,this.height  );
             this.ctx.stroke();
             this.ctx.font = "1Opx Arial";
             this.ctx.fillStyle = "white ";
@@ -135,8 +134,8 @@ survivshim.ContextualMenu.prototype ={
 
     onClick : function(x,y){
         if (this.active === true){
-            if (x > this.x && x < (this.x + this.width)
-            && y > this.y && y < (this.y + this.height)){
+            if ((x > this.x) && (x < (this.x + this.width))
+            && (y > this.y) && (y < (this.y + this.height))){
                 var _this = this;
                 this.listOfCollectButton.forEach(function (btn){
                     if(x > btn.x && x < (btn.x + btn.width)
