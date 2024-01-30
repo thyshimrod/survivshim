@@ -113,7 +113,8 @@ survivshim.ContextualMenu.prototype ={
             }
             this.ctx.fillRect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
                         this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY,
-                         this.width,this.height  );
+                        this.width,this.height  );
+                        
             this.ctx.beginPath();
             this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
             this.ctx.rect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX,
@@ -129,6 +130,10 @@ survivshim.ContextualMenu.prototype ={
             if (this.item.collect.length > 0 ){
                 this.renderMateriau();
             }
+            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
+            this.ctx.fillRect(this.item.x + survivshim.gameEngine.centerX-survivshim.character.x + this.item.sizeX + this.width - 16,
+                        this.item.y + survivshim.gameEngine.centerY-survivshim.character.y - this.item.sizeY +2,
+                        12,12  );
         }
     },
 
@@ -155,7 +160,8 @@ survivshim.ContextualMenu.prototype ={
                 return survivshim.C.CLICK_ON_WINDOW;
             }
             this.hideMenu();
-            return survivshim.C.CLICK_OUTSIDE_WINDOW;
+            return survivshim.C.CLICK_ON_WINDOW;
+            //return survivshim.C.CLICK_OUTSIDE_WINDOW;
         }
     }
 };
