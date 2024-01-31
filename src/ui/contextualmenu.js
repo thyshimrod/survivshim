@@ -141,9 +141,7 @@ survivshim.ContextualMenu.prototype ={
             this.renderMateriau();
         }
         this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
-        this.ctx.fillRect(this.x + this.width - 16,
-            this.y + 2,
-            12,12  );
+        this.ctx.fillRect(this.x + this.width - 16, this.y + 2, 12,12  );
     },
 
     render : function(){
@@ -177,7 +175,13 @@ survivshim.ContextualMenu.prototype ={
                         }
                         
                     }
-                })  
+                })
+                
+                if((x > (this.x + this.width - 16)) && (x < (this.x + this.width))
+                && (y > this.y) && (y < (this.y + 16))){
+                    this.hideMenu();
+                    return survivshim.C.CLICK_ON_WINDOW; 
+                }  
                 return survivshim.C.CLICK_ON_WINDOW;
             }
             this.hideMenu();
