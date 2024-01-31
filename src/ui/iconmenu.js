@@ -41,6 +41,14 @@ survivshim.IconMenu.prototype ={
         })
     },
 
+    closeAll : function(){
+        if(survivshim.listblueprintMenu.active) survivshim.listblueprintMenu.hideMenu();
+        if(survivshim.statsMenu.active) survivshim.statsMenu.hideMenu();
+        if(survivshim.inventaireMenu.active) survivshim.inventaireMenu.hideMenu();
+        if(survivshim.sommeilMenu.active) survivshim.sommeilMenu.hideMenu();
+        if(survivshim.equipementMenu.active) survivshim.equipementMenu.hideMenu();
+    },
+
     onClick : function(x,y){
         if(y < (this.y + 32) && x < ( 32* this.icons.length)){
             var _this = this;
@@ -48,6 +56,7 @@ survivshim.IconMenu.prototype ={
             var _y = y;
             this.icons.forEach(function (icon){
                 if ( _x >= icon.x && _x <= (icon.x + 32)){
+                    _this.closeAll();
                     if(icon.icon === "blueprint"){
                         survivshim.listblueprintMenu.toggleMenu();
                     }else if (icon.icon === "stats"){

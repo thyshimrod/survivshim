@@ -19,6 +19,8 @@ survivshim.SommeilMenu.prototype ={
 
     showMenu : function(){
         this.active = true;
+        this.x = Math.floor(window.innerWidth / 2) - Math.floor(this.width /2);
+        this.y = Math.floor(window.innerHeight / 2) - Math.floor(this.height /2);
     },
 
     hideMenu : function(){

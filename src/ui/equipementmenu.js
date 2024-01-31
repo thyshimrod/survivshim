@@ -31,6 +31,8 @@ survivshim.EquipementMenu.prototype ={
         this.icons.push(icon);
         icon = { "x" : 180 , "y" : 280, "tx" : 33, "ty" : 33 , "icon" : survivshim.C.ITEM_LOCATION_FOOT, "item" : undefined};
         this.icons.push(icon);
+        this.x = Math.floor(window.innerWidth / 2) - Math.floor(this.width /2);
+        this.y = Math.floor(window.innerHeight / 2) - Math.floor(this.height /2);
     },
 
     hideMenu : function(){
