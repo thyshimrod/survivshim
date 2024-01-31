@@ -49,7 +49,7 @@ survivshim.decors = {
     "name" : "bambous",
     "typedecor" : 0,
     "blocking" : true,
-    "size":{"x" : 32, "y" : 64},
+    "size":{"x" : 32, "y" : 32},
     "tileset" : "assets/tileset/tileset1.png",
     "sprites" : [
       { "state" : 0, "x" : 256, "y" : 1664},
