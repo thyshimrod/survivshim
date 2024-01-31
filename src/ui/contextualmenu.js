@@ -3,6 +3,9 @@ var survivshim = survivshim || {};
 
 survivshim.ContextualMenu = function (){
   this.active = false;
+  this.showupTick = 0;
+  this.showupStep = 0;
+  this.showupMaxTick = 20;
   this.item = null;
   this.collectable = false;
   this.height = 100;
@@ -25,13 +28,16 @@ survivshim.ContextualMenu.prototype ={
             this.active = true;
             this.x = this.item.x + survivshim.gameEngine.centerX-survivshim.character.x;
             this.y = this.item.y + survivshim.gameEngine.centerY-survivshim.character.y;
-            if (this.item.collect.length > 0 ){
-                this.height = 100;
+
+            if (typeof this.item.collect !== "undefined" && this.item.collect.length > 0){
+                this.height = 50 + this.item.collect.length*50;
                 this.width = 350;
             }else{
-                this.height = 10;
+                this.height = 20;
                 this.width = 100;
             }
+            this.showupTick = this.showupMaxTick;
+            this.showupStep = (window.innerHeight - this.y) / this.showupMaxTick;
         }
     },
 
@@ -102,36 +108,52 @@ survivshim.ContextualMenu.prototype ={
         });
     },
 
-    render : function(){
-        if (this.item !== null && this.active === true){
+    showUpMenu : function(){
+        this.showupTick -= 1;
+        if (this.showupTick > 0){
+            let actualTransfo =  this.showupMaxTick - this.showupTick;
             this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
             this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
-            if (typeof this.item.collect !== "undefined"){
-                this.height = 50 + this.item.collect.length*50;
+            this.ctx.fillRect(this.x  , window.innerHeight - (this.showupStep * actualTransfo),
+                this.width / this.showupTick ,this.height / this.showupTick );
+        }
+    },
+
+    renderMenu : function(){
+        this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
+        this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
+        
+        this.ctx.fillRect(this.x ,this.y ,
+            this.width,this.height  );
+                    
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+        this.ctx.rect(this.x ,this.y ,
+            this.width ,this.height  );
+        this.ctx.stroke();
+        this.ctx.font = "1Opx Arial";
+        this.ctx.fillStyle = "white ";
+        let text = this.item.name;
+        this.ctx.fillText(text ,
+            this.x + 10, 
+            this.y + 10);
+        if (this.item.collect.length > 0 ){
+            this.renderMateriau();
+        }
+        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
+        this.ctx.fillRect(this.x + this.width - 16,
+            this.y + 2,
+            12,12  );
+    },
+
+    render : function(){
+        if (this.item !== null && this.active === true){
+            if (this.showupTick <= 0){
+                this.renderMenu();
             }else{
-                this.height = 20;
+                this.showUpMenu();
             }
-            this.ctx.fillRect(this.x ,this.y ,
-                this.width,this.height  );
-                        
-            this.ctx.beginPath();
-            this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            this.ctx.rect(this.x ,this.y ,
-                this.width ,this.height  );
-            this.ctx.stroke();
-            this.ctx.font = "1Opx Arial";
-            this.ctx.fillStyle = "white ";
-            let text = this.item.name;
-            this.ctx.fillText(text ,
-                this.x + 10, 
-                this.y + 10);
-            if (this.item.collect.length > 0 ){
-                this.renderMateriau();
-            }
-            this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
-            this.ctx.fillRect(this.x + this.width - 16,
-                this.y + 2,
-                12,12  );
+            
         }
     },
 
