@@ -25,6 +25,8 @@ survivshim.BlueprintMenu.prototype ={
         this.blueprint = new survivshim.Blueprint();
         this.blueprint.init(blueprintId);
         this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
+        this.x = Math.floor(window.innerWidth / 2) - Math.floor(this.width /2);
+        this.y = Math.floor(window.innerHeight / 2) - Math.floor(this.height /2);
     },
 
     hideMenu : function(){
