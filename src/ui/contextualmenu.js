@@ -140,8 +140,9 @@ survivshim.ContextualMenu.prototype ={
         if (this.item.collect.length > 0 ){
             this.renderMateriau();
         }
-        this.ctx.fillStyle = survivshim.C.COLOR_GRADIANT_RED;
-        this.ctx.fillRect(this.x + this.width - 16, this.y + 2, 12,12  );
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        text = "X";
+        this.ctx.fillText(text, this.x + this.width -10,this.y + 10 );
     },
 
     render : function(){
