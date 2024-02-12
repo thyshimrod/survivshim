@@ -66,19 +66,14 @@ survivshim.ContextualMenu.prototype ={
             _this.ctx.fillText(text ,
                 _this.x +30, 
                 _this.y + 50 + 30*i);
-            // TODO : this condition is for further work, col.tools is for the moment always undefined
-           /*console.log(col);
-            console.log("trear" + col.tools);
-            console.log(col.tools);*/
-            //if (typeof col.tools !== "undefined"){
             if (typeof col.tools !== "undefined"){
-                // does the character have an equiped item to collect
                 let isToolEquiped = survivshim.character.isItemEquipedFromTemplateId(col.tools);
                 if (!isToolEquiped){
                     _this.ctx.fillStyle = "red";
                     _this.collectable = false;
                 }
-            }else if( distance > 50){
+            }
+            if( distance > 50){
                 _this.ctx.fillStyle = "red";
                 _this.collectable = false;
             }
