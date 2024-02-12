@@ -11,16 +11,20 @@ survivshim.IconMenu = function (){
 
 survivshim.IconMenu.prototype ={
     init : function(){
-        this.spriteset = survivshim.tileset.get("assets/tileset/iconset.png");
-        let icon = { "x" : 0 , "y" : 0, "tx" : 224, "ty" : 3936 , "icon" : "blueprint"};
+        let icon = new survivshim.Icone();
+        icon.load(survivshim.C.ICON_BLUEPRINT,0,0);
         this.icons.push(icon);
-        icon = { "x" : 33 , "y" : 0, "tx" : 736, "ty" : 3904 , "icon" : "stats"};
+        icon = new survivshim.Icone();
+        icon.load(survivshim.C.ICON_STATS,33,0);
         this.icons.push(icon);
-        icon = { "x" : 66 , "y" : 0, "tx" : 96, "ty" : 3968 , "icon" : "inventaire"};
+        icon = new survivshim.Icone();
+        icon.load(survivshim.C.ICON_INVENTAIRE,66,0);
         this.icons.push(icon);
-        icon = { "x" : 132 , "y" : 0, "tx" :  1984, "ty" : 4384 , "icon" : "sommeil"};
+        icon = new survivshim.Icone();
+        icon.load(survivshim.C.ICON_SOMMEIL,132,0);
         this.icons.push(icon);
-        icon = { "x" : 99 , "y" : 0, "tx" :  1664, "ty" : 3904 , "icon" : "equipement"};
+        icon = new survivshim.Icone();
+        icon.load(survivshim.C.ICON_EQUIPEMENT,99,0);
         this.icons.push(icon);
     },
 
@@ -29,7 +33,7 @@ survivshim.IconMenu.prototype ={
         var _this = this;
         this.icons.forEach(function (icon){
             ctx.drawImage(
-                _this.spriteset,
+                icon.spriteset,
                 icon.tx,
                 icon.ty,
                 32,
@@ -57,15 +61,15 @@ survivshim.IconMenu.prototype ={
             this.icons.forEach(function (icon){
                 if ( _x >= icon.x && _x <= (icon.x + 32)){
                     _this.closeAll();
-                    if(icon.icon === "blueprint"){
+                    if(icon.name === "blueprint"){
                         survivshim.listblueprintMenu.toggleMenu();
-                    }else if (icon.icon === "stats"){
+                    }else if (icon.name === "stats"){
                         survivshim.statsMenu.toggleMenu();
-                    }else if (icon.icon === "inventaire"){
+                    }else if (icon.name === "inventaire"){
                         survivshim.inventaireMenu.toggleMenu();
-                    }else if (icon.icon === "sommeil"){
+                    }else if (icon.name === "sommeil"){
                         survivshim.sommeilMenu.toggleMenu();
-                    }else if(icon.icon === "equipement"){
+                    }else if(icon.name === "equipement"){
                         survivshim.equipementMenu.toggleMenu();
                     }
                 }
