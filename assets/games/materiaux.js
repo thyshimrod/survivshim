@@ -23,7 +23,7 @@ survivshim.materiaux = {
       },
       3 : {
         "name" : "champignons",
-        "size":{"x" : 16, "y" : 16},
+        "size":{"x" : 32, "y" : 32},
         "tileset" : "assets/tileset/tileset1.png",
         "sprite" : { "x" : 64, "y" : 1120},
         "use" : survivshim.C.TYPE_INVENTORY_CONSOMMABLE,
