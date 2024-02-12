@@ -51,6 +51,10 @@ survivshim.Character.prototype = {
         this.lastTicksManageState = newTick;
         this.level = 1;
         this.newBP = 1;
+        //TOREMOVE : done for test
+        let item = new survivshim.Item();
+        item.init(3);
+        survivshim.character.addItemToInventory(item);
     },
 
     addBP : function(templateId){
@@ -221,13 +225,27 @@ survivshim.Character.prototype = {
       }
     },
 
+    isItemEquipedFromTemplateId : function(itemTplId){
+      var _this = this;
+      var isEquiped = false;
+      var _itemTplId = itemTplId;
+      for (var typeInventory in this.inventory){
+        this.inventory[typeInventory].forEach(function(item){
+          if (item.templateId === _itemTplId && item.status === survivshim.C.ITEM_STATUS_WEARED){
+            isEquiped = true;
+          }
+        });
+      }
+      return isEquiped;
+    },
+
     getItemsEquipedFromType : function(itemtype){
         var result = [];
         var _this = this;
         var _itemType = itemtype;
         if (typeof this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT] === "undefined")
           return null;
-
+        console.log(this.inventory);
         this.inventory[survivshim.C.TYPE_INVENTORY_EQUIPEMENT].forEach(function(item){
           if (item.itemType === _itemType && item.status === survivshim.C.ITEM_STATUS_WEARED){
             result.push(item);
