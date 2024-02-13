@@ -25,5 +25,20 @@ survivshim.Icone.prototype = {
         this.y = y;
     },
 
+    render : function(){
+        var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
+        
+        ctx.drawImage(
+            this.spriteset,
+            this.tx,
+            this.ty,
+            32,
+            32,
+            this.x,
+            this.y,
+            32,
+            32);
+    },
+
     
 };

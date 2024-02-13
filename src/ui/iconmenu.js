@@ -29,19 +29,8 @@ survivshim.IconMenu.prototype ={
     },
 
     render : function(){
-        var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
-        var _this = this;
         this.icons.forEach(function (icon){
-            ctx.drawImage(
-                icon.spriteset,
-                icon.tx,
-                icon.ty,
-                32,
-                32,
-                icon.x,
-                icon.y,
-                32,
-                32);
+            icon.render();
         })
     },
 
