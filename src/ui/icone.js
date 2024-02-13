@@ -25,7 +25,7 @@ survivshim.Icone.prototype = {
         this.y = y;
     },
 
-    render : function(){
+    render : function(scale = 1){
         var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
         
         ctx.drawImage(
@@ -36,8 +36,8 @@ survivshim.Icone.prototype = {
             32,
             this.x,
             this.y,
-            32,
-            32);
+            32 * scale,
+            32 * scale);
     },
 
     

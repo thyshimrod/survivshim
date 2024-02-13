@@ -14,6 +14,7 @@ survivshim.ContextualMenu = function (){
   this.x = 0;
   this.y = 0;
   this.listOfCollectButton = [];
+  this.icons = [];
 };
 
 survivshim.ContextualMenu.prototype ={
@@ -47,6 +48,7 @@ survivshim.ContextualMenu.prototype ={
     },
 
     renderMateriau : function(){
+        this.icons = [];
         this.collectable = true;
         let text = "Materiaux";
         this.ctx.fillText(text ,
@@ -71,11 +73,18 @@ survivshim.ContextualMenu.prototype ={
                 if (!isToolEquiped){
                     _this.ctx.fillStyle = "red";
                     _this.collectable = false;
+                    let icone = new survivshim.Item();
+                    icone.init(col.tools);
+                    icone.render(_this.x + 210, _this.y +  40 + 30*i,0.5);
                 }
             }
             if( distance > 50){
                 _this.ctx.fillStyle = "red";
                 _this.collectable = false;
+                let icone = new survivshim.Icone();
+                icone.load(survivshim.C.ICON_WALK,_this.x + 210, _this.y +  40 + 30*i);
+                icone.render(0.5);
+
             }
             _this.item.actions.forEach(function(action){
                 let text = "";
@@ -146,6 +155,8 @@ survivshim.ContextualMenu.prototype ={
         this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         text = "X";
         this.ctx.fillText(text, this.x + this.width -10,this.y + 10 );
+
+
     },
 
     render : function(){

@@ -39,7 +39,7 @@ survivshim.Item.prototype = {
         this.damage = src.damage;
       },
 
-      render : function(x,y){
+      render : function(x,y,scale = 1){
         var ctx = survivshim.canvas.canvasAnimation.getContext("2d");
         ctx.drawImage(
            this.spriteset,
@@ -49,7 +49,7 @@ survivshim.Item.prototype = {
            this.size.y,
            x,
            y,
-           survivshim.gameEngine.tileSize,
-           survivshim.gameEngine.tileSize);
+           survivshim.gameEngine.tileSize * scale,
+           survivshim.gameEngine.tileSize * scale);
       }
 };
