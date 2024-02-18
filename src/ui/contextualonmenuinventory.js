@@ -32,21 +32,46 @@ survivshim.ContextualMenuOnInventoryMenu.prototype ={
     },
 
     renderMenuContentConsommable : function(){
-        let text = "Manger";
+        this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
+        this.ctx.fillRect(this.x,
+            this.y,
+            this.width,60);
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+        this.ctx.rect(this.x, this.y, this.width, 60);
+        this.ctx.stroke();
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
+        let text = this.materiau.name;
         this.ctx.fillText(text ,
             this.x + 5, 
             this.y + 13);
+        text = "Manger";
+        this.ctx.fillText(text ,
+            this.x + 5, 
+            this.y + 33);
         this.ctx.beginPath();
         this.ctx.moveTo(this.x, this.y+20);
         this.ctx.lineTo(this.x + this.width, this.y + 20);
         this.ctx.stroke();
+        this.ctx.moveTo(this.x, this.y+40);
+        this.ctx.lineTo(this.x + this.width, this.y + 40);
+        this.ctx.stroke();
         text = "Detruire";
         this.ctx.fillText(text ,
             this.x + 5, 
-            this.y + 33);
+            this.y + 53);
     },
 
     renderMenuContentEquipement : function(){
+        this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
+        this.ctx.fillRect(this.x,
+            this.y,
+            this.width,this.height);
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
+        this.ctx.rect(this.x, this.y, this.width, this.height);
+        this.ctx.stroke();
+        this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
         let text = "Equiper";
         if (this.materiau.location === survivshim.C.ITEM_LOCATION_FLOOR){
             text = "Installer";
@@ -76,16 +101,6 @@ survivshim.ContextualMenuOnInventoryMenu.prototype ={
     render : function(){
         if (this.materiau !== null && this.active === true){
             this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");
-            this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
-            this.ctx.fillRect(this.x,
-                        this.y,
-                        this.width,this.height);
-            this.ctx.beginPath();
-            this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
-            this.ctx.rect(this.x, this.y, this.width, this.height);
-            this.ctx.stroke();
-            this.ctx.font = "1Opx Arial";
-            this.ctx.fillStyle = survivshim.C.COLOR_TEXT;
             this.renderMenuContent();
         }
     },

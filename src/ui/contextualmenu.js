@@ -113,9 +113,7 @@ survivshim.ContextualMenu.prototype ={
                     btn.height);
                 
                 _this.ctx.stroke();
-
             })
-           
             i++;
         });
     },
