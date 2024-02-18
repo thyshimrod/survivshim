@@ -9,6 +9,7 @@ survivshim.ContextualMenuOnInventoryMenu = function (){
   this.width = 50;
   this.height = 40;
   this.ctx = null;
+  this.actions = [];
 };
 
 survivshim.ContextualMenuOnInventoryMenu.prototype ={
@@ -32,6 +33,7 @@ survivshim.ContextualMenuOnInventoryMenu.prototype ={
     },
 
     renderMenuContentConsommable : function(){
+        
         this.ctx.fillStyle = survivshim.C.COLOR_CONTEXTUAL;
         this.ctx.fillRect(this.x,
             this.y,
@@ -60,6 +62,13 @@ survivshim.ContextualMenuOnInventoryMenu.prototype ={
         this.ctx.fillText(text ,
             this.x + 5, 
             this.y + 53);
+
+        this.actions=[];
+        let action = { y:20, height:20 , id :1};
+        this.actions.push(action);
+        action = { y:40, height:20 , id :2};
+        this.actions.push(action);
+        this.height = 60;
     },
 
     renderMenuContentEquipement : function(){
@@ -88,6 +97,12 @@ survivshim.ContextualMenuOnInventoryMenu.prototype ={
         this.ctx.fillText(text ,
             this.x + 5, 
             this.y + 33);
+        this.actions=[];
+        let action = { y:0, height:20 , id :1};
+        this.actions.push(action);
+        action = { y:20, height:20 , id :2};
+        this.actions.push(action);
+        this.height = 40;
     },
 
     renderMenuContent : function(){
@@ -133,13 +148,14 @@ survivshim.ContextualMenuOnInventoryMenu.prototype ={
     onClick : function(x,y){
         if (this.active === true ){
             if (x < (this.x + this.width)
-            &&  x > this.x
-            &&  y < this.y + this.height
-            &&  y > this.y){
-                if (y < (this.y+20)){
-                    this.doAction(1);
-                }else{
-                    this.doAction(2);
+                &&  x > this.x
+                &&  y < (this.y + this.height)
+                &&  y > this.y){
+                for (let itAction = 0; itAction < this.actions.length; itAction++) {
+                    if (y > (this.y + this.actions[itAction].y)
+                        && y < (this.y + this.actions[itAction].y + this.actions[itAction].height)){
+                        this.doAction(this.actions[itAction].id);
+                    }
                 }
                 return survivshim.C.CLICK_ON_WINDOW;
             }else{

@@ -223,6 +223,7 @@ survivshim.Character.prototype = {
           }
         }
       }
+      survivshim.console.addMessage("Vous avez equipe " + item.name);
     },
 
     isItemEquipedFromTemplateId : function(itemTplId){
