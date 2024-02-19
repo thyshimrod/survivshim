@@ -39,4 +39,10 @@ survivshim.icons = {
       "tileset" : "assets/tileset/iconset.png",
       "sprite" : { "x" : 1664, "y" : 3904},
     },
+    7 : {
+      "name"    : "newbluepring",
+      "size":{"x" : 32, "y" : 32},
+      "tileset" : "assets/tileset/iconset.png",
+      "sprite" : { "x" : 256, "y" : 3904},
+    },
 };

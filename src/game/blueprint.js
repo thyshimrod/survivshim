@@ -67,6 +67,4 @@ survivshim.Blueprint.prototype = {
         let prct = Math.floor((newTick - this.timerBuild) /(this.timeToBuild) * 100 );
         return prct;
     }
-
-
 };

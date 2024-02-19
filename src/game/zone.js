@@ -111,6 +111,7 @@ survivshim.Zone.prototype ={
         survivshim.contextualMenuOnInventoryMenu.render();
         survivshim.contextualMenuOnEquipementMenu.render();
         survivshim.contextualMenuOnMob.render();
+        survivshim.alertMenu.render();
         
     },
 

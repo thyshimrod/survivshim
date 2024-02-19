@@ -15,6 +15,7 @@ survivshim.C = Object.freeze({
   ICON_INVENTAIRE : 4,
   ICON_SOMMEIL : 5,
   ICON_EQUIPEMENT : 6,
+  ICON_NEW_BLUEPRINT : 7,
 
   DIRECTION_UP :0,
   DIRECTION_DOWN :3,
