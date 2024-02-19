@@ -39,6 +39,12 @@ survivshim.EquipementMenu.prototype ={
         this.active = false;
     },
 
+    initIconWithoutEquipement : function(){
+        this.icons.forEach(function(icon){
+            icon.item = undefined;
+        });
+    },
+
     renderEquipement : function(){
         var _this = this;
         this.icons.forEach(function(icon){
@@ -71,7 +77,7 @@ survivshim.EquipementMenu.prototype ={
             this.ctx.fillText(text ,this.x + 10, this.y + 10);
             text = "X";
             this.ctx.fillText(text,this.x + this.width -10, this.y +10);
-
+            this.initIconWithoutEquipement();
             this.renderEquipement();
         }
     },
@@ -88,7 +94,8 @@ survivshim.EquipementMenu.prototype ={
            var _x = x;
            var _y = y;
            this.icons.forEach(function(icon){
-               if (_x > (_this.x + icon.x) && _x < (_this.x + icon.x + icon.tx)
+               if ( icon.item !== undefined
+                && _x > (_this.x + icon.x) && _x < (_this.x + icon.x + icon.tx)
                 && _y > (_this.y + icon.y) && _y < (_this.y + icon.y + icon.ty)){
                     let position = {"x" : _this.x, "y" : _this.y};
                     survivshim.contextualMenuOnEquipementMenu.showMenu(icon,position);
