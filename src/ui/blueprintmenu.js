@@ -21,7 +21,6 @@ survivshim.BlueprintMenu.prototype ={
     
     showMenu : function(blueprintId = 1){
         this.active = true;
-        //this.blueprint = blueprint;
         this.blueprint = new survivshim.Blueprint();
         this.blueprint.init(blueprintId);
         this.ctx = survivshim.canvas.canvasAnimation.getContext("2d");

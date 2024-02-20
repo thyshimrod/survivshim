@@ -230,6 +230,7 @@ survivshim.Zone.prototype ={
     clickEvent : function(evt){
         let clickOnMenu =  survivshim.iconMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.hourui.onClick(evt.pageX,evt.pageY) 
+                        || survivshim.alertMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.sommeilMenu.onClick(evt.pageX,evt.pageY) 
                         || survivshim.contextualMenuOnInventoryMenu.onClick(evt.pageX,evt.pageY)
                         || survivshim.contextualMenuOnEquipementMenu.onClick(evt.pageX,evt.pageY)
