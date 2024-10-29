@@ -82,22 +82,26 @@ survivshim.ContextualMenu.prototype ={
                 _this.ctx.fillStyle = "red";
                 _this.collectable = false;
                 let icone = new survivshim.Icone();
-                icone.load(survivshim.C.ICON_WALK,_this.x + 210, _this.y +  40 + 30*i);
+                icone.load(survivshim.C.ICON_WALK,_this.x + 230, _this.y +  40 + 30*i);
                 icone.render(0.5);
 
             }
             _this.item.actions.forEach(function(action){
                 let text = "";
+                let decalageFromTextSize = 0;
                 if (action.actiontype === survivshim.C.TYPE_ACTION_COLLECT)  text = "Recolter";
-                if (action.actiontype === survivshim.C.TYPE_ACTION_CONSUME)  text = "Consommer";
+                if (action.actiontype === survivshim.C.TYPE_ACTION_CONSUME)  {
+                    text = "Consommer";
+                    decalageFromTextSize = 12;
+                }
                 _this.ctx.fillText(text ,
-                    _this.x + 150, 
+                    _this.x + 150 + decalageFromTextSize, 
                     _this.y + 50 + 30*i);
                     
                 _this.ctx.beginPath();
                 _this.ctx.strokeStyle = survivshim.C.COLOR_TURQUOISE;
                 let btn = {
-                    "x" : _this.x + 140,
+                    "x" : _this.x + 140 + decalageFromTextSize,
                     "y" : _this.y +  38 + 30*i,
                     "width" : 60,
                     "height" : 20,
@@ -107,9 +111,9 @@ survivshim.ContextualMenu.prototype ={
                     "collectable" : _this.collectable
                 };
                 _this.listOfCollectButton.push(btn);
-                _this.ctx.rect(btn.x, 
+                _this.ctx.rect(btn.x , 
                     btn.y,
-                    btn.width,
+                    btn.width + decalageFromTextSize,
                     btn.height);
                 
                 _this.ctx.stroke();
